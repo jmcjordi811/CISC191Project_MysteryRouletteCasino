@@ -1,27 +1,43 @@
 import java.lang.String;
+import java.awt.Color;
 
-public abstract class Roulette {
+public class Roulette {
 	
-	public Roulette() {
-		
+	private int number = 0;
+	private String color = "";
+	
+	public Roulette(int number, String color) {
+		this.number = number;
+		this.color = color;
+		//System.out.println(number + " " + color);
 	}
 	
-	public String[] createRoulette() {
-		String[] roulette = {"0 Green",
-				"1 Red","2 Black","3 Red",
-				"4 Black","5 Red","6 Black",
-				"7 Red","8 Black","9 Red",
-				"10 Black","11 Black","12 Red",
-				"13 Black","14 Red","15 Black",
-				"16 Red","17 Black","18 Red",
-				"19 Red","20 Black","21 Red",
-				"22 Black","23 Red","24 Black",
-				"25 Red","26 Black","27 Red",
-				"28 Black","29 Black","30 Red",
-				"31 Black","32 Red","33 Black",
-				"34 Red","35 Black","36 Red"};
+	public Roulette(Roulette original) {
+		this.number = original.getNumber();
+		this.color = original.getColor();
+	}
+	
+	public int getNumber() {
+		return this.number;
+	}
+	
+	public String getColor() {
+		return this.color;
+	}
+	
+	public String determineOddOrEven(int value) {
+		String oddOrEven = "";
+		if (value % 2 == 0) {
+			oddOrEven = "Is even!";
+		} else {
+			oddOrEven = "Is odd!";
+		}
 		
-		return roulette;
+		return oddOrEven;
+	}
+	
+	public String toString() {
+		return this.number + " " + this.color;
 	}
 	
 
