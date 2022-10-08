@@ -91,10 +91,10 @@ public class MysteryRoulette {
 		System.out.println("     *             *     ");
 		System.out.println("    *   Roulette    *    ");
 		System.out.println("   *                 *   ");
-		System.out.println(" |*|      Spin!      |*| ");
+		System.out.println(" |*|     Spin Is     |*| ");
 		System.out.println(" |*|                 |*| ");
 		
-		if(win.getColor() == "Green") {
+		if(win.getColor() == "Green"){
 			System.out.println(" |*|     " + win.getNumber() + " " + win.getColor() + "     |*| "); 
 		}else if(len == 5) {
 			System.out.println(" |*|      " + win.getNumber() + " " + win.getColor() + "      |*| "); 
@@ -108,8 +108,23 @@ public class MysteryRoulette {
 
 		
 		System.out.println("   *                 *   ");
-		System.out.println("    *      !!!      *    ");
+		System.out.println("    *      ...      *    ");
 		System.out.println("     * ___________ *     ");
+		
+		System.out.println("But this is not the win!"); 
+		System.out.println("Now we draw 3 Roulette Cards for Mystery Roulette! ");
+		
+		if(0 <= win.getNumber() && win.getNumber() <= 12){
+			System.out.println("Since " + win.getNumber() + " is in the range 0 - 12...");
+			System.out.println("First Card Wins!");
+		}else if(13 <= win.getNumber() && win.getNumber() <= 24){
+			System.out.println("Since " + win.getNumber() + " is in the range 13 - 24...");
+			System.out.println("Second Card Wins!");
+		}else if(25 <= win.getNumber() && win.getNumber() <= 36){
+			System.out.println("Since " + win.getNumber() + " is in the range 25 - 36...");
+			System.out.println("Third Card Wins!");
+		}
+		
 		
 		
 		return win;
