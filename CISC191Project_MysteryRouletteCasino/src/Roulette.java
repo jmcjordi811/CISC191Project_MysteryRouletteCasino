@@ -1,20 +1,22 @@
 import java.lang.String;
-import java.awt.Color;
 
 public class Roulette {
 	
 	private int number = 0;
 	private String color = "";
+	private int digit = 0;
 	
 	public Roulette(int number, String color) {
 		this.number = number;
 		this.color = color;
+		this.digit = Integer.toString(number).length();
 		//System.out.println(number + " " + color);
 	}
 	
 	public Roulette(Roulette original) {
 		this.number = original.getNumber();
 		this.color = original.getColor();
+		this.digit = Integer.toString(original.getNumber()).length();
 	}
 	
 	public int getNumber() {
@@ -23,6 +25,10 @@ public class Roulette {
 	
 	public String getColor() {
 		return this.color;
+	}
+	
+	public int getDigit() {
+		return this.digit;
 	}
 	
 	public String determineOddOrEven(int value) {
@@ -37,7 +43,7 @@ public class Roulette {
 	}
 	
 	public String toString() {
-		return this.number + " " + this.color;
+		return this.number + " " + this.color + " " + this.digit;
 	}
 	
 
