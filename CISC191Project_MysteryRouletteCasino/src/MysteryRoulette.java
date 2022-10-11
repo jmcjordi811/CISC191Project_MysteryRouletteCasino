@@ -102,10 +102,10 @@ public class MysteryRoulette {
 		int len = wheel.toString().length();
 		//System.out.println(len);
 		
-		System.out.println("       ___________       ");
-		System.out.println("     *             *     ");
-		System.out.println("    *   Roulette    *    ");
-		System.out.println("   *                 *   ");
+		System.out.println("       ____________     ");
+		System.out.println("    /*/           \\*\\   ");
+		System.out.println("   /*/  Roulette   \\*\\  ");
+		System.out.println("  /*/               \\*\\ ");
 		System.out.println(" |*|     Spin Is     |*| ");
 		System.out.println(" |*|                 |*| ");
 		
@@ -122,9 +122,10 @@ public class MysteryRoulette {
 		}
 
 		
-		System.out.println("   *                 *   ");
-		System.out.println("    *      ...      *    ");
-		System.out.println("     * ___________ *     ");
+		System.out.println("  \\*\\               /*/  ");
+		System.out.println("   \\*\\    ...      /*/   ");
+		System.out.println("    \\*\\___________/*/    ");
+		System.out.println("");
 		
 		System.out.println("But this is not the win!"); 
 		System.out.println("Now we draw 3 Roulette Cards for Mystery Roulette! ");
