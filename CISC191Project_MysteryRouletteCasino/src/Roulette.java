@@ -2,9 +2,13 @@ import java.lang.String;
 
 public class Roulette {
 	
-	private int number = 0;
-	private String color = "";
+	private int number = -1;
+	private String color = null;
 	private int digit = 0;
+	
+	public Roulette() {
+		
+	}
 	
 	public Roulette(int number, String color) {
 		this.number = number;

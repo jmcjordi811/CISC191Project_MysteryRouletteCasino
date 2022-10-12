@@ -1,5 +1,6 @@
 import java.util.Random;
 //import java.util.Scanner;
+import java.util.concurrent.TimeUnit;
 
 
 public class MysteryRoulette {
@@ -75,7 +76,7 @@ public class MysteryRoulette {
 		return this.wheel;
 	}
 	
-	public void spin(Roulette [] roulette) {
+	public Roulette playMysteryRoulette(Roulette [] roulette, Roulette wheelLandsOn) {
 		Random rand = new Random();
 		int randomIntForCard1 = rand.nextInt(37);
 		int randomIntForCard2 = -1;
@@ -87,64 +88,17 @@ public class MysteryRoulette {
 			randomIntForCard3 = rand.nextInt(37);
 		}
 		
-		int randomIntForWheelNumber = rand.nextInt(37);
-		
-		//System.out.println(randomIntForCard1 + " " + randomIntForCard2 + " " + randomIntForCard3 + " " + randomIntForWheelNumber);
-		
 		Roulette card1 = new Roulette(roulette[randomIntForCard1]);
 		Roulette card2 = new Roulette(roulette[randomIntForCard2]);
 		Roulette card3 = new Roulette(roulette[randomIntForCard3]);
 		
-		Roulette wheel = new Roulette(roulette[randomIntForWheelNumber]);
-		
-		//System.out.println(randomInt); // print randomInt
-		//System.out.println(wheel[randomInt].toString()); //print roulette number and color
-		int len = wheel.toString().length();
-		//System.out.println(len);
-		
-		System.out.println("       ____________     ");
-		System.out.println("    /*/           \\*\\   ");
-		System.out.println("   /*/  Roulette   \\*\\  ");
-		System.out.println("  /*/               \\*\\ ");
-		System.out.println(" |*|     Spin Is     |*| ");
-		System.out.println(" |*|                 |*| ");
-		
-		if(wheel.getColor() == "Green"){
-			System.out.println(" |*|     " + wheel.getNumber() + " " + wheel.getColor() + "     |*| "); 
-		}else if(len == 5) {
-			System.out.println(" |*|      " + wheel.getNumber() + " " + wheel.getColor() + "      |*| "); 
-		}else if(len == 6) {
-			System.out.println(" |*|     " + wheel.getNumber() + "  " + wheel.getColor() + "     |*| "); 
-		}else if(len == 7) {
-			System.out.println(" |*|     " + wheel.getNumber() + " " + wheel.getColor() + "     |*| "); 
-		}else if(len == 8) {
-			System.out.println(" |*|    " + wheel.getNumber() + "  " + wheel.getColor() + "    |*| "); 
-		}
-
-		
-		System.out.println("  \\*\\               /*/  ");
-		System.out.println("   \\*\\    ...      /*/   ");
-		System.out.println("    \\*\\___________/*/    ");
-		System.out.println("");
+		int win = -1;
 		
 		System.out.println("But this is not the win!"); 
-		System.out.println("Now we draw 3 Roulette Cards for Mystery Roulette! ");
+		System.out.println("");
 		
-		System.out.println("  _______        _______        _______ ");
-		System.out.println(" |  ___  |      |  ___  |      |  ___  |");
-		System.out.println(" | |   | |      | |   | |      | |   | |");
-		System.out.println(" | | 1 | |      | | 2 | |      | | 3 | |");
-		System.out.println(" | |___| |      | |___| |      | |___| |");
-		System.out.println(" |_______|      |_______|      |_______|");
-		System.out.println("    FLIP           FLIP           FLIP");
-		System.out.println("    THIS           THIS           THIS");
-		System.out.println("    CARD           CARD           CARD");
-		System.out.println("     IF             IF             IF");
-		System.out.println(" 0<=SPIN<=12   13<=SPIN<=24   25<=SPIN<=36");
-		System.out.println(""); 
-		
-		if(0 <= wheel.getNumber() && wheel.getNumber() <= 12){
-			System.out.println("Since " + wheel.getNumber() + " is in the range 0 - 12...");
+		if(0 <= wheelLandsOn.getNumber() && wheelLandsOn.getNumber() <= 12){
+			System.out.println("Since " + wheelLandsOn.getNumber() + " is in the range 0 - 12...");
 			System.out.println("First Card Wins!");
 			System.out.println("  _______         \\    /         \\    /  ");
 			System.out.println(" |  ___  |         \\  /           \\  /   ");
@@ -152,8 +106,9 @@ public class MysteryRoulette {
 			System.out.println(" | | 1 | |          /\\             /\\    ");
 			System.out.println(" | |___| |         /  \\           /  \\   ");
 			System.out.println(" |_______|        /    \\         /    \\  ");
-		}else if(13 <= wheel.getNumber() && wheel.getNumber() <= 24){
-			System.out.println("Since " + wheel.getNumber() + " is in the range 13 - 24...");
+			win = 1;
+		}else if(13 <= wheelLandsOn.getNumber() && wheelLandsOn.getNumber() <= 24){
+			System.out.println("Since " + wheelLandsOn.getNumber() + " is in the range 13 - 24...");
 			System.out.println("Second Card Wins!");
 			System.out.println("   \\    /        _______         \\    / ");
 			System.out.println("    \\  /        |  ___  |         \\  /  ");
@@ -161,8 +116,9 @@ public class MysteryRoulette {
 			System.out.println("     /\\         | | 2 | |          /\\   ");
 			System.out.println("    /  \\        | |___| |         /  \\  ");
 			System.out.println("   /    \\       |_______|        /    \\ ");
-		}else if(25 <= wheel.getNumber() && wheel.getNumber() <= 36){
-			System.out.println("Since " + wheel.getNumber() + " is in the range 25 - 36...");
+			win = 2;
+		}else if(25 <= wheelLandsOn.getNumber() && wheelLandsOn.getNumber() <= 36){
+			System.out.println("Since " + wheelLandsOn.getNumber() + " is in the range 25 - 36...");
 			System.out.println("Third Card Wins!");
 			System.out.println("   \\    /         \\    /        _______ ");
 			System.out.println("    \\  /           \\  /        |  ___  |");
@@ -170,6 +126,7 @@ public class MysteryRoulette {
 			System.out.println("     /\\             /\\         | | 3 | |");
 			System.out.println("    /  \\           /  \\        | |___| |");
 			System.out.println("   /    \\         /    \\       |_______|");
+			win = 3;
 		}
 		
 		if(card1.getDigit() == 1) {
@@ -254,7 +211,85 @@ public class MysteryRoulette {
 			System.out.println("   Black          Black           Red ");
 		}
 		
+		if(win == 1) {
+			return card1;
+		}else if(win == 2) {
+			return card2;
+		}else if(win == 3) {
+			return card3;
+		}
 		
+		return null;
+		
+	}
+	
+	public Roulette spin(Roulette [] roulette) {
+		//Scanner keyboard = new Scanner(System.in);
+		//String userInput = keyboard.nextLine();
+		
+		Random rand = new Random();
+		
+		int randomIntForWheelNumber = rand.nextInt(37);
+		
+		Roulette wheelLandsOn = new Roulette(roulette[randomIntForWheelNumber]);
+		
+		String[] ball = new String[37];
+		for(int i = 0; i < 37; i++) {
+			ball[i] = " ";
+		}
+		
+		ball[wheelLandsOn.getNumber()] = "*";
+		
+		try{
+			System.out.println("        ____  _  _ _  _  ____        ");
+			TimeUnit.SECONDS.sleep(1);
+			System.out.println("       /   _03_26_0_32_15_   \\      ");
+			TimeUnit.SECONDS.sleep(1);
+			System.out.println("      /35/" + ball[35] + " " + ball[3] + "  " + ball[26] + "  " + ball[0] + "  " + ball[32] + "  " + ball[15] + " " + ball[19] + "\\19\\     ");
+			TimeUnit.SECONDS.sleep(1);
+			System.out.println("     /12/" + ball[12] + "                 " + ball[4] + "\\04\\    ");
+			TimeUnit.SECONDS.sleep(1);
+			System.out.println("    /28/" + ball[28] + "                   " + ball[21] + "\\21\\   ");
+			TimeUnit.SECONDS.sleep(1);
+			System.out.println("   /07/" + ball[7] + "                     " + ball[2] + "\\02\\  ");
+			TimeUnit.SECONDS.sleep(1);
+			System.out.println("  /29/" + ball[29] + "                       " + ball[25] + "\\25\\ ");
+			TimeUnit.SECONDS.sleep(1);
+			System.out.println(" |18|" + ball[18] + "       Roulette Spin     " + ball[17] + "|17| ");
+			TimeUnit.SECONDS.sleep(1);
+			System.out.println(" |22|" + ball[22] + "                         " + ball[34] + "|34| ");
+			TimeUnit.SECONDS.sleep(1);
+			
+			if(wheelLandsOn.getDigit() == 1){
+				System.out.println(" |09|" + ball[9] + "            " + wheelLandsOn.getNumber() + "!           " + ball[6] + "|06| "); 
+			}else if(wheelLandsOn.getDigit() == 2) {
+				System.out.println(" |09|" + ball[9] + "           " + wheelLandsOn.getNumber() + "!           " + ball[6] + "|06| "); 
+			}
+			
+			TimeUnit.SECONDS.sleep(1);
+			System.out.println(" |31|" + ball[31] + "                         " + ball[27] + "|27|  ");
+			TimeUnit.SECONDS.sleep(1);
+			System.out.println("  \\14\\" + ball[14] + "                       " + ball[13] + "/13/   ");
+			TimeUnit.SECONDS.sleep(1);
+			System.out.println("   \\20\\" + ball[20] + "                     " + ball[36] + "/36/    ");
+			TimeUnit.SECONDS.sleep(1);
+			System.out.println("    \\01\\" + ball[1]+ "                   " + ball[11] + "/11/     ");
+			TimeUnit.SECONDS.sleep(1);
+			System.out.println("     \\33\\" + ball[33] + "                 " + ball[30] + "/30/      ");
+			TimeUnit.SECONDS.sleep(1);
+			System.out.println("      \\16\\" + ball[16] + "__" + ball[24] + " _" + ball[5] + " _ " + ball[10] + "_ " + ball[23] + "__" + ball[8] + "/08/       ");
+			TimeUnit.SECONDS.sleep(1);
+			System.out.println("       \\_____24_05_10_23______/      ");
+			System.out.println("");
+			
+		}catch(InterruptedException e) {
+			System.out.println(e);
+		}
+		
+		
+		
+		
+		return wheelLandsOn;
 	}
 	
 }

@@ -16,10 +16,30 @@ public class Casino {
 	        	break;
 	        }
 			
+			System.out.println("Draw 3 Roulette Cards for Mystery Roulette! ");
+			System.out.println("  _______        _______        _______ ");
+			System.out.println(" |  ___  |      |  ___  |      |  ___  |");
+			System.out.println(" | |   | |      | |   | |      | |   | |");
+			System.out.println(" | | 1 | |      | | 2 | |      | | 3 | |");
+			System.out.println(" | |___| |      | |___| |      | |___| |");
+			System.out.println(" |_______|      |_______|      |_______|");
+			System.out.println("    FLIP           FLIP           FLIP");
+			System.out.println("    THIS           THIS           THIS");
+			System.out.println("    CARD           CARD           CARD");
+			System.out.println("     IF             IF             IF");
+			System.out.println(" 0<=SPIN<=12   13<=SPIN<=24   25<=SPIN<=36");
+			System.out.println(""); 
+			System.out.println("Now we spin the wheel!!!"); 
+			System.out.println(""); 
+			
+			userInput = keyboard.nextLine();
 			MysteryRoulette newGame = new MysteryRoulette();
-			newGame.spin(newGame.getWheel());
-	        
-	        userInput = keyboard.nextLine();
+			Roulette spinResult = newGame.spin(newGame.getWheel());
+			
+			userInput = keyboard.nextLine();
+			newGame.playMysteryRoulette(newGame.getWheel(), spinResult);
+		
+	        userInput = keyboard.nextLine();    
 		}
 		
 		// Kill Scanner
