@@ -49,6 +49,5 @@ public class Roulette {
 	public String toString() {
 		return this.number + " " + this.color;
 	}
-	
 
 }
