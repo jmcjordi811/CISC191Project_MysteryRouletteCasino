@@ -1,5 +1,4 @@
 import java.util.Random;
-//import java.util.Scanner;
 import java.util.concurrent.TimeUnit;
 
 
@@ -76,7 +75,7 @@ public class MysteryRoulette {
 		return this.wheel;
 	}
 	
-	public Roulette playMysteryRoulette(Roulette [] roulette, Roulette wheelLandsOn) {
+	public Roulette playMysteryRoulette(Roulette [] roulette) {
 		Random rand = new Random();
 		int randomIntForCard1 = rand.nextInt(37);
 		int randomIntForCard2 = -1;
@@ -94,130 +93,160 @@ public class MysteryRoulette {
 		
 		int win = -1;
 		
-		System.out.println("But this is not the win!"); 
-		System.out.println("");
-		
-		if(0 <= wheelLandsOn.getNumber() && wheelLandsOn.getNumber() <= 12){
-			System.out.println("Since " + wheelLandsOn.getNumber() + " is in the range 0 - 12...");
-			System.out.println("First Card Wins!");
-			System.out.println("  _______         \\    /         \\    /  ");
-			System.out.println(" |  ___  |         \\  /           \\  /   ");
-			System.out.println(" | |   | |          \\/             \\/    ");
-			System.out.println(" | | 1 | |          /\\             /\\    ");
-			System.out.println(" | |___| |         /  \\           /  \\   ");
-			System.out.println(" |_______|        /    \\         /    \\  ");
-			win = 1;
-		}else if(13 <= wheelLandsOn.getNumber() && wheelLandsOn.getNumber() <= 24){
-			System.out.println("Since " + wheelLandsOn.getNumber() + " is in the range 13 - 24...");
-			System.out.println("Second Card Wins!");
-			System.out.println("   \\    /        _______         \\    / ");
-			System.out.println("    \\  /        |  ___  |         \\  /  ");
-			System.out.println("     \\/         | |   | |          \\/   ");
-			System.out.println("     /\\         | | 2 | |          /\\   ");
-			System.out.println("    /  \\        | |___| |         /  \\  ");
-			System.out.println("   /    \\       |_______|        /    \\ ");
-			win = 2;
-		}else if(25 <= wheelLandsOn.getNumber() && wheelLandsOn.getNumber() <= 36){
-			System.out.println("Since " + wheelLandsOn.getNumber() + " is in the range 25 - 36...");
-			System.out.println("Third Card Wins!");
-			System.out.println("   \\    /         \\    /        _______ ");
-			System.out.println("    \\  /           \\  /        |  ___  |");
-			System.out.println("     \\/             \\/         | |   | |");
-			System.out.println("     /\\             /\\         | | 3 | |");
-			System.out.println("    /  \\           /  \\        | |___| |");
-			System.out.println("   /    \\         /    \\       |_______|");
-			win = 3;
-		}
-		
-		if(card1.getDigit() == 1) {
-			if(card2.getDigit() == 1) {
-				if(card3.getDigit() == 1) {
-					System.out.println("     " + card1.getNumber() + "              " + card2.getNumber() + "              " + card3.getNumber() + "  ");
+		try{
+			TimeUnit.SECONDS.sleep(3);
+			System.out.println("");
+			System.out.println("We start by drawing 3 Roulette Cards! ");
+			System.out.println("  _______        _______        _______ ");
+			System.out.println(" |  ___  |      |  ___  |      |  ___  |");
+			System.out.println(" | |   | |      | |   | |      | |   | |");
+			System.out.println(" | | 1 | |      | | 2 | |      | | 3 | |");
+			System.out.println(" | |___| |      | |___| |      | |___| |");
+			System.out.println(" |_______|      |_______|      |_______|");
+			System.out.println("    FLIP           FLIP           FLIP");
+			System.out.println("    THIS           THIS           THIS");
+			System.out.println("    CARD           CARD           CARD");
+			System.out.println("     IF             IF             IF");
+			System.out.println(" 0<=SPIN<=12   13<=SPIN<=24   25<=SPIN<=36");
+			
+			TimeUnit.SECONDS.sleep(3);
+			Roulette wheelLandsOn = spin(roulette);
+			
+			System.out.println("Remember this is not the win..."); 
+			System.out.println("");
+			
+			if(0 <= wheelLandsOn.getNumber() && wheelLandsOn.getNumber() <= 12){
+				System.out.println("Since " + wheelLandsOn.getNumber() + " is in the range 0 - 12...");
+				System.out.println("");
+				TimeUnit.SECONDS.sleep(5);
+				System.out.println("First Card Wins!");
+				System.out.println("  _______         \\    /         \\    /  ");
+				System.out.println(" |  ___  |         \\  /           \\  /   ");
+				System.out.println(" | |   | |          \\/             \\/    ");
+				System.out.println(" | | 1 | |          /\\             /\\    ");
+				System.out.println(" | |___| |         /  \\           /  \\   ");
+				System.out.println(" |_______|        /    \\         /    \\  ");
+				win = 1;
+			}else if(13 <= wheelLandsOn.getNumber() && wheelLandsOn.getNumber() <= 24){
+				System.out.println("Since " + wheelLandsOn.getNumber() + " is in the range 13 - 24...");
+				System.out.println("");
+				TimeUnit.SECONDS.sleep(5);
+				System.out.println("Second Card Wins!");
+				System.out.println("   \\    /        _______         \\    / ");
+				System.out.println("    \\  /        |  ___  |         \\  /  ");
+				System.out.println("     \\/         | |   | |          \\/   ");
+				System.out.println("     /\\         | | 2 | |          /\\   ");
+				System.out.println("    /  \\        | |___| |         /  \\  ");
+				System.out.println("   /    \\       |_______|        /    \\ ");
+				win = 2;
+			}else if(25 <= wheelLandsOn.getNumber() && wheelLandsOn.getNumber() <= 36){
+				System.out.println("Since " + wheelLandsOn.getNumber() + " is in the range 25 - 36...");
+				System.out.println("");
+				TimeUnit.SECONDS.sleep(5);
+				System.out.println("Third Card Wins!");
+				System.out.println("   \\    /         \\    /        _______ ");
+				System.out.println("    \\  /           \\  /        |  ___  |");
+				System.out.println("     \\/             \\/         | |   | |");
+				System.out.println("     /\\             /\\         | | 3 | |");
+				System.out.println("    /  \\           /  \\        | |___| |");
+				System.out.println("   /    \\         /    \\       |_______|");
+				win = 3;
+			}
+			
+			if(card1.getDigit() == 1) {
+				if(card2.getDigit() == 1) {
+					if(card3.getDigit() == 1) {
+						System.out.println("     " + card1.getNumber() + "              " + card2.getNumber() + "              " + card3.getNumber() + "  ");
+					}else {
+						System.out.println("     " + card1.getNumber() + "              " + card2.getNumber() + "              " + card3.getNumber() + "  ");
+					}
 				}else {
-					System.out.println("     " + card1.getNumber() + "              " + card2.getNumber() + "              " + card3.getNumber() + "  ");
+					if(card3.getDigit() == 1) {
+						System.out.println("     " + card1.getNumber() + "              " + card2.getNumber() + "             " + card3.getNumber() + "  ");
+					}else {
+						System.out.println("     " + card1.getNumber() + "              " + card2.getNumber() + "             " + card3.getNumber() + "  ");
+					}
 				}
 			}else {
-				if(card3.getDigit() == 1) {
-					System.out.println("     " + card1.getNumber() + "              " + card2.getNumber() + "             " + card3.getNumber() + "  ");
+				if(card2.getDigit() == 1) {
+					if(card3.getDigit() == 1) {
+						System.out.println("     " + card1.getNumber() + "             " + card2.getNumber() + "              " + card3.getNumber() + "  ");
+					}else {
+						System.out.println("     " + card1.getNumber() + "             " + card2.getNumber() + "              " + card3.getNumber() + "  ");
+					}
 				}else {
-					System.out.println("     " + card1.getNumber() + "              " + card2.getNumber() + "             " + card3.getNumber() + "  ");
+					if(card3.getDigit() == 1) {
+						System.out.println("     " + card1.getNumber() + "             " + card2.getNumber() + "             " + card3.getNumber() + "  ");
+					}else {
+						System.out.println("     " + card1.getNumber() + "             " + card2.getNumber() + "             " + card3.getNumber() + "  ");
+					}
 				}
 			}
-		}else {
-			if(card2.getDigit() == 1) {
-				if(card3.getDigit() == 1) {
-					System.out.println("     " + card1.getNumber() + "             " + card2.getNumber() + "              " + card3.getNumber() + "  ");
-				}else {
-					System.out.println("     " + card1.getNumber() + "             " + card2.getNumber() + "              " + card3.getNumber() + "  ");
-				}
-			}else {
-				if(card3.getDigit() == 1) {
-					System.out.println("     " + card1.getNumber() + "             " + card2.getNumber() + "             " + card3.getNumber() + "  ");
-				}else {
-					System.out.println("     " + card1.getNumber() + "             " + card2.getNumber() + "             " + card3.getNumber() + "  ");
-				}
+			
+			// Combinations with Green 
+			
+			if(card1.getColor() == "Green" && card2.getColor() == "Red" && card3.getColor() == "Red") {
+				System.out.println("   Green           Red            Red ");
+			}else if(card1.getColor() == "Green" && card2.getColor() == "Black" && card3.getColor() == "Black") {
+				System.out.println("   Green          Black          Black");
+			}else if(card1.getColor() == "Green" && card2.getColor() == "Red" && card3.getColor() == "Black") {
+				System.out.println("   Green           Red           Black");
+			}else if(card1.getColor() == "Green" && card2.getColor() == "Black" && card3.getColor() == "Red") {
+				System.out.println("   Green          Black           Red ");
 			}
-		}
-		
-		// Combinations with Green 
-		
-		if(card1.getColor() == "Green" && card2.getColor() == "Red" && card3.getColor() == "Red") {
-			System.out.println("   Green           Red            Red ");
-		}else if(card1.getColor() == "Green" && card2.getColor() == "Black" && card3.getColor() == "Black") {
-			System.out.println("   Green          Black          Black");
-		}else if(card1.getColor() == "Green" && card2.getColor() == "Red" && card3.getColor() == "Black") {
-			System.out.println("   Green           Red           Black");
-		}else if(card1.getColor() == "Green" && card2.getColor() == "Black" && card3.getColor() == "Red") {
-			System.out.println("   Green          Black           Red ");
-		}
-		
-		else if(card1.getColor() == "Red" && card2.getColor() == "Green" && card3.getColor() == "Red") {
-			System.out.println("    Red           Green           Red ");
-		}else if(card1.getColor() == "Black" && card2.getColor() == "Green" && card3.getColor() == "Black") {
-			System.out.println("   Black          Green          Black");
-		}else if(card1.getColor() == "Red" && card2.getColor() == "Green" && card3.getColor() == "Black") {
-			System.out.println("    Red           Green          Black");
-		}else if(card1.getColor() == "Black" && card2.getColor() == "Green" && card3.getColor() == "Red") {
-			System.out.println("   Black          Green           Red ");
-		}
-		
-		else if(card1.getColor() == "Red" && card2.getColor() == "Red" && card3.getColor() == "Green") {
-			System.out.println("    Red            Red           Green");
-		}else if(card1.getColor() == "Black" && card2.getColor() == "Black" && card3.getColor() == "Green") {
-			System.out.println("   Black          Black          Green");
-		}else if(card1.getColor() == "Red" && card2.getColor() == "Black" && card3.getColor() == "Green") {
-			System.out.println("    Red           Black          Green");
-		}else if(card1.getColor() == "Black" && card2.getColor() == "Red" && card3.getColor() == "Green") {
-			System.out.println("   Black           Red           Green");
-		}
-		
-		// Red and Black only Combinations
-		
-		else if(card1.getColor() == "Red" && card2.getColor() == "Red" && card3.getColor() == "Red") {
-			System.out.println("    Red            Red            Red ");
-		}else if(card1.getColor() == "Black" && card2.getColor() == "Black" && card3.getColor() == "Black") {
-			System.out.println("   Black          Black          Black");
-		}else if (card1.getColor() == "Black" && card2.getColor() == "Red" && card3.getColor() == "Red") {
-			System.out.println("   Black           Red            Red");
-		}else if (card1.getColor() == "Red" && card2.getColor() == "Black" && card3.getColor() == "Red") {
-			System.out.println("    Red           Black           Red");
-		}else if (card1.getColor() == "Red" && card2.getColor() == "Red" && card3.getColor() == "Black") {
-			System.out.println("    Red            Red           Black");
-		}else if(card1.getColor() == "Red" && card2.getColor() == "Black" && card3.getColor() == "Black") {
-			System.out.println("    Red           Black          Black");
-		}else if(card1.getColor() == "Black" && card2.getColor() == "Red" && card3.getColor() == "Black") {
-			System.out.println("   Black           Red           Black");
-		}else if(card1.getColor() == "Black" && card2.getColor() == "Black" && card3.getColor() == "Red") {
-			System.out.println("   Black          Black           Red ");
+			
+			else if(card1.getColor() == "Red" && card2.getColor() == "Green" && card3.getColor() == "Red") {
+				System.out.println("    Red           Green           Red ");
+			}else if(card1.getColor() == "Black" && card2.getColor() == "Green" && card3.getColor() == "Black") {
+				System.out.println("   Black          Green          Black");
+			}else if(card1.getColor() == "Red" && card2.getColor() == "Green" && card3.getColor() == "Black") {
+				System.out.println("    Red           Green          Black");
+			}else if(card1.getColor() == "Black" && card2.getColor() == "Green" && card3.getColor() == "Red") {
+				System.out.println("   Black          Green           Red ");
+			}
+			
+			else if(card1.getColor() == "Red" && card2.getColor() == "Red" && card3.getColor() == "Green") {
+				System.out.println("    Red            Red           Green");
+			}else if(card1.getColor() == "Black" && card2.getColor() == "Black" && card3.getColor() == "Green") {
+				System.out.println("   Black          Black          Green");
+			}else if(card1.getColor() == "Red" && card2.getColor() == "Black" && card3.getColor() == "Green") {
+				System.out.println("    Red           Black          Green");
+			}else if(card1.getColor() == "Black" && card2.getColor() == "Red" && card3.getColor() == "Green") {
+				System.out.println("   Black           Red           Green");
+			}
+			
+			// Red and Black only Combinations
+			
+			else if(card1.getColor() == "Red" && card2.getColor() == "Red" && card3.getColor() == "Red") {
+				System.out.println("    Red            Red            Red ");
+			}else if(card1.getColor() == "Black" && card2.getColor() == "Black" && card3.getColor() == "Black") {
+				System.out.println("   Black          Black          Black");
+			}else if (card1.getColor() == "Black" && card2.getColor() == "Red" && card3.getColor() == "Red") {
+				System.out.println("   Black           Red            Red");
+			}else if (card1.getColor() == "Red" && card2.getColor() == "Black" && card3.getColor() == "Red") {
+				System.out.println("    Red           Black           Red");
+			}else if (card1.getColor() == "Red" && card2.getColor() == "Red" && card3.getColor() == "Black") {
+				System.out.println("    Red            Red           Black");
+			}else if(card1.getColor() == "Red" && card2.getColor() == "Black" && card3.getColor() == "Black") {
+				System.out.println("    Red           Black          Black");
+			}else if(card1.getColor() == "Black" && card2.getColor() == "Red" && card3.getColor() == "Black") {
+				System.out.println("   Black           Red           Black");
+			}else if(card1.getColor() == "Black" && card2.getColor() == "Black" && card3.getColor() == "Red") {
+				System.out.println("   Black          Black           Red ");
+			}
+			
+		}catch(InterruptedException e) {
+			System.out.println(e);
 		}
 		
 		if(win == 1) {
 			return card1;
-		}else if(win == 2) {
+		}else if(win == 2) {;
 			return card2;
 		}else if(win == 3) {
 			return card3;
 		}
+		
 		
 		return null;
 		
@@ -241,8 +270,11 @@ public class MysteryRoulette {
 		ball[wheelLandsOn.getNumber()] = "*";
 		
 		try{
+			System.out.println(""); 
+			System.out.println("Now we spin the wheel!!!"); 
+			System.out.println("");
+			TimeUnit.SECONDS.sleep(3);
 			System.out.println("        ____  _  _ _  _  ____        ");
-			TimeUnit.SECONDS.sleep(1);
 			System.out.println("       /   _03_26_0_32_15_   \\      ");
 			TimeUnit.SECONDS.sleep(1);
 			System.out.println("      /35/" + ball[35] + " " + ball[3] + "  " + ball[26] + "  " + ball[0] + "  " + ball[32] + "  " + ball[15] + " " + ball[19] + "\\19\\     ");
@@ -279,15 +311,12 @@ public class MysteryRoulette {
 			TimeUnit.SECONDS.sleep(1);
 			System.out.println("      \\16\\" + ball[16] + "__" + ball[24] + " _" + ball[5] + " _ " + ball[10] + "_ " + ball[23] + "__" + ball[8] + "/08/       ");
 			TimeUnit.SECONDS.sleep(1);
-			System.out.println("       \\_____24_05_10_23______/      ");
+			System.out.println("       \\_____24_05_10_23_____/      ");
 			System.out.println("");
 			
 		}catch(InterruptedException e) {
 			System.out.println(e);
 		}
-		
-		
-		
 		
 		return wheelLandsOn;
 	}

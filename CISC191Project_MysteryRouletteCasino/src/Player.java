@@ -1,10 +1,18 @@
 public class Player {
-	private String name;
-	private BankAccount account;
-	private int bet;	
-	private boolean inGame;
+	private String name = null;
+	private BankAccount account = null;
+	private String bettingOn = null;
+	private int bet = 0;	
+	private boolean inGame = false;
 	
+	public Player() {	
+	}
 	
+	public Player(String name) {	
+		this.name = name;
+		this.inGame = true;
+		this.account = new BankAccount();
+	}
 	
 	//
 	public String getName() {
@@ -29,18 +37,25 @@ public class Player {
 	//-------------V
 	
 	// will track what the player will bet on 
-	public void setBet(int plyrBet) {
-		bet = plyrBet;
+	public void setBet(int playerBet) {
+		this.bet = playerBet;
 	}
 	public int getBet() {
-		return bet;
+		return this.bet;
 	}
 	
-	public void setinGame(boolean isPlyrInGame) {
-		inGame = isPlyrInGame;
+	public void setBettingOn(String bettingOn) {
+		this.bettingOn = bettingOn;
+	}
+	public String getBettingOn() {
+		return this.bettingOn;
 	}
 	
-	public boolean inGame() {
-		return inGame;
+	public void setinGame(boolean isPlayerInGame) {
+		this.inGame = isPlayerInGame;
+	}
+	
+	public boolean getInGame() {
+		return this.inGame;
 	}	
 }
