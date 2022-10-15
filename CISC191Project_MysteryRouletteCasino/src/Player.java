@@ -2,16 +2,15 @@ public class Player implements Membership{
 	private String name = null;
 	private BankAccount account = null;
 	private String bettingOn = null;
-	private int bet = 0;	
-	private boolean inGame = false;
+	private int bet = 0;
 	
 	public Player() {	
 	}
 	
 	public Player(String name) {	
 		this.name = name;
-		this.inGame = true;
 		this.account = new BankAccount();
+		this.bettingOn = "";
 	}
 	
 	public String getName() {
@@ -43,14 +42,6 @@ public class Player implements Membership{
 	}
 	public String getBettingOn() {
 		return this.bettingOn;
-	}
-	
-	public void setinGame(boolean isPlayerInGame) {
-		this.inGame = isPlayerInGame;
-	}
-	
-	public boolean getInGame() {
-		return this.inGame;
 	}
 
 	@Override
