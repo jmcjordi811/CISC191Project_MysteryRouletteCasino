@@ -35,12 +35,13 @@ public class Roulette {
 		return this.digit;
 	}
 	
-	public String determineOddOrEven(int value) {
+	public String determineOddOrEven() {
 		String oddOrEven = "";
-		if (value % 2 == 0) {
-			oddOrEven = "Is even!";
+		
+		if (getNumber() % 2 == 0) {
+			oddOrEven = "Even";
 		} else {
-			oddOrEven = "Is odd!";
+			oddOrEven = "Odd";
 		}
 		
 		return oddOrEven;

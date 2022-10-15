@@ -1,10 +1,10 @@
 public class BankAccount {
-	private double balance = 100;
+	private int balance = 100;
 
 	public BankAccount() {
 	}
 	
-	public BankAccount(double money) {
+	public BankAccount(int money) {
 		this.balance = money;
 	}
 	
@@ -12,15 +12,15 @@ public class BankAccount {
 		return this.balance;
 	}
 	
-	public void deposit(double amount) {
+	public void deposit(int amount) {
 		this.balance += amount;
 	}
 	
-	public void loss(double amount) {
+	public void loss(int amount) {
 		this.balance -= amount;
 	}
 	
-	public void casinoWinnings(double amount) {
+	public void casinoWinnings(int amount) {
 		this.balance += amount;
 	}
 }

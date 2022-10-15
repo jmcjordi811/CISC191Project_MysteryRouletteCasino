@@ -1,4 +1,4 @@
-public class Player {
+public class Player implements Membership{
 	private String name = null;
 	private BankAccount account = null;
 	private String bettingOn = null;
@@ -14,29 +14,23 @@ public class Player {
 		this.account = new BankAccount();
 	}
 	
-	//
 	public String getName() {
 		return this.name;
 	}
 	
-	// identifying the player to organize the games winners and pay out will also keep players informed 
 	public void setName(String player) {
 		this.name = player;		
 	}
 	
-	//
 	public BankAccount getBankAccount() {
 		return this.account;
 	}
 	
-	// will set how much money each individual player will have in their account
-	public void setBankAccount(double budget) {
+	//
+	public void setBankAccount(int budget) {
 		this.account = new BankAccount(budget);
 	}
 	
-	//-------------V
-	
-	// will track what the player will bet on 
 	public void setBet(int playerBet) {
 		this.bet = playerBet;
 	}
@@ -57,5 +51,11 @@ public class Player {
 	
 	public boolean getInGame() {
 		return this.inGame;
+	}
+
+	@Override
+	public void addPoints() {
+		// TODO Auto-generated method stub
+		
 	}	
 }
