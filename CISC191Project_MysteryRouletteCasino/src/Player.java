@@ -4,8 +4,7 @@ public class Player implements Membership{
 	private String bettingOn = null;
 	private int bet = 0;
 	
-	public Player() {	
-	}
+	public Player() {}
 	
 	public Player(String name) {	
 		this.name = name;

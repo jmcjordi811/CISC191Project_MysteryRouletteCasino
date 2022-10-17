@@ -253,9 +253,6 @@ public class MysteryRoulette {
 	}
 	
 	public Roulette spin(Roulette [] roulette) {
-		//Scanner keyboard = new Scanner(System.in);
-		//String userInput = keyboard.nextLine();
-		
 		Random rand = new Random();
 		
 		int randomIntForWheelNumber = rand.nextInt(37);

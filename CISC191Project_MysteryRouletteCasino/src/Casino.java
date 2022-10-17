@@ -6,13 +6,11 @@ public class Casino {
 	public boolean[] ready2Play = new boolean[3];
 	public int numberOfPlayers = 0;
 	
-	public Casino() {
-	}
+	public Casino() {}
 	
 	public boolean playerPrompt(Scanner keyboard) {
 		String userInput = "";
 		boolean ready = false;
-		
 		
 		while(ready == false) {
 			userInput = keyboard.nextLine();

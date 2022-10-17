@@ -7,5 +7,4 @@ public interface Membership {
 									new Player("David"), new Player("Mayra")};
 	
 	public void addPoints();
-
 }

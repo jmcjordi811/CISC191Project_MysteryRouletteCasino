@@ -6,9 +6,7 @@ public class Roulette {
 	private String color = null;
 	private int digit = 0;
 	
-	public Roulette() {
-		
-	}
+	public Roulette() {}
 	
 	public Roulette(int number, String color) {
 		this.number = number;
