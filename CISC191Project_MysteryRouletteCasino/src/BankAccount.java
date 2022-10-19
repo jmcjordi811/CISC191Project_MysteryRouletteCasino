@@ -1,25 +1,59 @@
+/**
+ * Lead Author(s):
+ * @author Jordi Mejia
+ * <<add additional lead authors here, with a full first and last name>>
+ * @author Jorge 
+ * 
+ * References:
+ * 
+ * <<add more references here>>
+ *  
+ * Version/date: 
+ * 
+ * Responsibilities of class:
+ * BankAccount class 
+ */
+
 public class BankAccount {
+	//---------- Field ----------
 	private int balance = 100;
 
+	//---------- Constructor ----------
+	/**
+	 * Purpose: No-parameter Constructor used to initialize class object with default values.
+	 */
 	public BankAccount() {}
 	
+	/**
+	 * Purpose: Constructor used to initialize class object with given parameter.
+	 * @param int money
+	 */
 	public BankAccount(int money) {
 		this.balance = money;
 	}
 	
-	public double getBalance() {
+	//---------- Methods ----------
+	/**
+	 * Purpose: Getter method for BankAccount balance.
+	 * @return int balance
+	 */
+	public int getBalance() {
 		return this.balance;
 	}
 	
+	/**
+	 * Purpose: A method to deposit money.
+	 * @param int amount
+	 */
 	public void deposit(int amount) {
 		this.balance += amount;
 	}
 	
+	/**
+	 * Purpose: A method to subtract money.
+	 * @param int amount
+	 */
 	public void loss(int amount) {
 		this.balance -= amount;
-	}
-	
-	public void casinoWinnings(int amount) {
-		this.balance += amount;
 	}
 }
