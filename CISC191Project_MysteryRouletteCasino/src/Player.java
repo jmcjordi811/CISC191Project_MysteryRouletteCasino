@@ -1,11 +1,10 @@
 /**
  * Lead Author(s):
+ * @author Jorge Arellano
  * @author Jordi Mejia
- * <<add additional lead authors here, with a full first and last name>>
- * @author Jorge 
  * 
  * References:
- * 
+ * Tasha Frankie
  * <<add more references here>>
  *  
  * Version/date: 

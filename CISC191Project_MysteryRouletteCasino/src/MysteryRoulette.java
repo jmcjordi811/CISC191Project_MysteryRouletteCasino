@@ -4,11 +4,10 @@ import java.util.concurrent.TimeUnit;
 /**
  * Lead Author(s):
  * @author Jordi Mejia
- * <<add additional lead authors here, with a full first and last name>>
- * @author Jorge 
+ * @author Jorge Arellano
  * 
  * References:
- * 
+ * Tasha Frankie
  * <<add more references here>>
  *  
  * Version/date: 
