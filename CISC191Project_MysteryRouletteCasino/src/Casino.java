@@ -276,7 +276,11 @@ public class Casino {
 		while(!ready) {
 			for(int i = 0; i < this.numberOfPlayers; i++) {
 				int playerNumber = i + 1;
-				if(player[i].getBettingOnNumber() == -1 && player[i].getBettingOn().equalsIgnoreCase("")) {
+				if(cashout[i]) {
+					System.out.println("");
+					System.out.println(" P" + playerNumber + ": You are no longer playing!");
+					System.out.println("");
+				}else if(player[i].getBet() == 0 || (player[i].getBettingOnNumber() == -1 && player[i].getBettingOn().equalsIgnoreCase(""))) {
 					System.out.println("");
 					System.out.println(" P" + playerNumber + ": You did not bet on this game!");
 					System.out.println(" Current Balance: $" + player[i].getBankAccount().getBalance());
