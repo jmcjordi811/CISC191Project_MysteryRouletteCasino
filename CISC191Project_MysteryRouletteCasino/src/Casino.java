@@ -10,6 +10,10 @@ import java.io.*;
  * Tasha Frankie
  * 
  * <<add more references here>>
+ * -Scanner (Java Platform SE 7 ). (2020, June 24). 
+ *  Retrieved October 19, 2022, from https://docs.oracle.com/javase/7/docs/api/java/util/Scanner.html
+ * -File Input and Output. (n.d.). 
+ *  Retrieved October 19, 2022, from https://www.cs.utexas.edu/%7Emitra/csSummer2009/cs303/lectures/fileIO.html
  *  
  * Version/date: 
  * 
@@ -272,11 +276,51 @@ public class Casino {
 		while(!ready) {
 			for(int i = 0; i < this.numberOfPlayers; i++) {
 				int playerNumber = i + 1;
-				if(player[i].getBettingOnNumber() == -1 && player[i].getBettingOn() == null) {
+				if(player[i].getBettingOnNumber() == -1 && player[i].getBettingOn().equalsIgnoreCase("")) {
 					System.out.println("");
 					System.out.println(" P" + playerNumber + ": You did not bet on this game!");
 					System.out.println(" Current Balance: $" + player[i].getBankAccount().getBalance());
 					System.out.println("");
+				}else if(player[i].getBettingOn().equalsIgnoreCase("Zero") && win.getNumber() == 0) {
+					player[i].getBankAccount().deposit(player[i].getBet()*37);
+					System.out.println("");
+					System.out.println(" P" + playerNumber + ": You Won! +" + player[i].getBet()*37);
+					System.out.println(" Current Balance: $" + player[i].getBankAccount().getBalance());
+					System.out.println("");
+					player[i].setBet(0);
+					player[i].setBettingOn("");
+				}else if(player[i].getBettingOn().equalsIgnoreCase("Red") && win.getColor().equalsIgnoreCase("Red")) {
+					player[i].getBankAccount().deposit(player[i].getBet()*2);
+					System.out.println("");
+					System.out.println(" P" + playerNumber + ": You Won! +" + player[i].getBet()*2);
+					System.out.println(" Current Balance: $" + player[i].getBankAccount().getBalance());
+					System.out.println("");
+					player[i].setBet(0);
+					player[i].setBettingOn("");
+				}else if(player[i].getBettingOn().equalsIgnoreCase("Black") && win.getColor().equalsIgnoreCase("Black")) {
+					player[i].getBankAccount().deposit(player[i].getBet()*2);
+					System.out.println("");
+					System.out.println(" P" + playerNumber + ": You Won! +" + player[i].getBet()*2);
+					System.out.println(" Current Balance: $" + player[i].getBankAccount().getBalance());
+					System.out.println("");
+					player[i].setBet(0);
+					player[i].setBettingOn("");
+				}else if(player[i].getBettingOn().equalsIgnoreCase("Odd") && win.determineOddOrEven().equalsIgnoreCase("Odd")) {
+					player[i].getBankAccount().deposit(player[i].getBet()*2);
+					System.out.println("");
+					System.out.println(" P" + playerNumber + ": You Won! +" + player[i].getBet()*2);
+					System.out.println(" Current Balance: $" + player[i].getBankAccount().getBalance());
+					System.out.println("");
+					player[i].setBet(0);
+					player[i].setBettingOn("");
+				}else if(player[i].getBettingOn().equalsIgnoreCase("Even") &&  win.determineOddOrEven().equalsIgnoreCase("Even")) {
+					player[i].getBankAccount().deposit(player[i].getBet()*2);
+					System.out.println("");
+					System.out.println(" P" + playerNumber + ": You Won! +" + player[i].getBet()*2);
+					System.out.println(" Current Balance: $" + player[i].getBankAccount().getBalance());
+					System.out.println("");
+					player[i].setBet(0);
+					player[i].setBettingOn("");
 				}else if(player[i].getBettingOnNumber() != -1 && win.getNumber() == player[i].getBettingOnNumber()) {
 					player[i].getBankAccount().deposit(player[i].getBet()*37);
 					System.out.println("");
@@ -285,53 +329,13 @@ public class Casino {
 					System.out.println("");
 					player[i].setBet(0);
 					player[i].setBettingOnNumber(-1);
-				}else if(player[i].getBettingOn().equalsIgnoreCase("Zero") && win.getNumber() == 0) {
-					player[i].getBankAccount().deposit(player[i].getBet()*37);
-					System.out.println("");
-					System.out.println(" P" + playerNumber + ": You Won! +" + player[i].getBet()*37);
-					System.out.println(" Current Balance: $" + player[i].getBankAccount().getBalance());
-					System.out.println("");
-					player[i].setBet(0);
-					player[i].setBettingOn(null);
-				}else if(player[i].getBettingOn().equalsIgnoreCase("Red") && win.getColor().equalsIgnoreCase("Red")) {
-					player[i].getBankAccount().deposit(player[i].getBet()*2);
-					System.out.println("");
-					System.out.println(" P" + playerNumber + ": You Won! +" + player[i].getBet()*2);
-					System.out.println(" Current Balance: $" + player[i].getBankAccount().getBalance());
-					System.out.println("");
-					player[i].setBet(0);
-					player[i].setBettingOn(null);
-				}else if(player[i].getBettingOn().equalsIgnoreCase("Black") && win.getColor().equalsIgnoreCase("Black")) {
-					player[i].getBankAccount().deposit(player[i].getBet()*2);
-					System.out.println("");
-					System.out.println(" P" + playerNumber + ": You Won! +" + player[i].getBet()*2);
-					System.out.println(" Current Balance: $" + player[i].getBankAccount().getBalance());
-					System.out.println("");
-					player[i].setBet(0);
-					player[i].setBettingOn(null);
-				}else if(player[i].getBettingOn().equalsIgnoreCase("Odd") && win.determineOddOrEven().equalsIgnoreCase("Odd")) {
-					player[i].getBankAccount().deposit(player[i].getBet()*2);
-					System.out.println("");
-					System.out.println(" P" + playerNumber + ": You Won! +" + player[i].getBet()*2);
-					System.out.println(" Current Balance: $" + player[i].getBankAccount().getBalance());
-					System.out.println("");
-					player[i].setBet(0);
-					player[i].setBettingOn(null);
-				}else if(player[i].getBettingOn().equalsIgnoreCase("Even") &&  win.determineOddOrEven().equalsIgnoreCase("Even")) {
-					player[i].getBankAccount().deposit(player[i].getBet()*2);
-					System.out.println("");
-					System.out.println(" P" + playerNumber + ": You Won! +" + player[i].getBet()*2);
-					System.out.println(" Current Balance: $" + player[i].getBankAccount().getBalance());
-					System.out.println("");
-					player[i].setBet(0);
-					player[i].setBettingOn(null);
 				}else {
 					System.out.println("");
 					System.out.println(" P" + playerNumber + ": Better Luck Next Time! -" + player[i].getBet());
 					System.out.println(" Current Balance: $" + player[i].getBankAccount().getBalance());
 					System.out.println("");
 					player[i].setBet(0);
-					player[i].setBettingOn(null);
+					player[i].setBettingOn("");
 				}
 			}
 			ready = true;
@@ -384,8 +388,11 @@ public class Casino {
 								File cashout = new File ("cashoutP" + playerNumber + ".txt");
 							    FileWriter fileWriter = new FileWriter (cashout);
 							    PrintWriter printWriter = new PrintWriter (fileWriter);
-							    printWriter.println ("P" + playerNumber + ": " + player[i].getName());
-							    printWriter.println ("Cashout: " + player[i].getBankAccount().getBalance());
+							    printWriter.println(" *VIRTUAL CASINO*");
+							    printWriter.println("**Cashout Voucher**");
+							    printWriter.println();
+							    printWriter.println("P" + playerNumber + ": " + player[i].getName());
+							    printWriter.println("Cashout: $" + player[i].getBankAccount().getBalance());
 							    printWriter.close();
 							}catch (IOException e) {
 								System.out.println(e);
@@ -433,12 +440,28 @@ public class Casino {
 		MysteryRoulette newGame = new MysteryRoulette();
 		Roulette win = new Roulette();
 		boolean started = false;
+		int playersPlaying = 0;
 		
 		while(!userInput.equalsIgnoreCase("EndGame")) {
 			
 			if(userInput.isEmpty()) {
 				if(!started) {
 					started = playerPrompt(keyboard);
+				}
+				
+				for(int i = 0; i < this.numberOfPlayers; i++) {
+					if (cashout[i]) {
+						playersPlaying++;
+					}
+				}
+				
+				if(playersPlaying == this.numberOfPlayers) {
+					System.out.println("All players have cashed out...");
+					System.out.println("Game has Ended!");
+					keyboard.close();
+					System.exit(0);
+				}else {
+					playersPlaying = 0;
 				}
 				
 				System.out.println("Would you like to play Roulette or Mystery Roulette!");
@@ -492,7 +515,6 @@ public class Casino {
 		}
 		
 		keyboard.close();
-		
 	}
 	
 	/**
@@ -500,7 +522,7 @@ public class Casino {
 	 */
 	public static void main(String[] args) {
 		
-		System.out.println("Welcome to the Virtual Casino: Mystery Roulette!"); 
+		System.out.println("Welcome to the Virtual Casino!"); 
 		System.out.println("(Press Enter/Return Key to continue!)"); 
 		
 		Casino virtualCasino = new Casino();
