@@ -196,12 +196,19 @@ public class Casino {
 			if(betOn.isEmpty()) {
 				System.out.println("What do you wish to bet on?");
 				System.out.println("");
-				System.out.println(" Possible Bet Options:");
-				System.out.println("");
-				System.out.println(" Red or Black (x2)");
-				System.out.println(" Odd, Even (x2)");
-				System.out.println(" Zero (x37)");
-				System.out.println(" Number 1-36 (x37)");
+				System.out.println("    --------------------------------------- ");
+				System.out.println("   /  | 3| 6| 9|12|15|18|21|24|27|30|33|36| ");
+				System.out.println("  /   |------------------------------------ ");
+				System.out.println(" |  0 | 2| 5| 8|11|14|17|20|23|26|29|32|35| ");
+				System.out.println("  \\   |------------------------------------ ");
+				System.out.println("   \\  | 1| 4| 7|10|13|16|19|22|25|28|31|34|");
+				System.out.println("    --|------------------------------------ ");
+				//System.out.println("      |   1st 12  |   2nd 12  |   3rd 12  | ");
+				//System.out.println("      |------------------------------------ ");
+				System.out.println("      |  Even |   Red   |  Black |  Odd   | ");
+				System.out.println("      ------------------------------------- ");
+				//System.out.println("      |     1 to 18     |    19 to 36     | ");
+				//System.out.println("      ------------------------------------- ");
 				System.out.println("");
 				System.out.println("Please type your bet:");
 				if(keyboard.hasNextInt()) {
@@ -211,16 +218,10 @@ public class Casino {
 					betOn = keyboard.nextLine();
 				}
 				
-				if(numberBet != -1 && 1 <= numberBet && numberBet <= 36) {
+				if(numberBet != -1 && 0 <= numberBet && numberBet <= 36) {
 					player[i].setBettingOnNumber(numberBet);
 					System.out.println("");
 					System.out.println(" P" + playerNumber + ": Bet on " + numberBet + "!");
-					System.out.println("");
-					ready = true;
-				}else if(betOn.equalsIgnoreCase("Zero")) {
-					player[i].setBettingOn(betOn);
-					System.out.println("");
-					System.out.println(" P" + playerNumber + ": Bet on Zero!");
 					System.out.println("");
 					ready = true;
 				}else if(betOn.equalsIgnoreCase("Odd")) {
@@ -408,7 +409,7 @@ public class Casino {
 								keyboard.close();
 								System.exit(0);
 							}else {
-								System.out.println(" P" + playerNumber + ": Still In Game!");
+								System.out.println(" P" + playerNumber + ": Previous input runs!");
 								System.out.println("");
 							}
 						}
@@ -442,7 +443,7 @@ public class Casino {
 		String userInput = keyboard.nextLine();
 		
 		MysteryRoulette newGame = new MysteryRoulette();
-		Roulette win = new Roulette();
+		Roulette win = new MysteryRoulette();
 		boolean started = false;
 		int playersPlaying = 0;
 		
@@ -488,7 +489,7 @@ public class Casino {
 					userInput = keyboard.nextLine();
 				}else if(userInput.equalsIgnoreCase("MR")) {
 					System.out.println("");
-				System.out.println("Time for players to place bets!");
+					System.out.println("Time for players to place bets!");
 					System.out.println("");
 					betPrompt(keyboard);
 					
