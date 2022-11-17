@@ -4,7 +4,6 @@ import java.util.concurrent.TimeUnit;
 /**
  * Lead Author(s):
  * @author Jordi Mejia
- * @author Jorge Arellano
  * 
  * References:
  * Tasha Frankie
@@ -17,84 +16,13 @@ import java.util.concurrent.TimeUnit;
  */
 
 public class MysteryRoulette extends Roulette{
-	//---------- Field ----------
-	private Roulette[] wheel = new Roulette[37];
-	
 	//---------- Constructor ----------
 	/**
 	 * Purpose: No-parameter Constructor used to initialize class object with default values.
 	 */
-	public MysteryRoulette() {
-		// Zero (0)
-		wheel[0] = new Roulette(0, "Green"); 
-		
-		// 1-12 set
-		
-		// 1st column
-		wheel[1] = new Roulette(1, "Red"); 
-		wheel[2] = new Roulette(2, "Black"); 
-		wheel[3] = new Roulette(3, "Red"); 
-		// 2nd column
-		wheel[4] = new Roulette(4, "Black"); 
-		wheel[5] = new Roulette(5, "Red"); 
-		wheel[6] = new Roulette(6, "Black"); 
-		// 3rd column
-		wheel[7] = new Roulette(7, "Red"); 
-		wheel[8] = new Roulette(8, "Black"); 
-		wheel[9] = new Roulette(9, "Red"); 
-		// 4th column
-		wheel[10] = new Roulette(10, "Black"); 
-		wheel[11] = new Roulette(11, "Black"); 
-		wheel[12] = new Roulette(12, "Red"); 
-		
-		// 13-24 set
-		
-		// 5th column
-		wheel[13] = new Roulette(13, "Black"); 
-		wheel[14] = new Roulette(14, "Red"); 
-		wheel[15] = new Roulette(15, "Black"); 
-		// 6th column
-		wheel[16] = new Roulette(16, "Red"); 
-		wheel[17] = new Roulette(17, "Black"); 
-		wheel[18] = new Roulette(18, "Red"); 
-		// 7th column
-		wheel[19] = new Roulette(19, "Red"); 
-		wheel[20] = new Roulette(20, "Black"); 
-		wheel[21] = new Roulette(21, "Red"); 
-		// 8th column
-		wheel[22] = new Roulette(22, "Black"); 
-		wheel[23] = new Roulette(23, "Red"); 
-		wheel[24] = new Roulette(24, "Black"); 
-		
-		//25-36 set
-		
-		// 9th column
-		wheel[25] = new Roulette(25, "Red"); 
-		wheel[26] = new Roulette(26, "Black"); 
-		wheel[27] = new Roulette(27, "Red"); 
-		// 10th column
-		wheel[28] = new Roulette(28, "Black"); 
-		wheel[29] = new Roulette(29, "Black"); 
-		wheel[30] = new Roulette(30, "Red"); 
-		// 11th column
-		wheel[31] = new Roulette(31, "Black"); 
-		wheel[32] = new Roulette(32, "Red"); 
-		wheel[33] = new Roulette(33, "Black"); 
-		// 12th column
-		wheel[34] = new Roulette(34, "Red"); 
-		wheel[35] = new Roulette(35, "Black"); 
-		wheel[36] = new Roulette(36, "Red");
-	}
+	public MysteryRoulette() {}
 	
 	//---------- Methods ----------
-	/**
-	 * Purpose: Getter method for MysteryRoulette wheel.
-	 * @return Roulette wheel
-	 */
-	public Roulette[] getWheel() {
-		return this.wheel;
-	}
-	
 	/**
 	 * Purpose: A method when Mystery Roulette game is chosen. (Variant Game)
 	 * @return Roulette card1, card2, or card3 (depends on spin result)

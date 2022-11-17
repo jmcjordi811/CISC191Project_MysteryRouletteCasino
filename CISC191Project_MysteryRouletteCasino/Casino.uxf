@@ -1,0 +1,225 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<diagram program="umlet" version="15.0.0">
+  <zoom_level>10</zoom_level>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>210</x>
+      <y>270</y>
+      <w>260</w>
+      <h>230</h>
+    </coordinates>
+    <panel_attributes>Roulette: class
+--
+-number: int
+-color: String
+-digits: int
+--
++Roulette()
++Roulette(number: int, color: String)
++Roulette(original: Roulette)
++getNumber(): int
++getColor(): String
++getDigits(): int
++determineOddOrEven(): String
++spin(roulette: Roulette[]): Roulette
++toString(): String</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>160</x>
+      <y>550</y>
+      <w>360</w>
+      <h>110</h>
+    </coordinates>
+    <panel_attributes>MysteryRoulette: Class
+--
+-wheel: Roulette[]
+--
++MysteryRoulette()
++getWheel(): Roulette[]
++playMysteryRoulette(roulette: Roulette[]): Roulette
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>590</x>
+      <y>270</y>
+      <w>310</w>
+      <h>230</h>
+    </coordinates>
+    <panel_attributes>Casino: Class
+--
+-player: Player[]
+-ready2Play: boolean[]
+-cashout: boolean[]
+-numberOfPlayers: int
+--
++Casino()
++playerPrompt(keyboard: Scanner): boolean
++betPrompt(keyboard: Scanner)
++collectBets(keyboard: Scanner, i: int)
++distributeWins(win: Roulette)
++askIfContinuing(keyboard: Scanner)
++gameplay()
++main(args: String[])
+
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>970</x>
+      <y>520</y>
+      <w>330</w>
+      <h>310</h>
+    </coordinates>
+    <panel_attributes>Player: Class
+--
+-name: String
+-account: BankAccount
+-bettingOn: String
+-bettingOnNumber: int
+-bet: int
+--
++Player()
++Player(name: String)
++getName(): String
++setName(player: String)
++getBankAccount(): BankAccount
++setBankAccount(budget: int)
++getBet(): int
++setBet(playerBet: int)
++getBettingOn(): String
++setBettingOn(bettingOn: String)
++getBettingOnNumber(): int
++setBettingOnNumber(bettingOnNumber: int)
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1030</x>
+      <y>270</y>
+      <w>200</w>
+      <h>130</h>
+    </coordinates>
+    <panel_attributes>BankAccount: Class
+--
+-balance: int
+--
++BankAccount()
++BankAccount(money: int)
++getBalance(): int
++deposit(amount: int)
++loss(amount: int)</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>670</x>
+      <y>110</y>
+      <w>160</w>
+      <h>90</h>
+    </coordinates>
+    <panel_attributes>Membership: Interface
+--
++points: int
++members: Player[]
+--
++addPoints()</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>330</x>
+      <y>490</y>
+      <w>30</w>
+      <h>80</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;60.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1120</x>
+      <y>390</y>
+      <w>30</w>
+      <h>150</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;130.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>890</x>
+      <y>290</y>
+      <w>100</w>
+      <h>290</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;80.0;270.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>510</x>
+      <y>290</y>
+      <w>100</w>
+      <h>310</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes>
+    <additional_attributes>80.0;10.0;10.0;290.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>740</x>
+      <y>190</y>
+      <w>30</w>
+      <h>100</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;.</panel_attributes>
+    <additional_attributes>10.0;80.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>300</x>
+      <y>50</y>
+      <w>120</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes/>
+    <additional_attributes>10.0;20.0;100.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLNote</id>
+    <coordinates>
+      <x>220</x>
+      <y>70</y>
+      <w>280</w>
+      <h>110</h>
+    </coordinates>
+    <panel_attributes>bg=yellow
+Casino UML Relationships
+--
+MysteryRoulette IS-A Roulette
+Casino HAS-A MysteryRoulette
+Casino IS-A Membership
+Casino HAS-A Player
+Player HAS-A BankAccount
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+</diagram>

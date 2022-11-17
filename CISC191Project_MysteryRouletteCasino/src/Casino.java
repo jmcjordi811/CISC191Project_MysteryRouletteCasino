@@ -1,10 +1,10 @@
+
 import java.util.Scanner;
 import java.io.*;
 
 /**
  * Lead Author(s):
  * @author Jordi Mejia
- * @author Jorge Arellano
  * 
  * References:
  * Tasha Frankie
