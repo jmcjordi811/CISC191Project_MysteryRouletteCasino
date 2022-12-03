@@ -192,24 +192,24 @@ public class Roulette {
 			System.out.println(""); 
 			System.out.println("Now we spin the wheel!!!"); 
 			System.out.println("");
-			TimeUnit.SECONDS.sleep(3);
+			TimeUnit.NANOSECONDS.sleep(30);
 			System.out.println("        ____  _  _ _  _  ____        ");
 			System.out.println("       /   _03_26_0_32_15_   \\      ");
-			TimeUnit.SECONDS.sleep(1);
+			TimeUnit.NANOSECONDS.sleep(10);
 			System.out.println("      /35/" + ball[35] + " " + ball[3] + "  " + ball[26] + "  " + ball[0] + "  " + ball[32] + "  " + ball[15] + " " + ball[19] + "\\19\\     ");
-			TimeUnit.SECONDS.sleep(1);
+			TimeUnit.NANOSECONDS.sleep(10);
 			System.out.println("     /12/" + ball[12] + "                 " + ball[4] + "\\04\\    ");
-			TimeUnit.SECONDS.sleep(1);
+			TimeUnit.NANOSECONDS.sleep(10);
 			System.out.println("    /28/" + ball[28] + "                   " + ball[21] + "\\21\\   ");
-			TimeUnit.SECONDS.sleep(1);
+			TimeUnit.NANOSECONDS.sleep(10);
 			System.out.println("   /07/" + ball[7] + "                     " + ball[2] + "\\02\\  ");
-			TimeUnit.SECONDS.sleep(1);
+			TimeUnit.NANOSECONDS.sleep(10);
 			System.out.println("  /29/" + ball[29] + "                       " + ball[25] + "\\25\\ ");
-			TimeUnit.SECONDS.sleep(1);
+			TimeUnit.NANOSECONDS.sleep(10);
 			System.out.println(" |18|" + ball[18] + "       Roulette Spin     " + ball[17] + "|17| ");
-			TimeUnit.SECONDS.sleep(1);
+			TimeUnit.NANOSECONDS.sleep(10);
 			System.out.println(" |22|" + ball[22] + "                         " + ball[34] + "|34| ");
-			TimeUnit.SECONDS.sleep(1);
+			TimeUnit.NANOSECONDS.sleep(10);
 			
 			if(wheelLandsOn.getDigits() == 1){
 				System.out.println(" |09|" + ball[9] + "            " + wheelLandsOn.getNumber() + "!           " + ball[6] + "|06| "); 
@@ -217,19 +217,19 @@ public class Roulette {
 				System.out.println(" |09|" + ball[9] + "           " + wheelLandsOn.getNumber() + "!           " + ball[6] + "|06| "); 
 			}
 			
-			TimeUnit.SECONDS.sleep(1);
+			TimeUnit.NANOSECONDS.sleep(10);
 			System.out.println(" |31|" + ball[31] + "                         " + ball[27] + "|27|  ");
-			TimeUnit.SECONDS.sleep(1);
+			TimeUnit.NANOSECONDS.sleep(10);
 			System.out.println("  \\14\\" + ball[14] + "                       " + ball[13] + "/13/   ");
-			TimeUnit.SECONDS.sleep(1);
+			TimeUnit.NANOSECONDS.sleep(10);
 			System.out.println("   \\20\\" + ball[20] + "                     " + ball[36] + "/36/    ");
-			TimeUnit.SECONDS.sleep(1);
+			TimeUnit.NANOSECONDS.sleep(10);
 			System.out.println("    \\01\\" + ball[1]+ "                   " + ball[11] + "/11/     ");
-			TimeUnit.SECONDS.sleep(1);
+			TimeUnit.NANOSECONDS.sleep(10);
 			System.out.println("     \\33\\" + ball[33] + "                 " + ball[30] + "/30/      ");
-			TimeUnit.SECONDS.sleep(1);
+			TimeUnit.NANOSECONDS.sleep(10);
 			System.out.println("      \\16\\" + ball[16] + "__" + ball[24] + " _" + ball[5] + " _ " + ball[10] + "_ " + ball[23] + "__" + ball[8] + "/08/       ");
-			TimeUnit.SECONDS.sleep(1);
+			TimeUnit.NANOSECONDS.sleep(10);
 			System.out.println("       \\_____24_05_10_23_____/      ");
 			System.out.println("");
 			

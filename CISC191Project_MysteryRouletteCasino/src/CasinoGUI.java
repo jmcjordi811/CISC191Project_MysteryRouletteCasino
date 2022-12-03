@@ -1,9 +1,15 @@
+
+
 import java.awt.Color;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
 import java.util.concurrent.TimeUnit;
 
+import javax.imageio.ImageIO;
 import javax.swing.*;
 
 import javax.swing.JButton;
@@ -20,15 +26,30 @@ public class CasinoGUI extends JFrame{
 	//A few constants for the size of the window
 	final static int WINDOW_WIDTH = 1500;
 	final static int WINDOW_HEIGHT = 1000;
+	
+	private static ImageIcon img1 = new ImageIcon("/Users/jordi.j.mejiacruz/Desktop/CISC191/Project_MysteryRouletteCasino/CISC191Project_MysteryRouletteCasino/src/Roulette_Imgs/Roulette.png");
+	private static ImageIcon img2 = new ImageIcon("/Users/jordi.j.mejiacruz/Desktop/CISC191/Project_MysteryRouletteCasino/CISC191Project_MysteryRouletteCasino/src/Roulette_Imgs/BettingTable.png");
+//	private static ImageIcon img3 = new ImageIcon("Ball.png");
+
+	private Roulette rouletteGame = new Roulette();
+	private MysteryRoulette mysteryrouletteGame = new MysteryRoulette();
+	private Roulette win = new MysteryRoulette();
 
 	private static JPanel mainPanel;
 	private static JLabel wheel;
 	private static JLabel betTable;
-	private static JLabel ball;
 	private static JButton startButton;
 	
-	private JTextField newText;
-	private JCheckBox newBox;
+	private Ball[] ball = new Ball[37];
+	
+//	private static JLabel b;
+	
+	//private JTextField newText;
+	//private JCheckBox newBox;
+	
+	private int position[] = new int[37];
+	
+	
 	
 	public CasinoGUI() {
 		//CasinoGUI newWindow = new CasinoGUI();
@@ -45,73 +66,72 @@ public class CasinoGUI extends JFrame{
 		mainPanel = new JPanel();
 		mainPanel.setBackground(new Color(0, 49, 14));
 		
-		
-		ImageIcon img1 = new ImageIcon("/Users/jordi.j.mejiacruz/Desktop/CISC191/Project_MysteryRouletteCasino/CISC191Project_MysteryRouletteCasino/src/Roulette_Imgs/Roulette.png");
-		ImageIcon img2 = new ImageIcon("/Users/jordi.j.mejiacruz/Desktop/CISC191/Project_MysteryRouletteCasino/CISC191Project_MysteryRouletteCasino/src/Roulette_Imgs/BettingTable.png");
-		ImageIcon img3 = new ImageIcon("/Users/jordi.j.mejiacruz/Desktop/CISC191/Project_MysteryRouletteCasino/CISC191Project_MysteryRouletteCasino/src/Roulette_Imgs/Ball.png");
-		
-		
 		wheel = new JLabel(img1);
 		betTable = new JLabel(img2);
-		ball = new JLabel(img3);
+//		b = new JLabel(img3);
+		
+		position[0] = 0;
+		
+		position[1] = 32;  position[13] = 36; position[25] = 14;
+		position[2] = 15;  position[14] = 11; position[26] = 31;
+		position[3] = 19;  position[15] = 30; position[27] = 9;
+		position[4] = 4;   position[16] = 8;  position[28] = 22;
+		position[5] = 21;  position[17] = 23; position[29] = 18;
+		position[6] = 2;   position[18] = 10; position[30] = 29;
+		position[7] = 25;  position[19] = 5;  position[31] = 7;
+		position[8] = 17;  position[20] = 24; position[32] = 28;
+		position[9] = 34;  position[21] = 16; position[33] = 12;
+		position[10] = 6;  position[22] = 33; position[34] = 35;
+		position[11] = 27; position[23] = 1;  position[35] = 3;
+		position[12] = 13; position[24] = 20; position[36] = 26;
+			
+		ball[position[0]]= new Ball(0, 265, 140);
+		
+		ball[position[1]]= new Ball(32, 286, 142);  ball[position[13]]= new Ball(36, 365, 340); ball[position[25]]= new Ball(14, 154, 321);
+		ball[position[2]]= new Ball(15, 307, 147);  ball[position[14]]= new Ball(11, 351, 356); ball[position[26]]= new Ball(31, 145, 302);
+		ball[position[3]]= new Ball(19, 327, 155);  ball[position[15]]= new Ball(30, 334, 369); ball[position[27]]= new Ball(9, 141, 281);
+		ball[position[4]]= new Ball(4, 344, 168);   ball[position[16]]= new Ball(8, 316, 380);  ball[position[28]]= new Ball(22, 140, 260);
+		ball[position[5]]= new Ball(21, 359, 183);  ball[position[17]]= new Ball(23, 296, 387); ball[position[29]]= new Ball(18, 143, 239);
+		ball[position[6]]= new Ball(2, 372, 199);   ball[position[18]]= new Ball(10, 275, 391); ball[position[30]]= new Ball(29, 149, 218);
+		ball[position[7]]= new Ball(25, 381, 219);  ball[position[19]]= new Ball(5, 254, 390);  ball[position[31]]= new Ball(7, 159, 199);
+		ball[position[8]]= new Ball(17, 388, 239);  ball[position[20]]= new Ball(24, 233, 386); ball[position[32]]= new Ball(28, 171, 182);
+		ball[position[9]]= new Ball(34, 390, 260);  ball[position[21]]= new Ball(16, 213, 379); ball[position[33]]= new Ball(12, 187, 168);
+		ball[position[10]]= new Ball(6, 389, 281);  ball[position[22]]= new Ball(33, 195, 369); ball[position[34]]= new Ball(35, 204, 156);
+		ball[position[11]]= new Ball(27, 385, 302); ball[position[23]]= new Ball(1, 178, 356);  ball[position[35]]= new Ball(3, 224, 148);
+		ball[position[12]]= new Ball(13, 377, 322); ball[position[24]]= new Ball(20, 164, 340); ball[position[36]]= new Ball(26, 244, 142);
+		
 		
 		wheel.setBounds(100, 100, 350, 350);
 		betTable.setBounds(500, 100, 700, 340);
-		ball.setBounds(265, 265, 20, 20); // Center *
 		
-		
-		//ball.setBounds(265, 265, 20, 20); // Center *
-		
-		//ball.setBounds(265, 140, 20, 20); // 0 *
-		//ball.setBounds(286, 142, 20, 20); // 32 *
-		//ball.setBounds(307, 147, 20, 20); // 15 *
-		//ball.setBounds(327, 155, 20, 20); // 19 *
-		//ball.setBounds(344, 168, 20, 20); // 4 *
-		//ball.setBounds(359, 183, 20, 20); // 21 *
-		//ball.setBounds(372, 199, 20, 20); // 2 *
-		//ball.setBounds(381, 219, 20, 20); // 25 *
-		//ball.setBounds(388, 239, 20, 20); // 17 *
-		//ball.setBounds(390, 260, 20, 20); // 34 *
-		//ball.setBounds(389, 281, 20, 20); // 6 *
-		//ball.setBounds(385, 302, 20, 20); // 27 *
-		//ball.setBounds(377, 322, 20, 20); // 13 *
-		//ball.setBounds(365, 340, 20, 20); // 36 *
-		//ball.setBounds(351, 356, 20, 20); // 11 *
-		//ball.setBounds(334, 369, 20, 20); // 30 *
-		//ball.setBounds(316, 380, 20, 20); // 8 *
-		//ball.setBounds(296, 387, 20, 20); // 23 *
-		//ball.setBounds(275, 391, 20, 20); // 10 *
-		//ball.setBounds(254, 390, 20, 20); // 5 *	
-		//ball.setBounds(233, 386, 20, 20); // 24 *
-		//ball.setBounds(213, 379, 20, 20); // 16 *
-		//ball.setBounds(195, 369, 20, 20); // 33 *
-		//ball.setBounds(178, 356, 20, 20); // 1 *
-		//ball.setBounds(164, 340, 20, 20); // 20 *
-		//ball.setBounds(154, 321, 20, 20); // 14 *
-		//ball.setBounds(145, 302, 20, 20); // 31 *
-		//ball.setBounds(141, 281, 20, 20); // 9 *
-		//ball.setBounds(140, 260, 20, 20); // 22 *
-		//ball.setBounds(143, 239, 20, 20); // 18 *
-		//ball.setBounds(149, 218, 20, 20); // 29 *
-		//ball.setBounds(159, 199, 20, 20); // 7 *
-		//ball.setBounds(171, 182, 20, 20); // 28 *
-		//ball.setBounds(187, 168, 20, 20); // 12 *
-		//ball.setBounds(204, 156, 20, 20); // 35 *
-		//ball.setBounds(224, 148, 20, 20); // 3 *
-		//ball.setBounds(244, 142, 20, 20); // 26 *
+//		b.setBounds(265, 265, 20, 20); // Center *
+//		b.setVisible(true);
 		
 		mainPanel.setLayout(null);
-		mainPanel.add(ball);
+//		mainPanel.add(b);
+		
+		try {
+			for(int i = 0; i < 37; i++) {
+				mainPanel.add(ball[position[i]].getBall());
+				System.out.println(ball[position[i]].getNumber());
+				TimeUnit.SECONDS.sleep(1);
+				mainPanel.remove(ball[position[i]].getBall());
+			}
+		}catch(InterruptedException err) {
+			System.out.println(err);
+		}
+		
+		
+		
 		mainPanel.add(wheel);
 		mainPanel.add(betTable);
 		add(mainPanel);
+		
 		
 		createPanel();
 		
 		//Display the window
 		setVisible(true);
-		
-		
 	}
 	
 	
@@ -120,156 +140,36 @@ public class CasinoGUI extends JFrame{
 		@Override
 		public void actionPerformed(ActionEvent e) {
 			try {
-				boolean start = false;
-					
-				TimeUnit.SECONDS.sleep(1);
-				ball.setLocation(265, 140); // 0 *
-				System.out.println("Ball at position: 0");
 				
-				TimeUnit.SECONDS.sleep(1);
-				ball.setLocation(286, 142); // 32 *
-				System.out.println("Ball at position: 32");
+				TimeUnit.SECONDS.sleep(3);
 				
-				TimeUnit.SECONDS.sleep(1);
-				ball.setLocation(307, 147); // 15 *
-				System.out.println("Ball at position: 15");
 				
-				TimeUnit.SECONDS.sleep(1);
-				ball.setBounds(327, 155, 20, 20); // 19 *
-				System.out.println("Ball at position: 19");
 				
-				TimeUnit.SECONDS.sleep(1);
-				ball.setBounds(344, 168, 20, 20); // 4 *
-				System.out.println("Ball at position: 4");
-				
-				TimeUnit.SECONDS.sleep(1);
-				ball.setBounds(359, 183, 20, 20); // 21 *
-				System.out.println("Ball at position: 21");
-				
-				TimeUnit.SECONDS.sleep(1);
-				ball.setBounds(372, 199, 20, 20); // 2 *
-				System.out.println("Ball at position: 2");
-				
-				TimeUnit.SECONDS.sleep(1);
-				ball.setBounds(381, 219, 20, 20); // 25 *
-				System.out.println("Ball at position: 25");
-				
-				TimeUnit.SECONDS.sleep(1);
-				ball.setBounds(388, 239, 20, 20); // 17 *
-				System.out.println("Ball at position: 17");
-				
-				TimeUnit.SECONDS.sleep(1);
-				ball.setBounds(390, 260, 20, 20); // 34 *
-				System.out.println("Ball at position: 34");
-				
-				TimeUnit.SECONDS.sleep(1);
-				ball.setBounds(389, 281, 20, 20); // 6 *
-				System.out.println("Ball at position: 6");
-				
-				TimeUnit.SECONDS.sleep(1);
-				ball.setBounds(385, 302, 20, 20); // 27 *
-				System.out.println("Ball at position: 27");
-				
-				TimeUnit.SECONDS.sleep(1);
-				ball.setBounds(377, 322, 20, 20); // 13 *
-				System.out.println("Ball at position: 13");
-				
-				TimeUnit.SECONDS.sleep(1);
-				ball.setBounds(365, 340, 20, 20); // 36 *
-				System.out.println("Ball at position: 36");
-				
-				TimeUnit.SECONDS.sleep(1);
-				ball.setBounds(351, 356, 20, 20); // 11 *
-				System.out.println("Ball at position: 11");
-				
-				TimeUnit.SECONDS.sleep(1);
-				ball.setBounds(334, 369, 20, 20); // 30 *
-				System.out.println("Ball at position: 30");
-				
-				TimeUnit.SECONDS.sleep(1);
-				ball.setBounds(316, 380, 20, 20); // 8 *
-				System.out.println("Ball at position: 8");
-				
-				TimeUnit.SECONDS.sleep(1);
-				ball.setBounds(296, 387, 20, 20); // 23 *
-				System.out.println("Ball at position: 23");
-				
-				TimeUnit.SECONDS.sleep(1);
-				ball.setBounds(275, 391, 20, 20); // 10 *
-				System.out.println("Ball at position: 10");
-				
-				TimeUnit.SECONDS.sleep(1);
-				ball.setBounds(254, 390, 20, 20); // 5 *
-				System.out.println("Ball at position: 5");
-				
-				TimeUnit.SECONDS.sleep(1);
-				ball.setBounds(233, 386, 20, 20); // 24 *
-				System.out.println("Ball at position: 24");
-				
-				TimeUnit.SECONDS.sleep(1);
-				ball.setBounds(213, 379, 20, 20); // 16 *
-				System.out.println("Ball at position: 16");
-				
-				TimeUnit.SECONDS.sleep(1);
-				ball.setBounds(195, 369, 20, 20); // 33 *
-				System.out.println("Ball at position: 33");
-				
-				TimeUnit.SECONDS.sleep(1);
-				ball.setBounds(178, 356, 20, 20); // 1 *
-				System.out.println("Ball at position: 1");
-				
-				TimeUnit.SECONDS.sleep(1);
-				ball.setBounds(164, 340, 20, 20); // 20 *
-				System.out.println("Ball at position: 20");
-				
-				TimeUnit.SECONDS.sleep(1);
-				ball.setBounds(154, 321, 20, 20); // 14 *
-				System.out.println("Ball at position: 14");
-				
-				TimeUnit.SECONDS.sleep(1);
-				ball.setBounds(145, 302, 20, 20); // 31 *
-				System.out.println("Ball at position: 31");
-				
-				TimeUnit.SECONDS.sleep(1);
-				ball.setBounds(141, 281, 20, 20); // 9 *
-				System.out.println("Ball at position: 9");
-				
-				TimeUnit.SECONDS.sleep(1);
-				ball.setBounds(140, 260, 20, 20); // 22 *
-				System.out.println("Ball at position: 22");
-				
-				TimeUnit.SECONDS.sleep(1);
-				ball.setBounds(143, 239, 20, 20); // 18 *
-				System.out.println("Ball at position: 18");
-				
-				TimeUnit.SECONDS.sleep(1);
-				ball.setBounds(149, 218, 20, 20); // 29 *
-				System.out.println("Ball at position: 29");
-				
-				TimeUnit.SECONDS.sleep(1);
-				ball.setBounds(159, 199, 20, 20); // 7 *
-				System.out.println("Ball at position: 7");
-				
-				TimeUnit.SECONDS.sleep(1);
-				ball.setBounds(171, 182, 20, 20); // 28 *
-				System.out.println("Ball at position: 28");
-				
-				TimeUnit.SECONDS.sleep(1);
-				ball.setBounds(187, 168, 20, 20); // 12 *
-				System.out.println("Ball at position: 12");
-				
-				TimeUnit.SECONDS.sleep(1);
-				ball.setBounds(204, 156, 20, 20); // 35 *
-				System.out.println("Ball at position: 35");
-				
-				TimeUnit.SECONDS.sleep(1);
-				ball.setBounds(224, 148, 20, 20); // 3 *
-				System.out.println("Ball at position: 3");
-				
-				TimeUnit.SECONDS.sleep(1);
-				ball.setBounds(244, 142, 20, 20); // 26 *
-				System.out.println("Ball at position: 26");
-					
+//				boolean number = false;
+//				int index = 0;
+//				
+//				TimeUnit.SECONDS.sleep(3);
+//				System.out.println("Spinning the wheel");
+//				
+//				
+//				win = rouletteGame.spin(rouletteGame.getWheel());
+//				index = 0;
+//				
+//				while (!number) {
+//					TimeUnit.NANOSECONDS.sleep(50);
+//					ball[position[index]].getBall().setVisible(true); 
+//					System.out.println("Ball at position: " + position[index]);
+//					
+//					if(ball[position[index]].getNumber() == win.getNumber()) {
+//						System.out.println("Winning Number: " + win.getNumber() + " " + win.getColor());
+//						break;
+//					}else {
+//						TimeUnit.NANOSECONDS.sleep(50);
+//						ball[position[index]].getBall().setVisible(false); 
+//					}
+//					
+//					index++;
+//				}
 			}catch(InterruptedException err) {
 				System.out.println(err);
 			}
