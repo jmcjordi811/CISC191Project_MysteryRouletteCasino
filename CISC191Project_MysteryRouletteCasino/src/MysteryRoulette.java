@@ -16,6 +16,10 @@ import java.util.concurrent.TimeUnit;
  */
 
 public class MysteryRoulette extends Roulette{
+	
+//	boolean win = false;
+//	int card = 0;
+	
 	//---------- Constructor ----------
 	/**
 	 * Purpose: No-parameter Constructor used to initialize class object with default values.
@@ -23,11 +27,28 @@ public class MysteryRoulette extends Roulette{
 	public MysteryRoulette() {}
 	
 	//---------- Methods ----------
+	
+//	public boolean getWin() {
+//		return this.win;
+//	}
+//	
+//	public int getCard() {
+//		return this.card;
+//	}
+//	
+//	public void setWin(boolean bool) {
+//		this.win = bool;
+//	}
+//	
+//	public void setCard(int card) {
+//		this.card = card;
+//	}
+	
 	/**
 	 * Purpose: A method when Mystery Roulette game is chosen. (Variant Game)
 	 * @return Roulette card1, card2, or card3 (depends on spin result)
 	 */
-	public Roulette playMysteryRoulette(Roulette [] roulette) {
+	public Roulette[] playMysteryRoulette(Roulette spin) {
 		//Initializes Random 
 		Random rand = new Random();
 		
@@ -43,12 +64,12 @@ public class MysteryRoulette extends Roulette{
 		}
 		
 		//Initializes 3 Roulette objects (card(1-3))
-		Roulette card1 = new Roulette(roulette[randomIntForCard1]);
-		Roulette card2 = new Roulette(roulette[randomIntForCard2]);
-		Roulette card3 = new Roulette(roulette[randomIntForCard3]);
+		Roulette card1 = new Roulette(this.getWheel()[randomIntForCard1]);
+		Roulette card2 = new Roulette(this.getWheel()[randomIntForCard2]);
+		Roulette card3 = new Roulette(this.getWheel()[randomIntForCard3]);
 		
 		//Initializes win integer
-		int win = -1;
+		//int win = -1;
 		
 		//Starts MysteryRoulette game
 		try{
@@ -71,7 +92,7 @@ public class MysteryRoulette extends Roulette{
 			
 			TimeUnit.SECONDS.sleep(3);
 			//Calls spin method for Original Roulette game
-			Roulette wheelLandsOn = spin(roulette);
+			Roulette wheelLandsOn = spin;
 			
 			//Reminds player(s) that this is not the win, the Roulette card we flip is the win
 			System.out.println("Remember this is not the win..."); 
@@ -89,7 +110,7 @@ public class MysteryRoulette extends Roulette{
 				System.out.println(" | | 1 | |          /\\             /\\    ");
 				System.out.println(" | |___| |         /  \\           /  \\   ");
 				System.out.println(" |_______|        /    \\         /    \\  ");
-				win = 1;
+				//win = 1;
 			}else if(13 <= wheelLandsOn.getNumber() && wheelLandsOn.getNumber() <= 24){
 				System.out.println("Since " + wheelLandsOn.getNumber() + " is in the range 13 - 24...");
 				System.out.println("");
@@ -101,7 +122,7 @@ public class MysteryRoulette extends Roulette{
 				System.out.println("     /\\         | | 2 | |          /\\   ");
 				System.out.println("    /  \\        | |___| |         /  \\  ");
 				System.out.println("   /    \\       |_______|        /    \\ ");
-				win = 2;
+				//win = 2;
 			}else if(25 <= wheelLandsOn.getNumber() && wheelLandsOn.getNumber() <= 36){
 				System.out.println("Since " + wheelLandsOn.getNumber() + " is in the range 25 - 36...");
 				System.out.println("");
@@ -113,7 +134,7 @@ public class MysteryRoulette extends Roulette{
 				System.out.println("     /\\             /\\         | | 3 | |");
 				System.out.println("    /  \\           /  \\        | |___| |");
 				System.out.println("   /    \\         /    \\       |_______|");
-				win = 3;
+				//win = 3;
 			}
 			
 			//Card number display
@@ -203,15 +224,18 @@ public class MysteryRoulette extends Roulette{
 		}
 		
 		// Returns whichever card got drawn (win)
-		if(win == 1) {
-			return card1;
-		}else if(win == 2) {;
-			return card2;
-		}else if(win == 3) {
-			return card3;
-		}
+//		if(win == 1) {
+//			return card1;
+//		}else if(win == 2) {
+//			return card2;
+//		}else if(win == 3) {
+//			return card3;
+//		}
 		
-		return null;
+		Roulette[] cards = {card1, card2, card3};
+		
+		
+		return cards;
 	}
 	
 	
