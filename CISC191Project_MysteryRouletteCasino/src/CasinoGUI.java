@@ -3,12 +3,14 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.Timer;
 import javax.swing.*;
+import java.util.concurrent.TimeUnit;
+//import java.util.Scanner;
 
 public class CasinoGUI extends JFrame{
 	private static final long serialVersionUID = 1L;
 	
 	//A few constants for the size of the window
-	private final static int WINDOW_WIDTH = 1500;
+	private final static int WINDOW_WIDTH = 900;
 	private final static int WINDOW_HEIGHT = 1000;
     
 //    private int[] x = {265, 265,
@@ -58,14 +60,23 @@ public class CasinoGUI extends JFrame{
     
     private MysteryRoulette newGame = new MysteryRoulette();
     private Roulette win = new MysteryRoulette();
-
+    Roulette wheelLandsOn;
+    
    
+    
+    JPanel playerPanel = new JPanel();
     
     private static JLabel wheel;
     private static JLabel betTable;
     private static JLabel card1;
     private static JLabel card2;
     private static JLabel card3;
+    
+    private static JLabel sign1;
+    private static JLabel sign2;
+    private static JLabel sign3;
+    
+    
     private static JButton startButton;
     
     Timer timer = new Timer(100, null);
@@ -77,28 +88,46 @@ public class CasinoGUI extends JFrame{
         setSize(WINDOW_WIDTH, WINDOW_HEIGHT);
         casinoPanel.setLayout(null);
         
-       
-        gameGUI();
         
         casinoPanel.setLayout(null);
         casinoPanel.setBackground(new Color(0, 0, 0));
         
-
+        
+        //playerPanel.setBounds(900, 0, 600, 1000);
         wheel = new JLabel(img1);
         betTable = new JLabel(img2);
-        
-        
+        sign1 = new JLabel();
+        sign2 = new JLabel();
+        sign3 = new JLabel();
 
+        
+        sign1.setText("0<=SPIN<=12");
+        sign1.setForeground(new Color(206, 194, 144)); 
+        sign2.setText("13<=SPIN<=24");
+        sign2.setForeground(new Color(206, 194, 144)); 
+        sign3.setText("25<=SPIN<=36");
+        sign3.setForeground(new Color(206, 194, 144)); 
+        
+        
         wheel.setBounds(100, 125, 350, 350);
         betTable.setBounds(100, 550, 700, 340);
+        sign1.setBounds(620, 147, 100, 10);
+        sign2.setBounds(620, 300, 100, 10);
+        sign3.setBounds(620, 453, 100, 10);
         
         
+		gameGUI();
+		
         
         casinoPanel.add(wheel);
         casinoPanel.add(betTable);
+        casinoPanel.add(sign1);
+        casinoPanel.add(sign2);
+        casinoPanel.add(sign3);
         
         
         add(casinoPanel);
+        //add(playerPanel);
         
         
         pack();
@@ -121,7 +150,7 @@ public class CasinoGUI extends JFrame{
         casinoPanel.add(card3);
     	
     	
-    	Roulette wheelLandsOn = newGame.spin();
+    	wheelLandsOn = newGame.spin();
     	if(0 <= wheelLandsOn.getNumber() && wheelLandsOn.getNumber() <= 12){
 			win = newGame.playMysteryRoulette(wheelLandsOn)[0]; // Card 1
 			card = 1;
@@ -137,25 +166,90 @@ public class CasinoGUI extends JFrame{
 		private static final long serialVersionUID = 1L;
 
 		public void actionPerformed(ActionEvent e) {
-				if(rotation == 5 && position[index] == wheelLandsOn.getNumber()){
+			try {
+				if(rotation == 20 && position[index] == wheelLandsOn.getNumber()){
+					System.out.println("Winning Number: " + win.getNumber() + " " + win.getColor());
+					timer.stop();
+					
+					card1.setIcon(img3);
+					card2.setIcon(img3);
+					card3.setIcon(img3);
+					
 					if(card == 1){
+						timer.restart();
 						ImageIcon img4 = new ImageIcon("/Users/jordi.j.mejiacruz/Desktop/CISC191/Project_MysteryRouletteCasino/CISC191Project_MysteryRouletteCasino/src/Roulette_Imgs/MysteryRouletteCards/FrontCard_" + win.getNumber() + ".png");
 						card1.setIcon(img4);
 						
+						
+						TimeUnit.SECONDS.sleep(2);
+						
+						rotation = 0;
+						wheelLandsOn = newGame.spin();
+				    	if(0 <= wheelLandsOn.getNumber() && wheelLandsOn.getNumber() <= 12){
+							win = newGame.playMysteryRoulette(wheelLandsOn)[0]; // Card 1
+							card = 1;
+						}else if(13 <= wheelLandsOn.getNumber() && wheelLandsOn.getNumber() <= 24){
+							win = newGame.playMysteryRoulette(wheelLandsOn)[1]; // Card 2
+							card = 2;
+						}else if(25 <= wheelLandsOn.getNumber() && wheelLandsOn.getNumber() <= 36){
+							win = newGame.playMysteryRoulette(wheelLandsOn)[2]; // Card 3
+							card = 3;
+						}
+						
+						
 					}else if(card == 2){
+						timer.restart();
 						ImageIcon img4 = new ImageIcon("/Users/jordi.j.mejiacruz/Desktop/CISC191/Project_MysteryRouletteCasino/CISC191Project_MysteryRouletteCasino/src/Roulette_Imgs/MysteryRouletteCards/FrontCard_" + win.getNumber() + ".png");
 						card2.setIcon(img4);
 						
+						TimeUnit.SECONDS.sleep(2);
+						
+						
+						rotation = 0;
+						
+						wheelLandsOn = newGame.spin();
+				    	if(0 <= wheelLandsOn.getNumber() && wheelLandsOn.getNumber() <= 12){
+							win = newGame.playMysteryRoulette(wheelLandsOn)[0]; // Card 1
+							card = 1;
+						}else if(13 <= wheelLandsOn.getNumber() && wheelLandsOn.getNumber() <= 24){
+							win = newGame.playMysteryRoulette(wheelLandsOn)[1]; // Card 2
+							card = 2;
+						}else if(25 <= wheelLandsOn.getNumber() && wheelLandsOn.getNumber() <= 36){
+							win = newGame.playMysteryRoulette(wheelLandsOn)[2]; // Card 3
+							card = 3;
+						}
+						
 						
 					}else if(card == 3){
+						timer.restart();
 						ImageIcon img4 = new ImageIcon("/Users/jordi.j.mejiacruz/Desktop/CISC191/Project_MysteryRouletteCasino/CISC191Project_MysteryRouletteCasino/src/Roulette_Imgs/MysteryRouletteCards/FrontCard_" + win.getNumber() + ".png");
 						card3.setIcon(img4);
 						
+						TimeUnit.SECONDS.sleep(2);
+						
+						
+						rotation = 0;
+						
+						wheelLandsOn = newGame.spin();
+				    	if(0 <= wheelLandsOn.getNumber() && wheelLandsOn.getNumber() <= 12){
+							win = newGame.playMysteryRoulette(wheelLandsOn)[0]; // Card 1
+							card = 1;
+						}else if(13 <= wheelLandsOn.getNumber() && wheelLandsOn.getNumber() <= 24){
+							win = newGame.playMysteryRoulette(wheelLandsOn)[1]; // Card 2
+							card = 2;
+						}else if(25 <= wheelLandsOn.getNumber() && wheelLandsOn.getNumber() <= 36){
+							win = newGame.playMysteryRoulette(wheelLandsOn)[2]; // Card 3
+							card = 3;
+						}
+						
 						
 					}
-					System.out.println("Winning Number: " + win.getNumber() + " " + win.getColor());
 					
-					timer.stop();
+
+					
+//					System.out.println("Winning Number: " + win.getNumber() + " " + win.getColor());
+//					timer.stop();
+					
 				}else if (index == 36) {
                     positionX += moveXTo[index];
                     positionY += moveYTo[index]; 
@@ -173,8 +267,10 @@ public class CasinoGUI extends JFrame{
 
                     index++;
                 }
-            }
-        };
+			}catch(InterruptedException error) {
+				System.out.println(error);
+			}
+        }};
         
         timer.addActionListener(listener);
         timer.start();

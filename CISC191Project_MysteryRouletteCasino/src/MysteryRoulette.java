@@ -1,5 +1,5 @@
 import java.util.Random;
-import java.util.concurrent.TimeUnit;
+//import java.util.concurrent.TimeUnit;
 
 /**
  * Lead Author(s):
@@ -72,10 +72,10 @@ public class MysteryRoulette extends Roulette{
 		//int win = -1;
 		
 		//Starts MysteryRoulette game
-		try{
+//		try{
 			//Explains how MysteryRoulette game works
 			//Card display
-			TimeUnit.SECONDS.sleep(3);
+//			TimeUnit.SECONDS.sleep(3);
 			System.out.println("");
 			System.out.println("We start by drawing 3 Roulette Cards! ");
 			System.out.println("  _______        _______        _______ ");
@@ -90,7 +90,7 @@ public class MysteryRoulette extends Roulette{
 			System.out.println("     IF             IF             IF");
 			System.out.println(" 0<=SPIN<=12   13<=SPIN<=24   25<=SPIN<=36");
 			
-			TimeUnit.SECONDS.sleep(3);
+//			TimeUnit.SECONDS.sleep(3);
 			//Calls spin method for Original Roulette game
 			Roulette wheelLandsOn = spin;
 			
@@ -102,7 +102,7 @@ public class MysteryRoulette extends Roulette{
 			if(0 <= wheelLandsOn.getNumber() && wheelLandsOn.getNumber() <= 12){
 				System.out.println("Since " + wheelLandsOn.getNumber() + " is in the range 0 - 12...");
 				System.out.println("");
-				TimeUnit.SECONDS.sleep(5);
+//				TimeUnit.SECONDS.sleep(5);
 				System.out.println("First Card Wins!");
 				System.out.println("  _______         \\    /         \\    /  ");
 				System.out.println(" |  ___  |         \\  /           \\  /   ");
@@ -114,7 +114,7 @@ public class MysteryRoulette extends Roulette{
 			}else if(13 <= wheelLandsOn.getNumber() && wheelLandsOn.getNumber() <= 24){
 				System.out.println("Since " + wheelLandsOn.getNumber() + " is in the range 13 - 24...");
 				System.out.println("");
-				TimeUnit.SECONDS.sleep(5);
+//				TimeUnit.SECONDS.sleep(5);
 				System.out.println("Second Card Wins!");
 				System.out.println("   \\    /        _______         \\    / ");
 				System.out.println("    \\  /        |  ___  |         \\  /  ");
@@ -126,7 +126,7 @@ public class MysteryRoulette extends Roulette{
 			}else if(25 <= wheelLandsOn.getNumber() && wheelLandsOn.getNumber() <= 36){
 				System.out.println("Since " + wheelLandsOn.getNumber() + " is in the range 25 - 36...");
 				System.out.println("");
-				TimeUnit.SECONDS.sleep(5);
+//				TimeUnit.SECONDS.sleep(5);
 				System.out.println("Third Card Wins!");
 				System.out.println("   \\    /         \\    /        _______ ");
 				System.out.println("    \\  /           \\  /        |  ___  |");
@@ -219,9 +219,9 @@ public class MysteryRoulette extends Roulette{
 				System.out.println("   Black          Black           Red ");
 			}
 			
-		}catch(InterruptedException e) {
-			System.out.println(e);
-		}
+//		}catch(InterruptedException e) {
+//			System.out.println(e);
+//		}
 		
 		// Returns whichever card got drawn (win)
 //		if(win == 1) {
