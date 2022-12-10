@@ -48,9 +48,6 @@ public class CasinoGUI extends JFrame{
     private int positionY = 240;
     
     private int card = 0;
-    
-    
-    private CasinoPanel casinoPanel = new CasinoPanel();
 	
 	
     private static ImageIcon img1 = new ImageIcon("/Users/jordi.j.mejiacruz/git/repository/CISC191Project_MysteryRouletteCasino/src/Roulette_Imgs/Roulette.png");
@@ -76,11 +73,20 @@ public class CasinoGUI extends JFrame{
     
     private MysteryRoulette newGame = new MysteryRoulette();
     private Roulette win = new MysteryRoulette();
-    Roulette wheelLandsOn;
+    private Roulette wheelLandsOn;
     
    
+    private CasinoPanel casinoPanel = new CasinoPanel();
+    private AnnouncementPanel roulettePanel = new AnnouncementPanel();
+    private AnnouncementPanel mysteryRoulettePanel = new AnnouncementPanel();
+    private PreviousPanel previousPanel = new PreviousPanel();
+    private PlayerPanel player1Panel = new PlayerPanel();
+    private PlayerPanel player2Panel = new PlayerPanel();
+    private PlayerPanel player3Panel = new PlayerPanel();
+    private PlayerPanel player4Panel = new PlayerPanel();
     
-    JPanel playerPanel = new JPanel();
+    
+    private ButtonListener newListener = new ButtonListener();
     
     private static JLabel casinoNeonSign;
     private static JLabel jordinoNeonSign;
@@ -106,12 +112,14 @@ public class CasinoGUI extends JFrame{
     private static JLabel player3;
     private static JLabel player4;
     
+    private static JButton bet1;
+    private static JButton bet5;
+    private static JButton bet10;
+    private static JButton bet25;
+    private static JButton bet100;
+    private static JButton bet500;
     
-    private static JButton startButton;
-    
-    Timer timer = new Timer(100, null);
-    
-//  private static JLabel b;
+    private Timer timer = new Timer(100, null);
     
     public CasinoGUI() {
         super("Casino");
@@ -121,9 +129,14 @@ public class CasinoGUI extends JFrame{
         
         casinoPanel.setLayout(null);
         casinoPanel.setBackground(new Color(0, 0, 0));
+//        roulettePanel.setOpaque(false);
+//        mysteryRoulettePanel.setOpaque(false);
+        player1Panel.setBackground(Color.BLUE);
+        player2Panel.setBackground(Color.RED);
+        player3Panel.setBackground(Color.BLUE);
+        player4Panel.setBackground(Color.RED);
         
         
-        //playerPanel.setBounds(900, 0, 600, 1000);
         casinoNeonSign = new JLabel(header);
         jordinoNeonSign = new JLabel(author);
         wheel = new JLabel(img1);
@@ -142,6 +155,13 @@ public class CasinoGUI extends JFrame{
         c100 = new JLabel(chip100);
         c500 = new JLabel(chip500);
         
+        
+        bet1 = new JButton("Bet $1");
+        bet5 = new JButton("Bet $5");
+        bet10 = new JButton("Bet $10");
+        bet25 = new JButton("Bet $25");
+        bet100 = new JButton("Bet $100");
+        bet500 = new JButton("Bet $500");
 
         
         sign1.setText("0<=SPIN<=12");
@@ -153,8 +173,12 @@ public class CasinoGUI extends JFrame{
         
         
         casinoNeonSign.setBounds(750, 0, 300, 150);
+        jordinoNeonSign.setBounds(835, 150, 131, 25);
+        roulettePanel.setBounds(100, 25, 650, 100);
+        mysteryRoulettePanel.setBounds(1050, 25, 650, 100);
+        previousPanel.setBounds(850, 200, 100, 400);
         wheel.setBounds(100, 200, 350, 350);
-        betTable.setBounds(880, 150, 700, 340);
+        betTable.setBounds(1020, 150, 700, 340); 
         player1.setBounds(100, 700, 75, 75);
         player2.setBounds(500, 700, 75, 75);
         player3.setBounds(900, 700, 75, 75);
@@ -162,18 +186,34 @@ public class CasinoGUI extends JFrame{
         sign1.setBounds(620, 222, 100, 10);
         sign2.setBounds(620, 375, 100, 10);
         sign3.setBounds(620, 528, 100, 10);
-        c1.setBounds(893, 500, 112, 80);
-        c5.setBounds(1005, 500, 112, 80);
-        c10.setBounds(1117, 500, 112, 80);
-        c25.setBounds(1229, 500, 112, 80);
-        c100.setBounds(1341, 500, 112, 80);
-        c500.setBounds(1455, 500, 112, 80);
+        c1.setBounds(1018, 500, 112, 80);
+        c5.setBounds(1130, 500, 112, 80);
+        c10.setBounds(1242, 500, 112, 80);
+        c25.setBounds(1354, 500, 112, 80);
+        c100.setBounds(1466, 500, 112, 80);
+        c500.setBounds(1580, 500, 112, 80);
+        
+        bet1.setBounds(1024, 580, 100, 20);
+        bet5.setBounds(1136, 580, 100, 20);
+        bet10.setBounds(1248, 580, 100, 20);
+        bet25.setBounds(1360, 580, 100, 20);
+        bet100.setBounds(1472, 580, 100, 20);
+        bet500.setBounds(1586, 580, 100, 20);
+        
+        player1Panel.setBounds(100, 700, 400, 300);
+        player2Panel.setBounds(500, 700, 400, 300);
+        player3Panel.setBounds(900, 700, 400, 300);
+        player4Panel.setBounds(1300, 700, 400, 300);
         
         
 		gameGUI();
 		
         
 		casinoPanel.add(casinoNeonSign);
+		casinoPanel.add(jordinoNeonSign);
+		casinoPanel.add(roulettePanel);
+		casinoPanel.add(mysteryRoulettePanel);
+		casinoPanel.add(previousPanel);
         casinoPanel.add(wheel);
         casinoPanel.add(betTable);
         casinoPanel.add(player1);
@@ -189,10 +229,28 @@ public class CasinoGUI extends JFrame{
         casinoPanel.add(c25);
         casinoPanel.add(c100);
         casinoPanel.add(c500);
+        casinoPanel.add(bet1);
+        casinoPanel.add(bet5);
+        casinoPanel.add(bet10);
+        casinoPanel.add(bet25);
+        casinoPanel.add(bet100);
+        casinoPanel.add(bet500);
+        
+        casinoPanel.add(player1Panel);
+        casinoPanel.add(player2Panel);
+        casinoPanel.add(player3Panel);
+        casinoPanel.add(player4Panel);
         
         
         add(casinoPanel);
-        //add(playerPanel);
+        
+
+        bet1.addActionListener(newListener);
+        bet5.addActionListener(newListener);
+        bet10.addActionListener(newListener);
+        bet25.addActionListener(newListener);
+        bet100.addActionListener(newListener);
+        bet500.addActionListener(newListener);
         
         
         pack();
@@ -246,7 +304,6 @@ public class CasinoGUI extends JFrame{
 					card3.setIcon(img3);
 					
 					ImageIcon img4 = new ImageIcon("/Users/jordi.j.mejiacruz/git/repository/CISC191Project_MysteryRouletteCasino/src/Roulette_Imgs/MysteryRouletteCards/FrontCard_" + win.getNumber() + ".png");
-
 					
 					if(card == 1){
 						timer.restart();
@@ -354,19 +411,23 @@ public class CasinoGUI extends JFrame{
         }
     }
     
-    public void createPanel() {
-        startButton = new JButton("Start Roulette!");
-        startButton.setBounds(1, 1, 100, 20);
-        add(startButton);
-        ButtonListener newListener = new ButtonListener();
-
-        startButton.addActionListener(newListener);
+    private class PlayerPanel extends JPanel {
+        private static final long serialVersionUID = 1L;
+    }
+    
+    private class AnnouncementPanel extends JPanel {
+        private static final long serialVersionUID = 1L;
+    }
+    
+    private class PreviousPanel extends JPanel {
+        private static final long serialVersionUID = 1L;
     }
     
     private class ButtonListener implements ActionListener {
+    	
         @Override
         public void actionPerformed(ActionEvent e) {
-
+        	
         }
 
     }
