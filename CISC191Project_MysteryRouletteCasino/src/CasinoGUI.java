@@ -6,6 +6,31 @@ import java.util.concurrent.TimeUnit;
 //import java.util.LinkedList;
 //import java.util.Queue;
 
+/**
+ * Lead Author(s):
+ * @author Jordi Mejia
+ * 
+ * References:
+ * Tasha Frankie
+ * 
+ * <<add more references here>>
+ * -Scanner (Java Platform SE 7 ). (2020, June 24). 
+ *  Retrieved October 19, 2022, from https://docs.oracle.com/javase/7/docs/api/java/util/Scanner.html
+ * -File Input and Output. (n.d.). 
+ *  Retrieved October 19, 2022, from https://www.cs.utexas.edu/%7Emitra/csSummer2009/cs303/lectures/fileIO.html
+ * -Samsotha, P. (2014, January 29) Java - How to move a rectangle that's drawn by Graphics2D?
+ *  Stackoverflow. https://stackoverflow.com/questions/21429246/java-how-to-move-a-rectangle-thats-drawn-by-graphics2d
+ *  
+ *  
+ * Version/date: 
+ * 
+ * Responsibilities of class:
+ * Casino class 
+ */
+
+
+
+
 public class CasinoGUI extends JFrame{
 	private static final long serialVersionUID = 1L;
 	
