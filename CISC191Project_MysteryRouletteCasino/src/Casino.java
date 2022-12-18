@@ -479,7 +479,7 @@ public class Casino {
 					betPrompt(keyboard);
 					
 					System.out.println("You picked Roulette!");
-					win = newGame.spin();
+					win = newGame.spinWithtoString();
 					System.out.println("");
 					System.out.println("The Lucky Number is " + win.getNumber() + " " + win.getColor() + "!!!");
 					
@@ -493,13 +493,14 @@ public class Casino {
 					betPrompt(keyboard);
 					
 					System.out.println("You picked Mystery Roulette!");
-					Roulette wheelLandsOn = newGame.spin();
+					Roulette wheelLandsOn = newGame.spinWithtoString();
+					Roulette[] flipCard = newGame.playMysteryRouletteWithtoString(wheelLandsOn);
 					if(0 <= wheelLandsOn.getNumber() && wheelLandsOn.getNumber() <= 12){
-						win = newGame.playMysteryRoulette(wheelLandsOn)[0]; // Card 1
+						win = flipCard[0]; // Card 1
 					}else if(13 <= wheelLandsOn.getNumber() && wheelLandsOn.getNumber() <= 24){
-						win = newGame.playMysteryRoulette(wheelLandsOn)[1]; // Card 2
+						win = flipCard[1]; // Card 2
 					}else if(25 <= wheelLandsOn.getNumber() && wheelLandsOn.getNumber() <= 36){
-						win = newGame.playMysteryRoulette(wheelLandsOn)[2]; // Card 3
+						win = flipCard[2]; // Card 3
 					}
 					
 					System.out.println("");

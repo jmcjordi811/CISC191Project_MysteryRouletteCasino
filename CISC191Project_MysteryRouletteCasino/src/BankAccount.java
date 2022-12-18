@@ -15,7 +15,7 @@
 
 public class BankAccount {
 	//---------- Field ----------
-	private int balance = 100;
+	private int balance = 0;
 
 	//---------- Constructor ----------
 	/**
@@ -38,6 +38,13 @@ public class BankAccount {
 	 */
 	public int getBalance() {
 		return this.balance;
+	}
+	
+	/**
+	 * Purpose: Setter method for BankAccount balance.
+	 */
+	public void setBalance(int balance) {
+		this.balance = balance;
 	}
 	
 	/**

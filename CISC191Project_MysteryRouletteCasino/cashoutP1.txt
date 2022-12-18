@@ -2,4 +2,4 @@
 **Cashout Voucher**
 
 P1: Jordi
-Cashout: $85
+Cashout: $105

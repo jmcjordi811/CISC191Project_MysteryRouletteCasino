@@ -73,6 +73,44 @@ public class MysteryRoulette extends Roulette{
 		return cards;
 	}
 	
+	/**
+	 * Purpose: A method when Mystery Roulette game is chosen. (Variant Game)
+	 * @return Roulette card1, card2, or card3 (depends on spin result)
+	 */
+	public Roulette[] playMysteryRouletteWithtoString(Roulette spin) {
+		//Initializes Random 
+		Random rand = new Random();
+		
+		//Initializes and sets up 3 random integers between 0-36 
+		int randomIntForCard1 = rand.nextInt(37);
+		int randomIntForCard2 = -1;
+		int randomIntForCard3 = -1;
+		while(randomIntForCard2 == -1 || randomIntForCard2 == randomIntForCard1) {
+			randomIntForCard2 = rand.nextInt(37);
+		}
+		while(randomIntForCard3 == -1 || randomIntForCard3 == randomIntForCard1 || randomIntForCard3 == randomIntForCard2) {
+			randomIntForCard3 = rand.nextInt(37);
+		}
+		
+		//Initializes 3 Roulette objects (card(1-3))
+		card1 = new Roulette(this.getWheel()[randomIntForCard1]);
+		card2 = new Roulette(this.getWheel()[randomIntForCard2]);
+		card3 = new Roulette(this.getWheel()[randomIntForCard3]);
+		
+		//Initializes win integer
+		//int win = -1;
+		
+		//Calls spin method for Original Roulette game
+		wheelLandsOn = spin;
+		
+		toString(wheelLandsOn, card1, card2, card3);
+		
+		Roulette[] cards = {card1, card2, card3};
+		
+		
+		return cards;
+	}
+	
 	public String toString(Roulette wheelLandsOn, Roulette card1, Roulette card2, Roulette card3) {
 		//Starts MysteryRoulette game
 //		try{
