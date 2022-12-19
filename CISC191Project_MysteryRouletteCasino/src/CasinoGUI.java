@@ -5272,8 +5272,9 @@ public class CasinoGUI extends JFrame{
         			textInput1 = answerP1.getText();
         			if(isInteger(textInput1)) {
                 		numberInput1 = Integer.parseInt(textInput1);
-                		responseP1.setText("Betting Money: " + numberInput1);
+                		responseP1.setText("Added Betting Money: $" + numberInput1);
                 		p[0].getBankAccount().setBalance(numberInput1);
+                		balanceP1.setText("Current Balance: $" + p[0].getBankAccount().getBalance());
                 		questionP1.setText("Add Betting Money!");
         			}else {
         				responseP1.setText("Please input Positive Integer!");
@@ -5283,7 +5284,8 @@ public class CasinoGUI extends JFrame{
         			if(isInteger(textInput1)) {
                 		numberInput1 = Integer.parseInt(textInput1);
                 		p[0].getBankAccount().deposit(numberInput1);
-                		responseP1.setText("Betting Money: " + p[0].getBankAccount().getBalance());
+                		responseP1.setText("Added Betting Money: $" + numberInput1);
+                		balanceP1.setText("Current Balance: $" + p[0].getBankAccount().getBalance());
         			}else {
         				responseP1.setText("Please input Positive Integer!");
         			}
@@ -5293,8 +5295,9 @@ public class CasinoGUI extends JFrame{
         			textInput2 = answerP2.getText();
         			if(isInteger(textInput2)) {
         				numberInput2 = Integer.parseInt(textInput2);
-                		responseP2.setText("Betting Money: " + numberInput2);
+                		responseP2.setText("Added Betting Money: $" + numberInput2);
                 		p[1].getBankAccount().setBalance(numberInput2);
+                		balanceP2.setText("Current Balance: $" + p[1].getBankAccount().getBalance());
                 		questionP2.setText("Add Betting Money!");
         			}else {
         				responseP2.setText("Please input Positive Integer!");
@@ -5304,7 +5307,8 @@ public class CasinoGUI extends JFrame{
         			if(isInteger(textInput2)) {
                 		numberInput2 = Integer.parseInt(textInput2);
                 		p[1].getBankAccount().deposit(numberInput2);
-                		responseP2.setText("Betting Money: " + p[1].getBankAccount().getBalance());
+                		responseP2.setText("Added Betting Money: $" + numberInput2);
+                		balanceP2.setText("Current Balance: $" + p[1].getBankAccount().getBalance());
         			}else {
         				responseP2.setText("Please input Positive Integer!");
         			}
@@ -5314,8 +5318,9 @@ public class CasinoGUI extends JFrame{
         			textInput3 = answerP3.getText();
         			if(isInteger(textInput3)) {
         				numberInput3 = Integer.parseInt(textInput3);
-                		responseP3.setText("Betting Money: " + numberInput3);
+                		responseP3.setText("Added Betting Money: $" + numberInput3);
                 		p[2].getBankAccount().setBalance(numberInput3);
+                		balanceP3.setText("Current Balance: $" + p[2].getBankAccount().getBalance());
                 		questionP3.setText("Add Betting Money!");
         			}else {
         				responseP3.setText("Please input Positive Integer!");
@@ -5325,7 +5330,8 @@ public class CasinoGUI extends JFrame{
         			if(isInteger(textInput3)) {
                 		numberInput3 = Integer.parseInt(textInput3);
                 		p[2].getBankAccount().deposit(numberInput3);
-                		responseP3.setText("Betting Money: " + p[2].getBankAccount().getBalance());
+                		responseP3.setText("Added Betting Money: $" + numberInput3);
+                		balanceP3.setText("Current Balance: $" + p[2].getBankAccount().getBalance());
         			}else {
         				responseP3.setText("Please input Positive Integer!");
         			}
@@ -5335,8 +5341,9 @@ public class CasinoGUI extends JFrame{
         			textInput4 = answerP4.getText();
         			if(isInteger(textInput4)) {
         				numberInput4 = Integer.parseInt(textInput4);
-                		responseP4.setText("Betting Money: " + numberInput4);
+                		responseP4.setText("Added Betting Money: $" + numberInput4);
                 		p[3].getBankAccount().setBalance(numberInput4);
+                		balanceP4.setText("Current Balance: $" + p[3].getBankAccount().getBalance());
                 		questionP4.setText("Add Betting Money!");
         			}else {
         				responseP4.setText("Please input Positive Integer!");
@@ -5346,7 +5353,8 @@ public class CasinoGUI extends JFrame{
         			if(isInteger(textInput4)) {
                 		numberInput4 = Integer.parseInt(textInput4);
                 		p[3].getBankAccount().deposit(numberInput4);
-                		responseP4.setText("Betting Money: " + p[3].getBankAccount().getBalance());
+                		responseP4.setText("Added Betting Money: $" + numberInput4);
+                		balanceP4.setText("Current Balance: $" + p[3].getBankAccount().getBalance());
         			}else {
         				responseP4.setText("Please input Positive Integer!");
         			}
@@ -5403,487 +5411,487 @@ public class CasinoGUI extends JFrame{
     		p[1].getBetOnRoulette()[0] *= 36;
     		p[2].getBetOnRoulette()[0] *= 36;
     		p[3].getBetOnRoulette()[0] *= 36;
-    	}else if(rouletteWin.getNumber() != 0) {
+    	} if(rouletteWin.getNumber() != 0) {
     		p[0].getBetOnRoulette()[0] = 0;
     		p[1].getBetOnRoulette()[0] = 0;
     		p[2].getBetOnRoulette()[0] = 0;
     		p[3].getBetOnRoulette()[0] = 0;
-    	}else if(rouletteWin.getNumber() == 1) {
+    	} if(rouletteWin.getNumber() == 1) {
     		p[0].getBetOnRoulette()[1] *= 36;
     		p[1].getBetOnRoulette()[1] *= 36;
     		p[2].getBetOnRoulette()[1] *= 36;
     		p[3].getBetOnRoulette()[1] *= 36;
-    	}else if(rouletteWin.getNumber() != 1) {
+    	} if(rouletteWin.getNumber() != 1) {
     		p[0].getBetOnRoulette()[1] = 0;
     		p[1].getBetOnRoulette()[1] = 0;
     		p[2].getBetOnRoulette()[1] = 0;
     		p[3].getBetOnRoulette()[1] = 0;
-    	}else if(rouletteWin.getNumber() == 2) {
+    	} if(rouletteWin.getNumber() == 2) {
     		p[0].getBetOnRoulette()[2] *= 36;
     		p[1].getBetOnRoulette()[2] *= 36;
     		p[2].getBetOnRoulette()[2] *= 36;
     		p[3].getBetOnRoulette()[2] *= 36;
-    	}else if(rouletteWin.getNumber() != 2) {
+    	} if(rouletteWin.getNumber() != 2) {
     		p[0].getBetOnRoulette()[2] = 0;
     		p[1].getBetOnRoulette()[2] = 0;
     		p[2].getBetOnRoulette()[2] = 0;
     		p[3].getBetOnRoulette()[2] = 0;
-    	}else if(rouletteWin.getNumber() == 3) {
+    	} if(rouletteWin.getNumber() == 3) {
     		p[0].getBetOnRoulette()[3] *= 36;
     		p[1].getBetOnRoulette()[3] *= 36;
     		p[2].getBetOnRoulette()[3] *= 36;
     		p[3].getBetOnRoulette()[3] *= 36;
-    	}else if(rouletteWin.getNumber() != 3) {
+    	} if(rouletteWin.getNumber() != 3) {
     		p[0].getBetOnRoulette()[3] = 0;
     		p[1].getBetOnRoulette()[3] = 0;
     		p[2].getBetOnRoulette()[3] = 0;
     		p[3].getBetOnRoulette()[3] = 0;
-    	}else if(rouletteWin.getNumber() == 4) {
+    	} if(rouletteWin.getNumber() == 4) {
     		p[0].getBetOnRoulette()[4] *= 36;
     		p[1].getBetOnRoulette()[4] *= 36;
     		p[2].getBetOnRoulette()[4] *= 36;
     		p[3].getBetOnRoulette()[4] *= 36;
-    	}else if(rouletteWin.getNumber() != 4) {
+    	} if(rouletteWin.getNumber() != 4) {
     		p[0].getBetOnRoulette()[4] = 0;
     		p[1].getBetOnRoulette()[4] = 0;
     		p[2].getBetOnRoulette()[4] = 0;
     		p[3].getBetOnRoulette()[4] = 0;
-    	}else if(rouletteWin.getNumber() == 5) {
+    	} if(rouletteWin.getNumber() == 5) {
     		p[0].getBetOnRoulette()[5] *= 36;
     		p[1].getBetOnRoulette()[5] *= 36;
     		p[2].getBetOnRoulette()[5] *= 36;
     		p[3].getBetOnRoulette()[5] *= 36;
-    	}else if(rouletteWin.getNumber() != 5) {
+    	} if(rouletteWin.getNumber() != 5) {
     		p[0].getBetOnRoulette()[5] = 0;
     		p[1].getBetOnRoulette()[5] = 0;
     		p[2].getBetOnRoulette()[5] = 0;
     		p[3].getBetOnRoulette()[5] = 0;
-    	}else if(rouletteWin.getNumber() == 6) {
+    	} if(rouletteWin.getNumber() == 6) {
     		p[0].getBetOnRoulette()[6] *= 36;
     		p[1].getBetOnRoulette()[6] *= 36;
     		p[2].getBetOnRoulette()[6] *= 36;
     		p[3].getBetOnRoulette()[6] *= 36;
-    	}else if(rouletteWin.getNumber() != 6) {
+    	} if(rouletteWin.getNumber() != 6) {
     		p[0].getBetOnRoulette()[6] = 0;
     		p[1].getBetOnRoulette()[6] = 0;
     		p[2].getBetOnRoulette()[6] = 0;
     		p[3].getBetOnRoulette()[6] = 0;
-    	}else if(rouletteWin.getNumber() == 7) {
+    	} if(rouletteWin.getNumber() == 7) {
     		p[0].getBetOnRoulette()[7] *= 36;
     		p[1].getBetOnRoulette()[7] *= 36;
     		p[2].getBetOnRoulette()[7] *= 36;
     		p[3].getBetOnRoulette()[7] *= 36;
-    	}else if(rouletteWin.getNumber() != 7) {
+    	} if(rouletteWin.getNumber() != 7) {
     		p[0].getBetOnRoulette()[7] = 0;
     		p[1].getBetOnRoulette()[7] = 0;
     		p[2].getBetOnRoulette()[7] = 0;
     		p[3].getBetOnRoulette()[7] = 0;
-    	}else if(rouletteWin.getNumber() == 8) {
+    	} if(rouletteWin.getNumber() == 8) {
     		p[0].getBetOnRoulette()[8] *= 36;
     		p[1].getBetOnRoulette()[8] *= 36;
     		p[2].getBetOnRoulette()[8] *= 36;
     		p[3].getBetOnRoulette()[8] *= 36;
-    	}else if(rouletteWin.getNumber() != 8) {
+    	} if(rouletteWin.getNumber() != 8) {
     		p[0].getBetOnRoulette()[8] = 0;
     		p[1].getBetOnRoulette()[8] = 0;
     		p[2].getBetOnRoulette()[8] = 0;
     		p[3].getBetOnRoulette()[8] = 0;
-    	}else if(rouletteWin.getNumber() == 9) {
+    	} if(rouletteWin.getNumber() == 9) {
     		p[0].getBetOnRoulette()[9] *= 36;
     		p[1].getBetOnRoulette()[9] *= 36;
     		p[2].getBetOnRoulette()[9] *= 36;
     		p[3].getBetOnRoulette()[9] *= 36;
-    	}else if(rouletteWin.getNumber() != 9) {
+    	} if(rouletteWin.getNumber() != 9) {
     		p[0].getBetOnRoulette()[9] = 0;
     		p[1].getBetOnRoulette()[9] = 0;
     		p[2].getBetOnRoulette()[9] = 0;
     		p[3].getBetOnRoulette()[9] = 0;
-    	}else if(rouletteWin.getNumber() == 10) {
+    	} if(rouletteWin.getNumber() == 10) {
     		p[0].getBetOnRoulette()[10] *= 36;
     		p[1].getBetOnRoulette()[10] *= 36;
     		p[2].getBetOnRoulette()[10] *= 36;
     		p[3].getBetOnRoulette()[10] *= 36;
-    	}else if(rouletteWin.getNumber() != 10) {
+    	} if(rouletteWin.getNumber() != 10) {
     		p[0].getBetOnRoulette()[10] = 0;
     		p[1].getBetOnRoulette()[10] = 0;
     		p[2].getBetOnRoulette()[10] = 0;
     		p[3].getBetOnRoulette()[10] = 0;
-    	}else if(rouletteWin.getNumber() == 11) {
+    	} if(rouletteWin.getNumber() == 11) {
     		p[0].getBetOnRoulette()[11] *= 36;
     		p[1].getBetOnRoulette()[11] *= 36;
     		p[2].getBetOnRoulette()[11] *= 36;
     		p[3].getBetOnRoulette()[11] *= 36;
-    	}else if(rouletteWin.getNumber() != 11) {
+    	} if(rouletteWin.getNumber() != 11) {
     		p[0].getBetOnRoulette()[11] = 0;
     		p[1].getBetOnRoulette()[11] = 0;
     		p[2].getBetOnRoulette()[11] = 0;
     		p[3].getBetOnRoulette()[11] = 0;
-    	}else if(rouletteWin.getNumber() == 12) {
+    	} if(rouletteWin.getNumber() == 12) {
     		p[0].getBetOnRoulette()[12] *= 36;
     		p[1].getBetOnRoulette()[12] *= 36;
     		p[2].getBetOnRoulette()[12] *= 36;
     		p[3].getBetOnRoulette()[12] *= 36;
-    	}else if(rouletteWin.getNumber() != 12) {
+    	} if(rouletteWin.getNumber() != 12) {
     		p[0].getBetOnRoulette()[12] = 0;
     		p[1].getBetOnRoulette()[12] = 0;
     		p[2].getBetOnRoulette()[12] = 0;
     		p[3].getBetOnRoulette()[12] = 0;
-    	}else if(rouletteWin.getNumber() == 13) {
+    	} if(rouletteWin.getNumber() == 13) {
     		p[0].getBetOnRoulette()[13] *= 36;
     		p[1].getBetOnRoulette()[13] *= 36;
     		p[2].getBetOnRoulette()[13] *= 36;
     		p[3].getBetOnRoulette()[13] *= 36;
-    	}else if(rouletteWin.getNumber() != 13) {
+    	} if(rouletteWin.getNumber() != 13) {
     		p[0].getBetOnRoulette()[13] = 0;
     		p[1].getBetOnRoulette()[13] = 0;
     		p[2].getBetOnRoulette()[13] = 0;
     		p[3].getBetOnRoulette()[13] = 0;
-    	}else if(rouletteWin.getNumber() == 14) {
+    	} if(rouletteWin.getNumber() == 14) {
     		p[0].getBetOnRoulette()[14] *= 36;
     		p[1].getBetOnRoulette()[14] *= 36;
     		p[2].getBetOnRoulette()[14] *= 36;
     		p[3].getBetOnRoulette()[14] *= 36;
-    	}else if(rouletteWin.getNumber() != 14) {
+    	} if(rouletteWin.getNumber() != 14) {
     		p[0].getBetOnRoulette()[14] = 0;
     		p[1].getBetOnRoulette()[14] = 0;
     		p[2].getBetOnRoulette()[14] = 0;
     		p[3].getBetOnRoulette()[14] = 0;
-    	}else if(rouletteWin.getNumber() == 15) {
+    	} if(rouletteWin.getNumber() == 15) {
     		p[0].getBetOnRoulette()[15] *= 36;
     		p[1].getBetOnRoulette()[15] *= 36;
     		p[2].getBetOnRoulette()[15] *= 36;
     		p[3].getBetOnRoulette()[15] *= 36;
-    	}else if(rouletteWin.getNumber() != 15) {
+    	} if(rouletteWin.getNumber() != 15) {
     		p[0].getBetOnRoulette()[15] = 0;
     		p[1].getBetOnRoulette()[15] = 0;
     		p[2].getBetOnRoulette()[15] = 0;
     		p[3].getBetOnRoulette()[15] = 0;
-    	}else if(rouletteWin.getNumber() == 16) {
+    	} if(rouletteWin.getNumber() == 16) {
     		p[0].getBetOnRoulette()[16] *= 36;
     		p[1].getBetOnRoulette()[16] *= 36;
     		p[2].getBetOnRoulette()[16] *= 36;
     		p[3].getBetOnRoulette()[16] *= 36;
-    	}else if(rouletteWin.getNumber() != 16) {
+    	} if(rouletteWin.getNumber() != 16) {
     		p[0].getBetOnRoulette()[16] = 0;
     		p[1].getBetOnRoulette()[16] = 0;
     		p[2].getBetOnRoulette()[16] = 0;
     		p[3].getBetOnRoulette()[16] = 0;
-    	}else if(rouletteWin.getNumber() == 17) {
+    	} if(rouletteWin.getNumber() == 17) {
     		p[0].getBetOnRoulette()[17] *= 36;
     		p[1].getBetOnRoulette()[17] *= 36;
     		p[2].getBetOnRoulette()[17] *= 36;
     		p[3].getBetOnRoulette()[17] *= 36;
-    	}else if(rouletteWin.getNumber() != 17) {
+    	} if(rouletteWin.getNumber() != 17) {
     		p[0].getBetOnRoulette()[17] = 0;
     		p[1].getBetOnRoulette()[17] = 0;
     		p[2].getBetOnRoulette()[17] = 0;
     		p[3].getBetOnRoulette()[17] = 0;
-    	}else if(rouletteWin.getNumber() == 18) {
+    	} if(rouletteWin.getNumber() == 18) {
     		p[0].getBetOnRoulette()[18] *= 36;
     		p[1].getBetOnRoulette()[18] *= 36;
     		p[2].getBetOnRoulette()[18] *= 36;
     		p[3].getBetOnRoulette()[18] *= 36;
-    	}else if(rouletteWin.getNumber() != 18) {
+    	} if(rouletteWin.getNumber() != 18) {
     		p[0].getBetOnRoulette()[18] = 0;
     		p[1].getBetOnRoulette()[18] = 0;
     		p[2].getBetOnRoulette()[18] = 0;
     		p[3].getBetOnRoulette()[18] = 0;
-    	}else if(rouletteWin.getNumber() == 19) {
+    	} if(rouletteWin.getNumber() == 19) {
     		p[0].getBetOnRoulette()[19] *= 36;
     		p[1].getBetOnRoulette()[19] *= 36;
     		p[2].getBetOnRoulette()[19] *= 36;
     		p[3].getBetOnRoulette()[19] *= 36;
-    	}else if(rouletteWin.getNumber() != 19) {
+    	} if(rouletteWin.getNumber() != 19) {
     		p[0].getBetOnRoulette()[19] = 0;
     		p[1].getBetOnRoulette()[19] = 0;
     		p[2].getBetOnRoulette()[19] = 0;
     		p[3].getBetOnRoulette()[19] = 0;
-    	}else if(rouletteWin.getNumber() == 20) {
+    	} if(rouletteWin.getNumber() == 20) {
     		p[0].getBetOnRoulette()[20] *= 36;
     		p[1].getBetOnRoulette()[20] *= 36;
     		p[2].getBetOnRoulette()[20] *= 36;
     		p[3].getBetOnRoulette()[20] *= 36;
-    	}else if(rouletteWin.getNumber() != 20) {
+    	} if(rouletteWin.getNumber() != 20) {
     		p[0].getBetOnRoulette()[20] = 0;
     		p[1].getBetOnRoulette()[20] = 0;
     		p[2].getBetOnRoulette()[20] = 0;
     		p[3].getBetOnRoulette()[20] = 0;
-    	}else if(rouletteWin.getNumber() == 21) {
+    	} if(rouletteWin.getNumber() == 21) {
     		p[0].getBetOnRoulette()[21] *= 36;
     		p[1].getBetOnRoulette()[21] *= 36;
     		p[2].getBetOnRoulette()[21] *= 36;
     		p[3].getBetOnRoulette()[21] *= 36;
-    	}else if(rouletteWin.getNumber() != 21) {
+    	} if(rouletteWin.getNumber() != 21) {
     		p[0].getBetOnRoulette()[21] = 0;
     		p[1].getBetOnRoulette()[21] = 0;
     		p[2].getBetOnRoulette()[21] = 0;
     		p[3].getBetOnRoulette()[21] = 0;
-    	}else if(rouletteWin.getNumber() == 22) {
+    	} if(rouletteWin.getNumber() == 22) {
     		p[0].getBetOnRoulette()[22] *= 36;
     		p[1].getBetOnRoulette()[22] *= 36;
     		p[2].getBetOnRoulette()[22] *= 36;
     		p[3].getBetOnRoulette()[22] *= 36;
-    	}else if(rouletteWin.getNumber() != 22) {
+    	} if(rouletteWin.getNumber() != 22) {
     		p[0].getBetOnRoulette()[22] = 0;
     		p[1].getBetOnRoulette()[22] = 0;
     		p[2].getBetOnRoulette()[22] = 0;
     		p[3].getBetOnRoulette()[22] = 0;
-    	}else if(rouletteWin.getNumber() == 23) {
+    	} if(rouletteWin.getNumber() == 23) {
     		p[0].getBetOnRoulette()[23] *= 36;
     		p[1].getBetOnRoulette()[23] *= 36;
     		p[2].getBetOnRoulette()[23] *= 36;
     		p[3].getBetOnRoulette()[23] *= 36;
-    	}else if(rouletteWin.getNumber() != 23) {
+    	} if(rouletteWin.getNumber() != 23) {
     		p[0].getBetOnRoulette()[23] = 0;
     		p[1].getBetOnRoulette()[23] = 0;
     		p[2].getBetOnRoulette()[23] = 0;
     		p[3].getBetOnRoulette()[23] = 0;
-    	}else if(rouletteWin.getNumber() == 24) {
+    	} if(rouletteWin.getNumber() == 24) {
     		p[0].getBetOnRoulette()[24] *= 36;
     		p[1].getBetOnRoulette()[24] *= 36;
     		p[2].getBetOnRoulette()[24] *= 36;
     		p[3].getBetOnRoulette()[24] *= 36;
-    	}else if(rouletteWin.getNumber() != 24) {
+    	} if(rouletteWin.getNumber() != 24) {
     		p[0].getBetOnRoulette()[24] = 0;
     		p[1].getBetOnRoulette()[24] = 0;
     		p[2].getBetOnRoulette()[24] = 0;
     		p[3].getBetOnRoulette()[24] = 0;
-    	}else if(rouletteWin.getNumber() == 25) {
+    	} if(rouletteWin.getNumber() == 25) {
     		p[0].getBetOnRoulette()[25] *= 36;
     		p[1].getBetOnRoulette()[25] *= 36;
     		p[2].getBetOnRoulette()[25] *= 36;
     		p[3].getBetOnRoulette()[25] *= 36;
-    	}else if(rouletteWin.getNumber() != 25) {
+    	} if(rouletteWin.getNumber() != 25) {
     		p[0].getBetOnRoulette()[25] = 0;
     		p[1].getBetOnRoulette()[25] = 0;
     		p[2].getBetOnRoulette()[25] = 0;
     		p[3].getBetOnRoulette()[25] = 0;
-    	}else if(rouletteWin.getNumber() == 26) {
+    	} if(rouletteWin.getNumber() == 26) {
     		p[0].getBetOnRoulette()[26] *= 36;
     		p[1].getBetOnRoulette()[26] *= 36;
     		p[2].getBetOnRoulette()[26] *= 36;
     		p[3].getBetOnRoulette()[26] *= 36;
-    	}else if(rouletteWin.getNumber() != 26) {
+    	} if(rouletteWin.getNumber() != 26) {
     		p[0].getBetOnRoulette()[26] = 0;
     		p[1].getBetOnRoulette()[26] = 0;
     		p[2].getBetOnRoulette()[26] = 0;
     		p[3].getBetOnRoulette()[26] = 0;
-    	}else if(rouletteWin.getNumber() == 27) {
+    	} if(rouletteWin.getNumber() == 27) {
     		p[0].getBetOnRoulette()[27] *= 36;
     		p[1].getBetOnRoulette()[27] *= 36;
     		p[2].getBetOnRoulette()[27] *= 36;
     		p[3].getBetOnRoulette()[27] *= 36;
-    	}else if(rouletteWin.getNumber() != 27) {
+    	} if(rouletteWin.getNumber() != 27) {
     		p[0].getBetOnRoulette()[27] = 0;
     		p[1].getBetOnRoulette()[27] = 0;
     		p[2].getBetOnRoulette()[27] = 0;
     		p[3].getBetOnRoulette()[27] = 0;
-    	}else if(rouletteWin.getNumber() == 28) {
+    	} if(rouletteWin.getNumber() == 28) {
     		p[0].getBetOnRoulette()[28] *= 36;
     		p[1].getBetOnRoulette()[28] *= 36;
     		p[2].getBetOnRoulette()[28] *= 36;
     		p[3].getBetOnRoulette()[28] *= 36;
-    	}else if(rouletteWin.getNumber() != 28) {
+    	} if(rouletteWin.getNumber() != 28) {
     		p[0].getBetOnRoulette()[28] = 0;
     		p[1].getBetOnRoulette()[28] = 0;
     		p[2].getBetOnRoulette()[28] = 0;
     		p[3].getBetOnRoulette()[28] = 0;
-    	}else if(rouletteWin.getNumber() == 29) {
+    	} if(rouletteWin.getNumber() == 29) {
     		p[0].getBetOnRoulette()[29] *= 36;
     		p[1].getBetOnRoulette()[29] *= 36;
     		p[2].getBetOnRoulette()[29] *= 36;
     		p[3].getBetOnRoulette()[29] *= 36;
-    	}else if(rouletteWin.getNumber() != 29) {
+    	} if(rouletteWin.getNumber() != 29) {
     		p[0].getBetOnRoulette()[29] = 0;
     		p[1].getBetOnRoulette()[29] = 0;
     		p[2].getBetOnRoulette()[29] = 0;
     		p[3].getBetOnRoulette()[29] = 0;
-    	}else if(rouletteWin.getNumber() == 30) {
+    	} if(rouletteWin.getNumber() == 30) {
     		p[0].getBetOnRoulette()[30] *= 36;
     		p[1].getBetOnRoulette()[30] *= 36;
     		p[2].getBetOnRoulette()[30] *= 36;
     		p[3].getBetOnRoulette()[30] *= 36;
-    	}else if(rouletteWin.getNumber() != 30) {
+    	} if(rouletteWin.getNumber() != 30) {
     		p[0].getBetOnRoulette()[30] = 0;
     		p[1].getBetOnRoulette()[30] = 0;
     		p[2].getBetOnRoulette()[30] = 0;
     		p[3].getBetOnRoulette()[30] = 0;
-    	}else if(rouletteWin.getNumber() == 31) {
+    	} if(rouletteWin.getNumber() == 31) {
     		p[0].getBetOnRoulette()[31] *= 36;
     		p[1].getBetOnRoulette()[31] *= 36;
     		p[2].getBetOnRoulette()[31] *= 36;
     		p[3].getBetOnRoulette()[31] *= 36;
-    	}else if(rouletteWin.getNumber() != 31) {
+    	} if(rouletteWin.getNumber() != 31) {
     		p[0].getBetOnRoulette()[31] = 0;
     		p[1].getBetOnRoulette()[31] = 0;
     		p[2].getBetOnRoulette()[31] = 0;
     		p[3].getBetOnRoulette()[31] = 0;
-    	}else if(rouletteWin.getNumber() == 32) {
+    	} if(rouletteWin.getNumber() == 32) {
     		p[0].getBetOnRoulette()[32] *= 36;
     		p[1].getBetOnRoulette()[32] *= 36;
     		p[2].getBetOnRoulette()[32] *= 36;
     		p[3].getBetOnRoulette()[32] *= 36;
-    	}else if(rouletteWin.getNumber() != 32) {
+    	} if(rouletteWin.getNumber() != 32) {
     		p[0].getBetOnRoulette()[32] = 0;
     		p[1].getBetOnRoulette()[32] = 0;
     		p[2].getBetOnRoulette()[32] = 0;
     		p[3].getBetOnRoulette()[32] = 0;
-    	}else if(rouletteWin.getNumber() == 33) {
+    	} if(rouletteWin.getNumber() == 33) {
     		p[0].getBetOnRoulette()[33] *= 36;
     		p[1].getBetOnRoulette()[33] *= 36;
     		p[2].getBetOnRoulette()[33] *= 36;
     		p[3].getBetOnRoulette()[33] *= 36;
-    	}else if(rouletteWin.getNumber() != 33) {
+    	} if(rouletteWin.getNumber() != 33) {
     		p[0].getBetOnRoulette()[33] = 0;
     		p[1].getBetOnRoulette()[33] = 0;
     		p[2].getBetOnRoulette()[33] = 0;
     		p[3].getBetOnRoulette()[33] = 0;
-    	}else if(rouletteWin.getNumber() == 34) {
+    	} if(rouletteWin.getNumber() == 34) {
     		p[0].getBetOnRoulette()[34] *= 36;
     		p[1].getBetOnRoulette()[34] *= 36;
     		p[2].getBetOnRoulette()[34] *= 36;
     		p[3].getBetOnRoulette()[34] *= 36;
-    	}else if(rouletteWin.getNumber() != 34) {
+    	} if(rouletteWin.getNumber() != 34) {
     		p[0].getBetOnRoulette()[34] = 0;
     		p[1].getBetOnRoulette()[34] = 0;
     		p[2].getBetOnRoulette()[34] = 0;
     		p[3].getBetOnRoulette()[34] = 0;
-    	}else if(rouletteWin.getNumber() == 35) {
+    	} if(rouletteWin.getNumber() == 35) {
     		p[0].getBetOnRoulette()[35] *= 36;
     		p[1].getBetOnRoulette()[35] *= 36;
     		p[2].getBetOnRoulette()[35] *= 36;
     		p[3].getBetOnRoulette()[35] *= 36;
-    	}else if(rouletteWin.getNumber() != 35) {
+    	} if(rouletteWin.getNumber() != 35) {
     		p[0].getBetOnRoulette()[35] = 0;
     		p[1].getBetOnRoulette()[35] = 0;
     		p[2].getBetOnRoulette()[35] = 0;
     		p[3].getBetOnRoulette()[35] = 0;
-    	}else if(rouletteWin.getNumber() == 36) {
+    	} if(rouletteWin.getNumber() == 36) {
     		p[0].getBetOnRoulette()[36] *= 36;
     		p[1].getBetOnRoulette()[36] *= 36;
     		p[2].getBetOnRoulette()[36] *= 36;
     		p[3].getBetOnRoulette()[36] *= 36;
-    	}else if(rouletteWin.getNumber() != 36) {
+    	} if(rouletteWin.getNumber() != 36) {
     		p[0].getBetOnRoulette()[36] = 0;
     		p[1].getBetOnRoulette()[36] = 0;
     		p[2].getBetOnRoulette()[36] = 0;
     		p[3].getBetOnRoulette()[36] = 0;
-    	}else if(inRow(1, rouletteWin.getNumber())) {
+    	} if(inRow(1, rouletteWin.getNumber())) {
     		p[0].getBetOnRoulette()[37] *= 2;
     		p[1].getBetOnRoulette()[37] *= 2;
     		p[2].getBetOnRoulette()[37] *= 2;
     		p[3].getBetOnRoulette()[37] *= 2;
-    	}else if(!inRow(1, rouletteWin.getNumber())) {
+    	} if(!inRow(1, rouletteWin.getNumber())) {
     		p[0].getBetOnRoulette()[37] = 0;
     		p[1].getBetOnRoulette()[37] = 0;
     		p[2].getBetOnRoulette()[37] = 0;
     		p[3].getBetOnRoulette()[37] = 0;
-    	}else if(inRow(2, rouletteWin.getNumber())) {
+    	} if(inRow(2, rouletteWin.getNumber())) {
     		p[0].getBetOnRoulette()[38] *= 2;
     		p[1].getBetOnRoulette()[38] *= 2;
     		p[2].getBetOnRoulette()[38] *= 2;
     		p[3].getBetOnRoulette()[38] *= 2;
-    	}else if(!inRow(2, rouletteWin.getNumber())) {
+    	} if(!inRow(2, rouletteWin.getNumber())) {
     		p[0].getBetOnRoulette()[38] = 0;
     		p[1].getBetOnRoulette()[38] = 0;
     		p[2].getBetOnRoulette()[38] = 0;
     		p[3].getBetOnRoulette()[38] = 0;
-    	}else if(inRow(3, rouletteWin.getNumber())) {
+    	} if(inRow(3, rouletteWin.getNumber())) {
     		p[0].getBetOnRoulette()[39] *= 2;
     		p[1].getBetOnRoulette()[39] *= 2;
     		p[2].getBetOnRoulette()[39] *= 2;
     		p[3].getBetOnRoulette()[39] *= 2;
-    	}else if(!inRow(3, rouletteWin.getNumber())) {
+    	} if(!inRow(3, rouletteWin.getNumber())) {
     		p[0].getBetOnRoulette()[39] = 0;
     		p[1].getBetOnRoulette()[39] = 0;
     		p[2].getBetOnRoulette()[39] = 0;
     		p[3].getBetOnRoulette()[39] = 0;
-    	}else if(1 <= rouletteWin.getNumber() && rouletteWin.getNumber() <= 12) {
+    	} if(1 <= rouletteWin.getNumber() && rouletteWin.getNumber() <= 12) {
     		p[0].getBetOnRoulette()[40] *= 2;
     		p[1].getBetOnRoulette()[40] *= 2;
     		p[2].getBetOnRoulette()[40] *= 2;
     		p[3].getBetOnRoulette()[40] *= 2;
-    	}else if((13 <= rouletteWin.getNumber() && rouletteWin.getNumber() <= 36) || rouletteWin.getNumber() == 0) {
+    	} if((13 <= rouletteWin.getNumber() && rouletteWin.getNumber() <= 36) || rouletteWin.getNumber() == 0) {
     		p[0].getBetOnRoulette()[40] = 0;
     		p[1].getBetOnRoulette()[40] = 0;
     		p[2].getBetOnRoulette()[40] = 0;
     		p[3].getBetOnRoulette()[40] = 0;
-    	}else if(13 <= rouletteWin.getNumber() && rouletteWin.getNumber() <= 24) {
+    	} if(13 <= rouletteWin.getNumber() && rouletteWin.getNumber() <= 24) {
     		p[0].getBetOnRoulette()[41] *= 2;
     		p[1].getBetOnRoulette()[41] *= 2;
     		p[2].getBetOnRoulette()[41] *= 2;
     		p[3].getBetOnRoulette()[41] *= 2;
-    	}else if((0 <= rouletteWin.getNumber() && rouletteWin.getNumber() <= 12) || (25 <= rouletteWin.getNumber() && rouletteWin.getNumber() <= 36)) {
+    	} if((0 <= rouletteWin.getNumber() && rouletteWin.getNumber() <= 12) || (25 <= rouletteWin.getNumber() && rouletteWin.getNumber() <= 36)) {
     		p[0].getBetOnRoulette()[41] = 0;
     		p[1].getBetOnRoulette()[41] = 0;
     		p[2].getBetOnRoulette()[41] = 0;
     		p[3].getBetOnRoulette()[41] = 0;
-    	}else if(25 <= rouletteWin.getNumber() && rouletteWin.getNumber() <= 36) {
+    	} if(25 <= rouletteWin.getNumber() && rouletteWin.getNumber() <= 36) {
     		p[0].getBetOnRoulette()[42] *= 2;
     		p[1].getBetOnRoulette()[42] *= 2;
     		p[2].getBetOnRoulette()[42] *= 2;
     		p[3].getBetOnRoulette()[42] *= 2;
-    	}else if(0 <= rouletteWin.getNumber() && rouletteWin.getNumber() <= 24) {
+    	} if(0 <= rouletteWin.getNumber() && rouletteWin.getNumber() <= 24) {
     		p[0].getBetOnRoulette()[42] = 0;
     		p[1].getBetOnRoulette()[42] = 0;
     		p[2].getBetOnRoulette()[42] = 0;
     		p[3].getBetOnRoulette()[42] = 0;
-    	}else if(1 <= rouletteWin.getNumber() && rouletteWin.getNumber() <= 18) {
+    	} if(1 <= rouletteWin.getNumber() && rouletteWin.getNumber() <= 18) {
     		p[0].getBetOnRoulette()[43] *= 2;
     		p[1].getBetOnRoulette()[43] *= 2;
     		p[2].getBetOnRoulette()[43] *= 2;
     		p[3].getBetOnRoulette()[43] *= 2;
-    	}else if(rouletteWin.getNumber() == 0 || (19 <= rouletteWin.getNumber() && rouletteWin.getNumber() <= 36)) {
+    	} if(rouletteWin.getNumber() == 0 || (19 <= rouletteWin.getNumber() && rouletteWin.getNumber() <= 36)) {
     		p[0].getBetOnRoulette()[43] = 0;
     		p[1].getBetOnRoulette()[43] = 0;
     		p[2].getBetOnRoulette()[43] = 0;
     		p[3].getBetOnRoulette()[43] = 0;
-    	}else if(19 <= rouletteWin.getNumber() && rouletteWin.getNumber() <= 36) {
+    	} if(19 <= rouletteWin.getNumber() && rouletteWin.getNumber() <= 36) {
     		p[0].getBetOnRoulette()[44] *= 2;
     		p[1].getBetOnRoulette()[44] *= 2;
     		p[2].getBetOnRoulette()[44] *= 2;
     		p[3].getBetOnRoulette()[44] *= 2;
-    	}else if(0 <= rouletteWin.getNumber() && rouletteWin.getNumber() <= 18) {
+    	} if(0 <= rouletteWin.getNumber() && rouletteWin.getNumber() <= 18) {
     		p[0].getBetOnRoulette()[44] = 0;
     		p[1].getBetOnRoulette()[44] = 0;
     		p[2].getBetOnRoulette()[44] = 0;
     		p[3].getBetOnRoulette()[44] = 0;
-    	}else if(rouletteWin.determineOddOrEven().equals("Even")) {
+    	} if(rouletteWin.determineOddOrEven().equals("Even")) {
     		p[0].getBetOnRoulette()[45] *= 2;
     		p[1].getBetOnRoulette()[45] *= 2;
     		p[2].getBetOnRoulette()[45] *= 2;
     		p[3].getBetOnRoulette()[45] *= 2;
-    	}else if(!rouletteWin.determineOddOrEven().equals("Even")) {
+    	} if(!rouletteWin.determineOddOrEven().equals("Even")) {
     		p[0].getBetOnRoulette()[45] = 0;
     		p[1].getBetOnRoulette()[45] = 0;
     		p[2].getBetOnRoulette()[45] = 0;
     		p[3].getBetOnRoulette()[45] = 0;
-    	}else if(rouletteWin.determineOddOrEven().equals("Odd")) {
+    	} if(rouletteWin.determineOddOrEven().equals("Odd")) {
     		p[0].getBetOnRoulette()[46] *= 2;
     		p[1].getBetOnRoulette()[46] *= 2;
     		p[2].getBetOnRoulette()[46] *= 2;
     		p[3].getBetOnRoulette()[46] *= 2;
-    	}else if(!rouletteWin.determineOddOrEven().equals("Odd")) {
+    	} if(!rouletteWin.determineOddOrEven().equals("Odd")) {
     		p[0].getBetOnRoulette()[46] = 0;
     		p[1].getBetOnRoulette()[46] = 0;
     		p[2].getBetOnRoulette()[46] = 0;
     		p[3].getBetOnRoulette()[46] = 0;
-    	}else if(rouletteWin.getColor().equals("Red")) {
+    	} if(rouletteWin.getColor().equals("Red")) {
     		p[0].getBetOnRoulette()[47] *= 2;
     		p[1].getBetOnRoulette()[47] *= 2;
     		p[2].getBetOnRoulette()[47] *= 2;
     		p[3].getBetOnRoulette()[47] *= 2;
-    	}else if(!rouletteWin.getColor().equals("Red")) {
+    	} if(!rouletteWin.getColor().equals("Red")) {
     		p[0].getBetOnRoulette()[47] = 0;
     		p[1].getBetOnRoulette()[47] = 0;
     		p[2].getBetOnRoulette()[47] = 0;
     		p[3].getBetOnRoulette()[47] = 0;
-    	}else if(rouletteWin.getColor().equals("Black")) {
+    	} if(rouletteWin.getColor().equals("Black")) {
     		p[0].getBetOnRoulette()[48] *= 2;
     		p[1].getBetOnRoulette()[48] *= 2;
     		p[2].getBetOnRoulette()[48] *= 2;
     		p[3].getBetOnRoulette()[48] *= 2;
-    	}else if(!rouletteWin.getColor().equals("Black")) {
+    	} if(!rouletteWin.getColor().equals("Black")) {
     		p[0].getBetOnRoulette()[48] = 0;
     		p[1].getBetOnRoulette()[48] = 0;
     		p[2].getBetOnRoulette()[48] = 0;
@@ -5902,487 +5910,487 @@ public class CasinoGUI extends JFrame{
     		p[1].getBetOnMysteryRoulette()[0] *= 36;
     		p[2].getBetOnMysteryRoulette()[0] *= 36;
     		p[3].getBetOnMysteryRoulette()[0] *= 36;
-    	}else if(mysteryRouletteWin.getNumber() != 0) {
+    	} if(mysteryRouletteWin.getNumber() != 0) {
     		p[0].getBetOnMysteryRoulette()[0] = 0;
     		p[1].getBetOnMysteryRoulette()[0] = 0;
     		p[2].getBetOnMysteryRoulette()[0] = 0;
     		p[3].getBetOnMysteryRoulette()[0] = 0;
-    	}else if(mysteryRouletteWin.getNumber() == 1) {
+    	} if(mysteryRouletteWin.getNumber() == 1) {
     		p[0].getBetOnMysteryRoulette()[1] *= 36;
     		p[1].getBetOnMysteryRoulette()[1] *= 36;
     		p[2].getBetOnMysteryRoulette()[1] *= 36;
     		p[3].getBetOnMysteryRoulette()[1] *= 36;
-    	}else if(mysteryRouletteWin.getNumber() != 1) {
+    	} if(mysteryRouletteWin.getNumber() != 1) {
     		p[0].getBetOnMysteryRoulette()[1] = 0;
     		p[1].getBetOnMysteryRoulette()[1] = 0;
     		p[2].getBetOnMysteryRoulette()[1] = 0;
     		p[3].getBetOnMysteryRoulette()[1] = 0;
-    	}else if(mysteryRouletteWin.getNumber() == 2) {
+    	} if(mysteryRouletteWin.getNumber() == 2) {
     		p[0].getBetOnMysteryRoulette()[2] *= 36;
     		p[1].getBetOnMysteryRoulette()[2] *= 36;
     		p[2].getBetOnMysteryRoulette()[2] *= 36;
     		p[3].getBetOnMysteryRoulette()[2] *= 36;
-    	}else if(mysteryRouletteWin.getNumber() != 2) {
+    	} if(mysteryRouletteWin.getNumber() != 2) {
     		p[0].getBetOnMysteryRoulette()[2] = 0;
     		p[1].getBetOnMysteryRoulette()[2] = 0;
     		p[2].getBetOnMysteryRoulette()[2] = 0;
     		p[3].getBetOnMysteryRoulette()[2] = 0;
-    	}else if(mysteryRouletteWin.getNumber() == 3) {
+    	} if(mysteryRouletteWin.getNumber() == 3) {
     		p[0].getBetOnMysteryRoulette()[3] *= 36;
     		p[1].getBetOnMysteryRoulette()[3] *= 36;
     		p[2].getBetOnMysteryRoulette()[3] *= 36;
     		p[3].getBetOnMysteryRoulette()[3] *= 36;
-    	}else if(mysteryRouletteWin.getNumber() != 3) {
+    	} if(mysteryRouletteWin.getNumber() != 3) {
     		p[0].getBetOnMysteryRoulette()[3] = 0;
     		p[1].getBetOnMysteryRoulette()[3] = 0;
     		p[2].getBetOnMysteryRoulette()[3] = 0;
     		p[3].getBetOnMysteryRoulette()[3] = 0;
-    	}else if(mysteryRouletteWin.getNumber() == 4) {
+    	} if(mysteryRouletteWin.getNumber() == 4) {
     		p[0].getBetOnMysteryRoulette()[4] *= 36;
     		p[1].getBetOnMysteryRoulette()[4] *= 36;
     		p[2].getBetOnMysteryRoulette()[4] *= 36;
     		p[3].getBetOnMysteryRoulette()[4] *= 36;
-    	}else if(mysteryRouletteWin.getNumber() != 4) {
+    	} if(mysteryRouletteWin.getNumber() != 4) {
     		p[0].getBetOnMysteryRoulette()[4] = 0;
     		p[1].getBetOnMysteryRoulette()[4] = 0;
     		p[2].getBetOnMysteryRoulette()[4] = 0;
     		p[3].getBetOnMysteryRoulette()[4] = 0;
-    	}else if(mysteryRouletteWin.getNumber() == 5) {
+    	} if(mysteryRouletteWin.getNumber() == 5) {
     		p[0].getBetOnMysteryRoulette()[5] *= 36;
     		p[1].getBetOnMysteryRoulette()[5] *= 36;
     		p[2].getBetOnMysteryRoulette()[5] *= 36;
     		p[3].getBetOnMysteryRoulette()[5] *= 36;
-    	}else if(mysteryRouletteWin.getNumber() != 5) {
+    	} if(mysteryRouletteWin.getNumber() != 5) {
     		p[0].getBetOnMysteryRoulette()[5] = 0;
     		p[1].getBetOnMysteryRoulette()[5] = 0;
     		p[2].getBetOnMysteryRoulette()[5] = 0;
     		p[3].getBetOnMysteryRoulette()[5] = 0;
-    	}else if(mysteryRouletteWin.getNumber() == 6) {
+    	} if(mysteryRouletteWin.getNumber() == 6) {
     		p[0].getBetOnMysteryRoulette()[6] *= 36;
     		p[1].getBetOnMysteryRoulette()[6] *= 36;
     		p[2].getBetOnMysteryRoulette()[6] *= 36;
     		p[3].getBetOnMysteryRoulette()[6] *= 36;
-    	}else if(mysteryRouletteWin.getNumber() != 6) {
+    	} if(mysteryRouletteWin.getNumber() != 6) {
     		p[0].getBetOnMysteryRoulette()[6] = 0;
     		p[1].getBetOnMysteryRoulette()[6] = 0;
     		p[2].getBetOnMysteryRoulette()[6] = 0;
     		p[3].getBetOnMysteryRoulette()[6] = 0;
-    	}else if(mysteryRouletteWin.getNumber() == 7) {
+    	} if(mysteryRouletteWin.getNumber() == 7) {
     		p[0].getBetOnMysteryRoulette()[7] *= 36;
     		p[1].getBetOnMysteryRoulette()[7] *= 36;
     		p[2].getBetOnMysteryRoulette()[7] *= 36;
     		p[3].getBetOnMysteryRoulette()[7] *= 36;
-    	}else if(mysteryRouletteWin.getNumber() != 7) {
+    	} if(mysteryRouletteWin.getNumber() != 7) {
     		p[0].getBetOnMysteryRoulette()[7] = 0;
     		p[1].getBetOnMysteryRoulette()[7] = 0;
     		p[2].getBetOnMysteryRoulette()[7] = 0;
     		p[3].getBetOnMysteryRoulette()[7] = 0;
-    	}else if(mysteryRouletteWin.getNumber() == 8) {
+    	} if(mysteryRouletteWin.getNumber() == 8) {
     		p[0].getBetOnMysteryRoulette()[8] *= 36;
     		p[1].getBetOnMysteryRoulette()[8] *= 36;
     		p[2].getBetOnMysteryRoulette()[8] *= 36;
     		p[3].getBetOnMysteryRoulette()[8] *= 36;
-    	}else if(mysteryRouletteWin.getNumber() != 8) {
+    	} if(mysteryRouletteWin.getNumber() != 8) {
     		p[0].getBetOnMysteryRoulette()[8] = 0;
     		p[1].getBetOnMysteryRoulette()[8] = 0;
     		p[2].getBetOnMysteryRoulette()[8] = 0;
     		p[3].getBetOnMysteryRoulette()[8] = 0;
-    	}else if(mysteryRouletteWin.getNumber() == 9) {
+    	} if(mysteryRouletteWin.getNumber() == 9) {
     		p[0].getBetOnMysteryRoulette()[9] *= 36;
     		p[1].getBetOnMysteryRoulette()[9] *= 36;
     		p[2].getBetOnMysteryRoulette()[9] *= 36;
     		p[3].getBetOnMysteryRoulette()[9] *= 36;
-    	}else if(mysteryRouletteWin.getNumber() != 9) {
+    	} if(mysteryRouletteWin.getNumber() != 9) {
     		p[0].getBetOnMysteryRoulette()[9] = 0;
     		p[1].getBetOnMysteryRoulette()[9] = 0;
     		p[2].getBetOnMysteryRoulette()[9] = 0;
     		p[3].getBetOnMysteryRoulette()[9] = 0;
-    	}else if(mysteryRouletteWin.getNumber() == 10) {
+    	} if(mysteryRouletteWin.getNumber() == 10) {
     		p[0].getBetOnMysteryRoulette()[10] *= 36;
     		p[1].getBetOnMysteryRoulette()[10] *= 36;
     		p[2].getBetOnMysteryRoulette()[10] *= 36;
     		p[3].getBetOnMysteryRoulette()[10] *= 36;
-    	}else if(mysteryRouletteWin.getNumber() != 10) {
+    	} if(mysteryRouletteWin.getNumber() != 10) {
     		p[0].getBetOnMysteryRoulette()[10] = 0;
     		p[1].getBetOnMysteryRoulette()[10] = 0;
     		p[2].getBetOnMysteryRoulette()[10] = 0;
     		p[3].getBetOnMysteryRoulette()[10] = 0;
-    	}else if(mysteryRouletteWin.getNumber() == 11) {
+    	} if(mysteryRouletteWin.getNumber() == 11) {
     		p[0].getBetOnMysteryRoulette()[11] *= 36;
     		p[1].getBetOnMysteryRoulette()[11] *= 36;
     		p[2].getBetOnMysteryRoulette()[11] *= 36;
     		p[3].getBetOnMysteryRoulette()[11] *= 36;
-    	}else if(mysteryRouletteWin.getNumber() != 11) {
+    	} if(mysteryRouletteWin.getNumber() != 11) {
     		p[0].getBetOnMysteryRoulette()[11] = 0;
     		p[1].getBetOnMysteryRoulette()[11] = 0;
     		p[2].getBetOnMysteryRoulette()[11] = 0;
     		p[3].getBetOnMysteryRoulette()[11] = 0;
-    	}else if(mysteryRouletteWin.getNumber() == 12) {
+    	} if(mysteryRouletteWin.getNumber() == 12) {
     		p[0].getBetOnMysteryRoulette()[12] *= 36;
     		p[1].getBetOnMysteryRoulette()[12] *= 36;
     		p[2].getBetOnMysteryRoulette()[12] *= 36;
     		p[3].getBetOnMysteryRoulette()[12] *= 36;
-    	}else if(mysteryRouletteWin.getNumber() != 12) {
+    	} if(mysteryRouletteWin.getNumber() != 12) {
     		p[0].getBetOnMysteryRoulette()[12] = 0;
     		p[1].getBetOnMysteryRoulette()[12] = 0;
     		p[2].getBetOnMysteryRoulette()[12] = 0;
     		p[3].getBetOnMysteryRoulette()[12] = 0;
-    	}else if(mysteryRouletteWin.getNumber() == 13) {
+    	} if(mysteryRouletteWin.getNumber() == 13) {
     		p[0].getBetOnMysteryRoulette()[13] *= 36;
     		p[1].getBetOnMysteryRoulette()[13] *= 36;
     		p[2].getBetOnMysteryRoulette()[13] *= 36;
     		p[3].getBetOnMysteryRoulette()[13] *= 36;
-    	}else if(mysteryRouletteWin.getNumber() != 13) {
+    	} if(mysteryRouletteWin.getNumber() != 13) {
     		p[0].getBetOnMysteryRoulette()[13] = 0;
     		p[1].getBetOnMysteryRoulette()[13] = 0;
     		p[2].getBetOnMysteryRoulette()[13] = 0;
     		p[3].getBetOnMysteryRoulette()[13] = 0;
-    	}else if(mysteryRouletteWin.getNumber() == 14) {
+    	} if(mysteryRouletteWin.getNumber() == 14) {
     		p[0].getBetOnMysteryRoulette()[14] *= 36;
     		p[1].getBetOnMysteryRoulette()[14] *= 36;
     		p[2].getBetOnMysteryRoulette()[14] *= 36;
     		p[3].getBetOnMysteryRoulette()[14] *= 36;
-    	}else if(mysteryRouletteWin.getNumber() != 14) {
+    	} if(mysteryRouletteWin.getNumber() != 14) {
     		p[0].getBetOnMysteryRoulette()[14] = 0;
     		p[1].getBetOnMysteryRoulette()[14] = 0;
     		p[2].getBetOnMysteryRoulette()[14] = 0;
     		p[3].getBetOnMysteryRoulette()[14] = 0;
-    	}else if(mysteryRouletteWin.getNumber() == 15) {
+    	} if(mysteryRouletteWin.getNumber() == 15) {
     		p[0].getBetOnMysteryRoulette()[15] *= 36;
     		p[1].getBetOnMysteryRoulette()[15] *= 36;
     		p[2].getBetOnMysteryRoulette()[15] *= 36;
     		p[3].getBetOnMysteryRoulette()[15] *= 36;
-    	}else if(mysteryRouletteWin.getNumber() != 15) {
+    	} if(mysteryRouletteWin.getNumber() != 15) {
     		p[0].getBetOnMysteryRoulette()[15] = 0;
     		p[1].getBetOnMysteryRoulette()[15] = 0;
     		p[2].getBetOnMysteryRoulette()[15] = 0;
     		p[3].getBetOnMysteryRoulette()[15] = 0;
-    	}else if(mysteryRouletteWin.getNumber() == 16) {
+    	} if(mysteryRouletteWin.getNumber() == 16) {
     		p[0].getBetOnMysteryRoulette()[16] *= 36;
     		p[1].getBetOnMysteryRoulette()[16] *= 36;
     		p[2].getBetOnMysteryRoulette()[16] *= 36;
     		p[3].getBetOnMysteryRoulette()[16] *= 36;
-    	}else if(mysteryRouletteWin.getNumber() != 16) {
+    	} if(mysteryRouletteWin.getNumber() != 16) {
     		p[0].getBetOnMysteryRoulette()[16] = 0;
     		p[1].getBetOnMysteryRoulette()[16] = 0;
     		p[2].getBetOnMysteryRoulette()[16] = 0;
     		p[3].getBetOnMysteryRoulette()[16] = 0;
-    	}else if(mysteryRouletteWin.getNumber() == 17) {
+    	} if(mysteryRouletteWin.getNumber() == 17) {
     		p[0].getBetOnMysteryRoulette()[17] *= 36;
     		p[1].getBetOnMysteryRoulette()[17] *= 36;
     		p[2].getBetOnMysteryRoulette()[17] *= 36;
     		p[3].getBetOnMysteryRoulette()[17] *= 36;
-    	}else if(mysteryRouletteWin.getNumber() != 17) {
+    	} if(mysteryRouletteWin.getNumber() != 17) {
     		p[0].getBetOnMysteryRoulette()[17] = 0;
     		p[1].getBetOnMysteryRoulette()[17] = 0;
     		p[2].getBetOnMysteryRoulette()[17] = 0;
     		p[3].getBetOnMysteryRoulette()[17] = 0;
-    	}else if(mysteryRouletteWin.getNumber() == 18) {
+    	} if(mysteryRouletteWin.getNumber() == 18) {
     		p[0].getBetOnMysteryRoulette()[18] *= 36;
     		p[1].getBetOnMysteryRoulette()[18] *= 36;
     		p[2].getBetOnMysteryRoulette()[18] *= 36;
     		p[3].getBetOnMysteryRoulette()[18] *= 36;
-    	}else if(mysteryRouletteWin.getNumber() != 18) {
+    	} if(mysteryRouletteWin.getNumber() != 18) {
     		p[0].getBetOnMysteryRoulette()[18] = 0;
     		p[1].getBetOnMysteryRoulette()[18] = 0;
     		p[2].getBetOnMysteryRoulette()[18] = 0;
     		p[3].getBetOnMysteryRoulette()[18] = 0;
-    	}else if(mysteryRouletteWin.getNumber() == 19) {
+    	} if(mysteryRouletteWin.getNumber() == 19) {
     		p[0].getBetOnMysteryRoulette()[19] *= 36;
     		p[1].getBetOnMysteryRoulette()[19] *= 36;
     		p[2].getBetOnMysteryRoulette()[19] *= 36;
     		p[3].getBetOnMysteryRoulette()[19] *= 36;
-    	}else if(mysteryRouletteWin.getNumber() != 19) {
+    	} if(mysteryRouletteWin.getNumber() != 19) {
     		p[0].getBetOnMysteryRoulette()[19] = 0;
     		p[1].getBetOnMysteryRoulette()[19] = 0;
     		p[2].getBetOnMysteryRoulette()[19] = 0;
     		p[3].getBetOnMysteryRoulette()[19] = 0;
-    	}else if(mysteryRouletteWin.getNumber() == 20) {
+    	} if(mysteryRouletteWin.getNumber() == 20) {
     		p[0].getBetOnMysteryRoulette()[20] *= 36;
     		p[1].getBetOnMysteryRoulette()[20] *= 36;
     		p[2].getBetOnMysteryRoulette()[20] *= 36;
     		p[3].getBetOnMysteryRoulette()[20] *= 36;
-    	}else if(mysteryRouletteWin.getNumber() != 20) {
+    	} if(mysteryRouletteWin.getNumber() != 20) {
     		p[0].getBetOnMysteryRoulette()[20] = 0;
     		p[1].getBetOnMysteryRoulette()[20] = 0;
     		p[2].getBetOnMysteryRoulette()[20] = 0;
     		p[3].getBetOnMysteryRoulette()[20] = 0;
-    	}else if(mysteryRouletteWin.getNumber() == 21) {
+    	} if(mysteryRouletteWin.getNumber() == 21) {
     		p[0].getBetOnMysteryRoulette()[21] *= 36;
     		p[1].getBetOnMysteryRoulette()[21] *= 36;
     		p[2].getBetOnMysteryRoulette()[21] *= 36;
     		p[3].getBetOnMysteryRoulette()[21] *= 36;
-    	}else if(mysteryRouletteWin.getNumber() != 21) {
+    	} if(mysteryRouletteWin.getNumber() != 21) {
     		p[0].getBetOnMysteryRoulette()[21] = 0;
     		p[1].getBetOnMysteryRoulette()[21] = 0;
     		p[2].getBetOnMysteryRoulette()[21] = 0;
     		p[3].getBetOnMysteryRoulette()[21] = 0;
-    	}else if(mysteryRouletteWin.getNumber() == 22) {
+    	} if(mysteryRouletteWin.getNumber() == 22) {
     		p[0].getBetOnMysteryRoulette()[22] *= 36;
     		p[1].getBetOnMysteryRoulette()[22] *= 36;
     		p[2].getBetOnMysteryRoulette()[22] *= 36;
     		p[3].getBetOnMysteryRoulette()[22] *= 36;
-    	}else if(mysteryRouletteWin.getNumber() != 22) {
+    	} if(mysteryRouletteWin.getNumber() != 22) {
     		p[0].getBetOnMysteryRoulette()[22] = 0;
     		p[1].getBetOnMysteryRoulette()[22] = 0;
     		p[2].getBetOnMysteryRoulette()[22] = 0;
     		p[3].getBetOnMysteryRoulette()[22] = 0;
-    	}else if(mysteryRouletteWin.getNumber() == 23) {
+    	} if(mysteryRouletteWin.getNumber() == 23) {
     		p[0].getBetOnMysteryRoulette()[23] *= 36;
     		p[1].getBetOnMysteryRoulette()[23] *= 36;
     		p[2].getBetOnMysteryRoulette()[23] *= 36;
     		p[3].getBetOnMysteryRoulette()[23] *= 36;
-    	}else if(mysteryRouletteWin.getNumber() != 23) {
+    	} if(mysteryRouletteWin.getNumber() != 23) {
     		p[0].getBetOnMysteryRoulette()[23] = 0;
     		p[1].getBetOnMysteryRoulette()[23] = 0;
     		p[2].getBetOnMysteryRoulette()[23] = 0;
     		p[3].getBetOnMysteryRoulette()[23] = 0;
-    	}else if(mysteryRouletteWin.getNumber() == 24) {
+    	} if(mysteryRouletteWin.getNumber() == 24) {
     		p[0].getBetOnMysteryRoulette()[24] *= 36;
     		p[1].getBetOnMysteryRoulette()[24] *= 36;
     		p[2].getBetOnMysteryRoulette()[24] *= 36;
     		p[3].getBetOnMysteryRoulette()[24] *= 36;
-    	}else if(mysteryRouletteWin.getNumber() != 24) {
+    	} if(mysteryRouletteWin.getNumber() != 24) {
     		p[0].getBetOnMysteryRoulette()[24] = 0;
     		p[1].getBetOnMysteryRoulette()[24] = 0;
     		p[2].getBetOnMysteryRoulette()[24] = 0;
     		p[3].getBetOnMysteryRoulette()[24] = 0;
-    	}else if(mysteryRouletteWin.getNumber() == 25) {
+    	} if(mysteryRouletteWin.getNumber() == 25) {
     		p[0].getBetOnMysteryRoulette()[25] *= 36;
     		p[1].getBetOnMysteryRoulette()[25] *= 36;
     		p[2].getBetOnMysteryRoulette()[25] *= 36;
     		p[3].getBetOnMysteryRoulette()[25] *= 36;
-    	}else if(mysteryRouletteWin.getNumber() != 25) {
+    	} if(mysteryRouletteWin.getNumber() != 25) {
     		p[0].getBetOnMysteryRoulette()[25] = 0;
     		p[1].getBetOnMysteryRoulette()[25] = 0;
     		p[2].getBetOnMysteryRoulette()[25] = 0;
     		p[3].getBetOnMysteryRoulette()[25] = 0;
-    	}else if(mysteryRouletteWin.getNumber() == 26) {
+    	} if(mysteryRouletteWin.getNumber() == 26) {
     		p[0].getBetOnMysteryRoulette()[26] *= 36;
     		p[1].getBetOnMysteryRoulette()[26] *= 36;
     		p[2].getBetOnMysteryRoulette()[26] *= 36;
     		p[3].getBetOnMysteryRoulette()[26] *= 36;
-    	}else if(mysteryRouletteWin.getNumber() != 26) {
+    	} if(mysteryRouletteWin.getNumber() != 26) {
     		p[0].getBetOnMysteryRoulette()[26] = 0;
     		p[1].getBetOnMysteryRoulette()[26] = 0;
     		p[2].getBetOnMysteryRoulette()[26] = 0;
     		p[3].getBetOnMysteryRoulette()[26] = 0;
-    	}else if(mysteryRouletteWin.getNumber() == 27) {
+    	} if(mysteryRouletteWin.getNumber() == 27) {
     		p[0].getBetOnMysteryRoulette()[27] *= 36;
     		p[1].getBetOnMysteryRoulette()[27] *= 36;
     		p[2].getBetOnMysteryRoulette()[27] *= 36;
     		p[3].getBetOnMysteryRoulette()[27] *= 36;
-    	}else if(mysteryRouletteWin.getNumber() != 27) {
+    	} if(mysteryRouletteWin.getNumber() != 27) {
     		p[0].getBetOnMysteryRoulette()[27] = 0;
     		p[1].getBetOnMysteryRoulette()[27] = 0;
     		p[2].getBetOnMysteryRoulette()[27] = 0;
     		p[3].getBetOnMysteryRoulette()[27] = 0;
-    	}else if(mysteryRouletteWin.getNumber() == 28) {
+    	} if(mysteryRouletteWin.getNumber() == 28) {
     		p[0].getBetOnMysteryRoulette()[28] *= 36;
     		p[1].getBetOnMysteryRoulette()[28] *= 36;
     		p[2].getBetOnMysteryRoulette()[28] *= 36;
     		p[3].getBetOnMysteryRoulette()[28] *= 36;
-    	}else if(mysteryRouletteWin.getNumber() != 28) {
+    	} if(mysteryRouletteWin.getNumber() != 28) {
     		p[0].getBetOnMysteryRoulette()[28] = 0;
     		p[1].getBetOnMysteryRoulette()[28] = 0;
     		p[2].getBetOnMysteryRoulette()[28] = 0;
     		p[3].getBetOnMysteryRoulette()[28] = 0;
-    	}else if(mysteryRouletteWin.getNumber() == 29) {
+    	} if(mysteryRouletteWin.getNumber() == 29) {
     		p[0].getBetOnMysteryRoulette()[29] *= 36;
     		p[1].getBetOnMysteryRoulette()[29] *= 36;
     		p[2].getBetOnMysteryRoulette()[29] *= 36;
     		p[3].getBetOnMysteryRoulette()[29] *= 36;
-    	}else if(mysteryRouletteWin.getNumber() != 29) {
+    	} if(mysteryRouletteWin.getNumber() != 29) {
     		p[0].getBetOnMysteryRoulette()[29] = 0;
     		p[1].getBetOnMysteryRoulette()[29] = 0;
     		p[2].getBetOnMysteryRoulette()[29] = 0;
     		p[3].getBetOnMysteryRoulette()[29] = 0;
-    	}else if(mysteryRouletteWin.getNumber() == 30) {
+    	} if(mysteryRouletteWin.getNumber() == 30) {
     		p[0].getBetOnMysteryRoulette()[30] *= 36;
     		p[1].getBetOnMysteryRoulette()[30] *= 36;
     		p[2].getBetOnMysteryRoulette()[30] *= 36;
     		p[3].getBetOnMysteryRoulette()[30] *= 36;
-    	}else if(mysteryRouletteWin.getNumber() != 30) {
+    	} if(mysteryRouletteWin.getNumber() != 30) {
     		p[0].getBetOnMysteryRoulette()[30] = 0;
     		p[1].getBetOnMysteryRoulette()[30] = 0;
     		p[2].getBetOnMysteryRoulette()[30] = 0;
     		p[3].getBetOnMysteryRoulette()[30] = 0;
-    	}else if(mysteryRouletteWin.getNumber() == 31) {
+    	} if(mysteryRouletteWin.getNumber() == 31) {
     		p[0].getBetOnMysteryRoulette()[31] *= 36;
     		p[1].getBetOnMysteryRoulette()[31] *= 36;
     		p[2].getBetOnMysteryRoulette()[31] *= 36;
     		p[3].getBetOnMysteryRoulette()[31] *= 36;
-    	}else if(mysteryRouletteWin.getNumber() != 31) {
+    	} if(mysteryRouletteWin.getNumber() != 31) {
     		p[0].getBetOnMysteryRoulette()[31] = 0;
     		p[1].getBetOnMysteryRoulette()[31] = 0;
     		p[2].getBetOnMysteryRoulette()[31] = 0;
     		p[3].getBetOnMysteryRoulette()[31] = 0;
-    	}else if(mysteryRouletteWin.getNumber() == 32) {
+    	} if(mysteryRouletteWin.getNumber() == 32) {
     		p[0].getBetOnMysteryRoulette()[32] *= 36;
     		p[1].getBetOnMysteryRoulette()[32] *= 36;
     		p[2].getBetOnMysteryRoulette()[32] *= 36;
     		p[3].getBetOnMysteryRoulette()[32] *= 36;
-    	}else if(mysteryRouletteWin.getNumber() != 32) {
+    	} if(mysteryRouletteWin.getNumber() != 32) {
     		p[0].getBetOnMysteryRoulette()[32] = 0;
     		p[1].getBetOnMysteryRoulette()[32] = 0;
     		p[2].getBetOnMysteryRoulette()[32] = 0;
     		p[3].getBetOnMysteryRoulette()[32] = 0;
-    	}else if(mysteryRouletteWin.getNumber() == 33) {
+    	} if(mysteryRouletteWin.getNumber() == 33) {
     		p[0].getBetOnMysteryRoulette()[33] *= 36;
     		p[1].getBetOnMysteryRoulette()[33] *= 36;
     		p[2].getBetOnMysteryRoulette()[33] *= 36;
     		p[3].getBetOnMysteryRoulette()[33] *= 36;
-    	}else if(mysteryRouletteWin.getNumber() != 33) {
+    	} if(mysteryRouletteWin.getNumber() != 33) {
     		p[0].getBetOnMysteryRoulette()[33] = 0;
     		p[1].getBetOnMysteryRoulette()[33] = 0;
     		p[2].getBetOnMysteryRoulette()[33] = 0;
     		p[3].getBetOnMysteryRoulette()[33] = 0;
-    	}else if(mysteryRouletteWin.getNumber() == 34) {
+    	} if(mysteryRouletteWin.getNumber() == 34) {
     		p[0].getBetOnMysteryRoulette()[34] *= 36;
     		p[1].getBetOnMysteryRoulette()[34] *= 36;
     		p[2].getBetOnMysteryRoulette()[34] *= 36;
     		p[3].getBetOnMysteryRoulette()[34] *= 36;
-    	}else if(mysteryRouletteWin.getNumber() != 34) {
+    	} if(mysteryRouletteWin.getNumber() != 34) {
     		p[0].getBetOnMysteryRoulette()[34] = 0;
     		p[1].getBetOnMysteryRoulette()[34] = 0;
     		p[2].getBetOnMysteryRoulette()[34] = 0;
     		p[3].getBetOnMysteryRoulette()[34] = 0;
-    	}else if(mysteryRouletteWin.getNumber() == 35) {
+    	} if(mysteryRouletteWin.getNumber() == 35) {
     		p[0].getBetOnMysteryRoulette()[35] *= 36;
     		p[1].getBetOnMysteryRoulette()[35] *= 36;
     		p[2].getBetOnMysteryRoulette()[35] *= 36;
     		p[3].getBetOnMysteryRoulette()[35] *= 36;
-    	}else if(mysteryRouletteWin.getNumber() != 35) {
+    	} if(mysteryRouletteWin.getNumber() != 35) {
     		p[0].getBetOnMysteryRoulette()[35] = 0;
     		p[1].getBetOnMysteryRoulette()[35] = 0;
     		p[2].getBetOnMysteryRoulette()[35] = 0;
     		p[3].getBetOnMysteryRoulette()[35] = 0;
-    	}else if(mysteryRouletteWin.getNumber() == 36) {
+    	} if(mysteryRouletteWin.getNumber() == 36) {
     		p[0].getBetOnMysteryRoulette()[36] *= 36;
     		p[1].getBetOnMysteryRoulette()[36] *= 36;
     		p[2].getBetOnMysteryRoulette()[36] *= 36;
     		p[3].getBetOnMysteryRoulette()[36] *= 36;
-    	}else if(mysteryRouletteWin.getNumber() != 36) {
+    	} if(mysteryRouletteWin.getNumber() != 36) {
     		p[0].getBetOnMysteryRoulette()[36] = 0;
     		p[1].getBetOnMysteryRoulette()[36] = 0;
     		p[2].getBetOnMysteryRoulette()[36] = 0;
     		p[3].getBetOnMysteryRoulette()[36] = 0;
-    	}else if(inRow(1, mysteryRouletteWin.getNumber())) {
+    	} if(inRow(1, mysteryRouletteWin.getNumber())) {
     		p[0].getBetOnMysteryRoulette()[37] *= 2;
     		p[1].getBetOnMysteryRoulette()[37] *= 2;
     		p[2].getBetOnMysteryRoulette()[37] *= 2;
     		p[3].getBetOnMysteryRoulette()[37] *= 2;
-    	}else if(!inRow(1, mysteryRouletteWin.getNumber())) {
+    	} if(!inRow(1, mysteryRouletteWin.getNumber())) {
     		p[0].getBetOnMysteryRoulette()[37] = 0;
     		p[1].getBetOnMysteryRoulette()[37] = 0;
     		p[2].getBetOnMysteryRoulette()[37] = 0;
     		p[3].getBetOnMysteryRoulette()[37] = 0;
-    	}else if(inRow(2, mysteryRouletteWin.getNumber())) {
+    	} if(inRow(2, mysteryRouletteWin.getNumber())) {
     		p[0].getBetOnMysteryRoulette()[38] *= 2;
     		p[1].getBetOnMysteryRoulette()[38] *= 2;
     		p[2].getBetOnMysteryRoulette()[38] *= 2;
     		p[3].getBetOnMysteryRoulette()[38] *= 2;
-    	}else if(!inRow(2, mysteryRouletteWin.getNumber())) {
+    	} if(!inRow(2, mysteryRouletteWin.getNumber())) {
     		p[0].getBetOnMysteryRoulette()[38] = 0;
     		p[1].getBetOnMysteryRoulette()[38] = 0;
     		p[2].getBetOnMysteryRoulette()[38] = 0;
     		p[3].getBetOnMysteryRoulette()[38] = 0;
-    	}else if(inRow(3, mysteryRouletteWin.getNumber())) {
+    	} if(inRow(3, mysteryRouletteWin.getNumber())) {
     		p[0].getBetOnMysteryRoulette()[39] *= 2;
     		p[1].getBetOnMysteryRoulette()[39] *= 2;
     		p[2].getBetOnMysteryRoulette()[39] *= 2;
     		p[3].getBetOnMysteryRoulette()[39] *= 2;
-    	}else if(!inRow(3, mysteryRouletteWin.getNumber())) {
+    	} if(!inRow(3, mysteryRouletteWin.getNumber())) {
     		p[0].getBetOnMysteryRoulette()[39] = 0;
     		p[1].getBetOnMysteryRoulette()[39] = 0;
     		p[2].getBetOnMysteryRoulette()[39] = 0;
     		p[3].getBetOnMysteryRoulette()[39] = 0;
-    	}else if(1 <= mysteryRouletteWin.getNumber() && mysteryRouletteWin.getNumber() <= 12) {
+    	} if(1 <= mysteryRouletteWin.getNumber() && mysteryRouletteWin.getNumber() <= 12) {
     		p[0].getBetOnMysteryRoulette()[40] *= 2;
     		p[1].getBetOnMysteryRoulette()[40] *= 2;
     		p[2].getBetOnMysteryRoulette()[40] *= 2;
     		p[3].getBetOnMysteryRoulette()[40] *= 2;
-    	}else if((13 <= mysteryRouletteWin.getNumber() && mysteryRouletteWin.getNumber() <= 36) || mysteryRouletteWin.getNumber() == 0) {
+    	} if((13 <= mysteryRouletteWin.getNumber() && mysteryRouletteWin.getNumber() <= 36) || mysteryRouletteWin.getNumber() == 0) {
     		p[0].getBetOnMysteryRoulette()[40] = 0;
     		p[1].getBetOnMysteryRoulette()[40] = 0;
     		p[2].getBetOnMysteryRoulette()[40] = 0;
     		p[3].getBetOnMysteryRoulette()[40] = 0;
-    	}else if(13 <= mysteryRouletteWin.getNumber() && mysteryRouletteWin.getNumber() <= 24) {
+    	} if(13 <= mysteryRouletteWin.getNumber() && mysteryRouletteWin.getNumber() <= 24) {
     		p[0].getBetOnMysteryRoulette()[41] *= 2;
     		p[1].getBetOnMysteryRoulette()[41] *= 2;
     		p[2].getBetOnMysteryRoulette()[41] *= 2;
     		p[3].getBetOnMysteryRoulette()[41] *= 2;
-    	}else if((0 <= mysteryRouletteWin.getNumber() && mysteryRouletteWin.getNumber() <= 12) || (25 <= mysteryRouletteWin.getNumber() && mysteryRouletteWin.getNumber() <= 36)) {
+    	} if((0 <= mysteryRouletteWin.getNumber() && mysteryRouletteWin.getNumber() <= 12) || (25 <= mysteryRouletteWin.getNumber() && mysteryRouletteWin.getNumber() <= 36)) {
     		p[0].getBetOnMysteryRoulette()[41] = 0;
     		p[1].getBetOnMysteryRoulette()[41] = 0;
     		p[2].getBetOnMysteryRoulette()[41] = 0;
     		p[3].getBetOnMysteryRoulette()[41] = 0;
-    	}else if(25 <= mysteryRouletteWin.getNumber() && mysteryRouletteWin.getNumber() <= 36) {
+    	} if(25 <= mysteryRouletteWin.getNumber() && mysteryRouletteWin.getNumber() <= 36) {
     		p[0].getBetOnMysteryRoulette()[42] *= 2;
     		p[1].getBetOnMysteryRoulette()[42] *= 2;
     		p[2].getBetOnMysteryRoulette()[42] *= 2;
     		p[3].getBetOnMysteryRoulette()[42] *= 2;
-    	}else if(0 <= mysteryRouletteWin.getNumber() && mysteryRouletteWin.getNumber() <= 24) {
+    	} if(0 <= mysteryRouletteWin.getNumber() && mysteryRouletteWin.getNumber() <= 24) {
     		p[0].getBetOnMysteryRoulette()[42] = 0;
     		p[1].getBetOnMysteryRoulette()[42] = 0;
     		p[2].getBetOnMysteryRoulette()[42] = 0;
     		p[3].getBetOnMysteryRoulette()[42] = 0;
-    	}else if(1 <= mysteryRouletteWin.getNumber() && mysteryRouletteWin.getNumber() <= 18) {
+    	} if(1 <= mysteryRouletteWin.getNumber() && mysteryRouletteWin.getNumber() <= 18) {
     		p[0].getBetOnMysteryRoulette()[43] *= 2;
     		p[1].getBetOnMysteryRoulette()[43] *= 2;
     		p[2].getBetOnMysteryRoulette()[43] *= 2;
     		p[3].getBetOnMysteryRoulette()[43] *= 2;
-    	}else if(mysteryRouletteWin.getNumber() == 0 || (19 <= mysteryRouletteWin.getNumber() && mysteryRouletteWin.getNumber() <= 36)) {
+    	} if(mysteryRouletteWin.getNumber() == 0 || (19 <= mysteryRouletteWin.getNumber() && mysteryRouletteWin.getNumber() <= 36)) {
     		p[0].getBetOnMysteryRoulette()[43] = 0;
     		p[1].getBetOnMysteryRoulette()[43] = 0;
     		p[2].getBetOnMysteryRoulette()[43] = 0;
     		p[3].getBetOnMysteryRoulette()[43] = 0;
-    	}else if(19 <= mysteryRouletteWin.getNumber() && mysteryRouletteWin.getNumber() <= 36) {
+    	} if(19 <= mysteryRouletteWin.getNumber() && mysteryRouletteWin.getNumber() <= 36) {
     		p[0].getBetOnMysteryRoulette()[44] *= 2;
     		p[1].getBetOnMysteryRoulette()[44] *= 2;
     		p[2].getBetOnMysteryRoulette()[44] *= 2;
     		p[3].getBetOnMysteryRoulette()[44] *= 2;
-    	}else if(0 <= mysteryRouletteWin.getNumber() && mysteryRouletteWin.getNumber() <= 18) {
+    	} if(0 <= mysteryRouletteWin.getNumber() && mysteryRouletteWin.getNumber() <= 18) {
     		p[0].getBetOnMysteryRoulette()[44] = 0;
     		p[1].getBetOnMysteryRoulette()[44] = 0;
     		p[2].getBetOnMysteryRoulette()[44] = 0;
     		p[3].getBetOnMysteryRoulette()[44] = 0;
-    	}else if(mysteryRouletteWin.determineOddOrEven().equals("Even")) {
+    	} if(mysteryRouletteWin.determineOddOrEven().equals("Even")) {
     		p[0].getBetOnMysteryRoulette()[45] *= 2;
     		p[1].getBetOnMysteryRoulette()[45] *= 2;
     		p[2].getBetOnMysteryRoulette()[45] *= 2;
     		p[3].getBetOnMysteryRoulette()[45] *= 2;
-    	}else if(!mysteryRouletteWin.determineOddOrEven().equals("Even")) {
+    	} if(!mysteryRouletteWin.determineOddOrEven().equals("Even")) {
     		p[0].getBetOnMysteryRoulette()[45] = 0;
     		p[1].getBetOnMysteryRoulette()[45] = 0;
     		p[2].getBetOnMysteryRoulette()[45] = 0;
     		p[3].getBetOnMysteryRoulette()[45] = 0;
-    	}else if(mysteryRouletteWin.determineOddOrEven().equals("Odd")) {
+    	} if(mysteryRouletteWin.determineOddOrEven().equals("Odd")) {
     		p[0].getBetOnMysteryRoulette()[46] *= 2;
     		p[1].getBetOnMysteryRoulette()[46] *= 2;
     		p[2].getBetOnMysteryRoulette()[46] *= 2;
     		p[3].getBetOnMysteryRoulette()[46] *= 2;
-    	}else if(!mysteryRouletteWin.determineOddOrEven().equals("Odd")) {
+    	} if(!mysteryRouletteWin.determineOddOrEven().equals("Odd")) {
     		p[0].getBetOnMysteryRoulette()[46] = 0;
     		p[1].getBetOnMysteryRoulette()[46] = 0;
     		p[2].getBetOnMysteryRoulette()[46] = 0;
     		p[3].getBetOnMysteryRoulette()[46] = 0;
-    	}else if(mysteryRouletteWin.getColor().equals("Red")) {
+    	} if(mysteryRouletteWin.getColor().equals("Red")) {
     		p[0].getBetOnMysteryRoulette()[47] *= 2;
     		p[1].getBetOnMysteryRoulette()[47] *= 2;
     		p[2].getBetOnMysteryRoulette()[47] *= 2;
     		p[3].getBetOnMysteryRoulette()[47] *= 2;
-    	}else if(!mysteryRouletteWin.getColor().equals("Red")) {
+    	} if(!mysteryRouletteWin.getColor().equals("Red")) {
     		p[0].getBetOnMysteryRoulette()[47] = 0;
     		p[1].getBetOnMysteryRoulette()[47] = 0;
     		p[2].getBetOnMysteryRoulette()[47] = 0;
     		p[3].getBetOnMysteryRoulette()[47] = 0;
-    	}else if(mysteryRouletteWin.getColor().equals("Black")) {
+    	} if(mysteryRouletteWin.getColor().equals("Black")) {
     		p[0].getBetOnMysteryRoulette()[48] *= 2;
     		p[1].getBetOnMysteryRoulette()[48] *= 2;
     		p[2].getBetOnMysteryRoulette()[48] *= 2;
     		p[3].getBetOnMysteryRoulette()[48] *= 2;
-    	}else if(!mysteryRouletteWin.getColor().equals("Black")) {
+    	} if(!mysteryRouletteWin.getColor().equals("Black")) {
     		p[0].getBetOnMysteryRoulette()[48] = 0;
     		p[1].getBetOnMysteryRoulette()[48] = 0;
     		p[2].getBetOnMysteryRoulette()[48] = 0;
@@ -6395,11 +6403,13 @@ public class CasinoGUI extends JFrame{
     		p[2].getBankAccount().deposit(p[2].getBetOnMysteryRoulette()[i]);
     		p[3].getBankAccount().deposit(p[3].getBetOnMysteryRoulette()[i]);
     	}
+    	
+    	System.out.println("Distribute Wins Method ran!");
 
-    	balanceP1.setText("Current Balance: " + p[0].getBankAccount().getBalance());
-    	balanceP2.setText("Current Balance: " + p[1].getBankAccount().getBalance());
-    	balanceP3.setText("Current Balance: " + p[2].getBankAccount().getBalance());
-    	balanceP4.setText("Current Balance: " + p[3].getBankAccount().getBalance());
+    	balanceP1.setText("Current Balance: $" + p[0].getBankAccount().getBalance());
+    	balanceP2.setText("Current Balance: $" + p[1].getBankAccount().getBalance());
+    	balanceP3.setText("Current Balance: $" + p[2].getBankAccount().getBalance());
+    	balanceP4.setText("Current Balance: $" + p[3].getBankAccount().getBalance());
     }
 
     public static void main(String[] args) {
