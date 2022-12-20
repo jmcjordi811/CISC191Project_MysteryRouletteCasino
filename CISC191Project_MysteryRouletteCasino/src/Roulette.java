@@ -184,7 +184,7 @@ public class Roulette {
 	}
 	
 	/**
-	 * Purpose: A method when Roulette game is chosen. (Original Game)
+	 * Purpose: A method when Roulette game is chosen with toString console animation. (Original Game)
 	 * @return Roulette wheelLandsOn
 	 */
 	public Roulette spinWithtoString() {

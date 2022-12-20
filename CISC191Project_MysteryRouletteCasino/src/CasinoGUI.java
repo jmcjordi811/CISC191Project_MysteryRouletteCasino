@@ -3,8 +3,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.*;
 import java.util.concurrent.TimeUnit;
-//import java.util.LinkedList;
-//import java.util.Queue;
+
 
 /**
  * Lead Author(s):
@@ -22,14 +21,11 @@ import java.util.concurrent.TimeUnit;
  *  Stackoverflow. https://stackoverflow.com/questions/21429246/java-how-to-move-a-rectangle-thats-drawn-by-graphics2d
  *  
  *  
- * Version/date: 
+ * Version/date: 12/20/22
  * 
  * Responsibilities of class:
- * Casino class 
+ * CasinoGUI class 
  */
-
-
-
 
 public class CasinoGUI extends JFrame{
 	private static final long serialVersionUID = 1L;
@@ -37,7 +33,6 @@ public class CasinoGUI extends JFrame{
 	//Constants for the size of the window
 	private final static int WINDOW_WIDTH = 1800;
 	private final static int WINDOW_HEIGHT = 1200;
-    
 
     
 	// ---------- Roulette Wheel ----------
@@ -50,7 +45,7 @@ public class CasinoGUI extends JFrame{
 //
 //
 //
-//private int[] y = {265, 140,
+//  private int[] y = {265, 140,
 //  142, 147, 155, 168, 183, 199, 219, 239, 260, 281, 302, 322,
 //  340, 356, 369, 380, 387, 391, 390, 386, 379, 369, 356, 340,
 //  321, 302, 281, 260, 239, 218, 199, 182, 168, 156, 148, 142};
@@ -82,7 +77,8 @@ public class CasinoGUI extends JFrame{
     // ---------- Mystery Roulette Card to Flip ----------
     private int card = 0;
     
-    // ---------- Images for Casino ----------
+    // ---------- Images for CasinoGUI ----------
+    // ---------- (couldn't add shortcuts[../] to file path) ----------
     private static ImageIcon img1 = new ImageIcon("/Users/jordi.j.mejiacruz/git/repository/CISC191Project_MysteryRouletteCasino/src/Roulette_Imgs/Roulette.png");
     private static ImageIcon img2 = new ImageIcon("/Users/jordi.j.mejiacruz/git/repository/CISC191Project_MysteryRouletteCasino/src/Roulette_Imgs/BettingTable.png");
     private static ImageIcon img3 = new ImageIcon("/Users/jordi.j.mejiacruz/git/repository/CISC191Project_MysteryRouletteCasino/src/Roulette_Imgs/MysteryRouletteCards/BackCardTemplate.png");
@@ -157,6 +153,7 @@ public class CasinoGUI extends JFrame{
     
     private static JButton gameMode;
     
+    // ---------- Timer used for Game ----------
     private Timer timer = new Timer(100, null);
     
     
@@ -249,15 +246,19 @@ public class CasinoGUI extends JFrame{
     private JButton red = new JButton();
     private JButton black = new JButton();
     
-    
+    // ---------- Used for keeping track of Player Money and Bets ----------
+    private static Player[] p = new Player[4];
     private static int totalBet1 = 0;
     private static int totalBet2 = 0;
     private static int totalBet3 = 0;
     private static int totalBet4 = 0;
     private static int addChip = 0;
-    private static int playerPlaying = -1;
-    private static Player[] p = new Player[4];
+    private static int playersPlaying = -1;
     
+    
+    /**
+	 * Purpose: Constructor used to initialize CasinoGUI object.
+	 */
     public CasinoGUI() {
     	// ---------- Frame Size ----------
         super("Casino");
@@ -879,6 +880,9 @@ public class CasinoGUI extends JFrame{
         setVisible(true);
     }
     
+    /**
+	 * Purpose: Method for Roulette game, Mystery Roulette game and distributing wins to players.
+	 */
     public void gameGUI() {
     	card1 = new JLabel(img3);
         card2 = new JLabel(img3);
@@ -1069,6 +1073,9 @@ public class CasinoGUI extends JFrame{
         timer.start();
     }
 
+    /**
+	 * Purpose: Main panel custom class for CasinoGUI, creates ball for roulette game using paintComponent.
+	 */
     private class CasinoPanel extends JPanel {
         private static final long serialVersionUID = 1L;
 
@@ -1083,13 +1090,18 @@ public class CasinoGUI extends JFrame{
         }
     }
     
-    
+    /**
+	 * Purpose: Custom Panel for players (not used so far but might need later).
+	 */
     private class PlayerPanel extends JPanel {
         private static final long serialVersionUID = 1L;
         
         public PlayerPanel() {}
     }
     
+    /**
+	 * Purpose: Custom Panel for announcing previous roulette and mystery roulette wins.
+	 */
     private class AnnouncementPanel extends JPanel {
         private static final long serialVersionUID = 1L;
         
@@ -1129,6 +1141,9 @@ public class CasinoGUI extends JFrame{
     }
 
     
+    /**
+	 * Purpose: Custom ActionListener used for when user interacts with buttons.
+	 */
     private class ButtonListener implements ActionListener {
         @Override
         public void actionPerformed(ActionEvent e) {
@@ -1141,25 +1156,25 @@ public class CasinoGUI extends JFrame{
         	}
         	
         	if(e.getSource() == player1) {
-        		playerPlaying = 0;
+        		playersPlaying = 0;
         		player1.setBorder(BorderFactory.createLineBorder(Color.BLUE));
         		player2.setBorder(null);
         		player3.setBorder(null);
         		player4.setBorder(null);
         	}else if(e.getSource() == player2) {
-        		playerPlaying = 1;
+        		playersPlaying = 1;
         		player1.setBorder(null);
         		player2.setBorder(BorderFactory.createLineBorder(Color.RED));
         		player3.setBorder(null);
         		player4.setBorder(null);
         	}else if(e.getSource() == player3) {
-        		playerPlaying = 2;
+        		playersPlaying = 2;
         		player1.setBorder(null);
         		player2.setBorder(null);
         		player3.setBorder(BorderFactory.createLineBorder(Color.BLUE));
         		player4.setBorder(null);
         	}else if(e.getSource() == player4) {
-        		playerPlaying = 3;
+        		playersPlaying = 3;
         		player1.setBorder(null);
         		player2.setBorder(null);
         		player3.setBorder(null);
@@ -1187,12 +1202,12 @@ public class CasinoGUI extends JFrame{
             }
         	
         	if(e.getSource() == number0) {
-        		if(playerPlaying == -1) {
+        		if(playersPlaying == -1) {
         			bettingP1.setText("Select Player Icon to Bet");
         			bettingP2.setText("Select Player Icon to Bet");
         			bettingP3.setText("Select Player Icon to Bet");
         			bettingP4.setText("Select Player Icon to Bet");
-        		}else if(playerPlaying == 0) {
+        		}else if(playersPlaying == 0) {
         			if(gameMode.getText().equals("Roulette!")) {
         				if(addChip > p[0].getBankAccount().getBalance()) {
         					bettingP1.setText("Insufficient Funds");
@@ -1211,7 +1226,7 @@ public class CasinoGUI extends JFrame{
         			
         			totalBet1 += addChip;
         			bettingP1.setText("Betting: " + totalBet1);
-        		}else if(playerPlaying == 1) {
+        		}else if(playersPlaying == 1) {
         			if(gameMode.getText().equals("Roulette!")) {
         				if(addChip > p[1].getBankAccount().getBalance()) {
         					bettingP1.setText("Insufficient Funds");
@@ -1230,7 +1245,7 @@ public class CasinoGUI extends JFrame{
         			
         			totalBet2 += addChip;
         			bettingP2.setText("Betting: " + totalBet2);
-        		}else if(playerPlaying == 2) {
+        		}else if(playersPlaying == 2) {
         			if(gameMode.getText().equals("Roulette!")) {
         				if(addChip > p[2].getBankAccount().getBalance()) {
         					bettingP1.setText("Insufficient Funds");
@@ -1249,7 +1264,7 @@ public class CasinoGUI extends JFrame{
         			
         			totalBet3 += addChip;
         			bettingP3.setText("Betting: " + totalBet3);
-        		}else if(playerPlaying == 3) {
+        		}else if(playersPlaying == 3) {
         			if(gameMode.getText().equals("Roulette!")) {
         				if(addChip > p[3].getBankAccount().getBalance()) {
         					bettingP1.setText("Insufficient Funds");
@@ -1271,12 +1286,12 @@ public class CasinoGUI extends JFrame{
         			bettingP4.setText("Betting: " + totalBet4);
         		}
         	}else if(e.getSource() == number1) {
-        		if(playerPlaying == -1) {
+        		if(playersPlaying == -1) {
         			bettingP1.setText("Select Player Icon to Bet");
         			bettingP2.setText("Select Player Icon to Bet");
         			bettingP3.setText("Select Player Icon to Bet");
         			bettingP4.setText("Select Player Icon to Bet");
-        		}else if(playerPlaying == 0) {
+        		}else if(playersPlaying == 0) {
         			if(gameMode.getText().equals("Roulette!")) {
         				if(addChip > p[0].getBankAccount().getBalance()) {
         					bettingP1.setText("Insufficient Funds");
@@ -1295,7 +1310,7 @@ public class CasinoGUI extends JFrame{
         			
         			totalBet1 += addChip;
         			bettingP1.setText("Betting: " + totalBet1);
-        		}else if(playerPlaying == 1) {
+        		}else if(playersPlaying == 1) {
         			if(gameMode.getText().equals("Roulette!")) {
         				if(addChip > p[1].getBankAccount().getBalance()) {
         					bettingP1.setText("Insufficient Funds");
@@ -1314,7 +1329,7 @@ public class CasinoGUI extends JFrame{
         			
         			totalBet2 += addChip;
         			bettingP2.setText("Betting: " + totalBet2);
-        		}else if(playerPlaying == 2) {
+        		}else if(playersPlaying == 2) {
         			if(gameMode.getText().equals("Roulette!")) {
         				if(addChip > p[2].getBankAccount().getBalance()) {
         					bettingP1.setText("Insufficient Funds");
@@ -1333,7 +1348,7 @@ public class CasinoGUI extends JFrame{
         			
         			totalBet3 += addChip;
         			bettingP3.setText("Betting: " + totalBet3);
-        		}else if(playerPlaying == 3) {
+        		}else if(playersPlaying == 3) {
         			if(gameMode.getText().equals("Roulette!")) {
         				if(addChip > p[3].getBankAccount().getBalance()) {
         					bettingP1.setText("Insufficient Funds");
@@ -1354,12 +1369,12 @@ public class CasinoGUI extends JFrame{
         			bettingP4.setText("Betting: " + totalBet4);
         		}
         	}else if(e.getSource() == number2) {
-        		if(playerPlaying == -1) {
+        		if(playersPlaying == -1) {
         			bettingP1.setText("Select Player Icon to Bet");
         			bettingP2.setText("Select Player Icon to Bet");
         			bettingP3.setText("Select Player Icon to Bet");
         			bettingP4.setText("Select Player Icon to Bet");
-        		}else if(playerPlaying == 0) {
+        		}else if(playersPlaying == 0) {
         			if(gameMode.getText().equals("Roulette!")) {
         				if(addChip > p[0].getBankAccount().getBalance()) {
         					bettingP1.setText("Insufficient Funds");
@@ -1378,7 +1393,7 @@ public class CasinoGUI extends JFrame{
         			
         			totalBet1 += addChip;
         			bettingP1.setText("Betting: " + totalBet1);
-        		}else if(playerPlaying == 1) {
+        		}else if(playersPlaying == 1) {
         			if(gameMode.getText().equals("Roulette!")) {
         				if(addChip > p[1].getBankAccount().getBalance()) {
         					bettingP1.setText("Insufficient Funds");
@@ -1397,7 +1412,7 @@ public class CasinoGUI extends JFrame{
         			
         			totalBet2 += addChip;
         			bettingP2.setText("Betting: " + totalBet2);
-        		}else if(playerPlaying == 2) {
+        		}else if(playersPlaying == 2) {
         			if(gameMode.getText().equals("Roulette!")) {
         				if(addChip > p[2].getBankAccount().getBalance()) {
         					bettingP1.setText("Insufficient Funds");
@@ -1416,7 +1431,7 @@ public class CasinoGUI extends JFrame{
         			
         			totalBet3 += addChip;
         			bettingP3.setText("Betting: " + totalBet3);
-        		}else if(playerPlaying == 3) {
+        		}else if(playersPlaying == 3) {
         			if(gameMode.getText().equals("Roulette!")) {
         				if(addChip > p[3].getBankAccount().getBalance()) {
         					bettingP1.setText("Insufficient Funds");
@@ -1437,12 +1452,12 @@ public class CasinoGUI extends JFrame{
         			bettingP4.setText("Betting: " + totalBet4);
         		}
         	}else if(e.getSource() == number3) {
-        		if(playerPlaying == -1) {
+        		if(playersPlaying == -1) {
         			bettingP1.setText("Select Player Icon to Bet");
         			bettingP2.setText("Select Player Icon to Bet");
         			bettingP3.setText("Select Player Icon to Bet");
         			bettingP4.setText("Select Player Icon to Bet");
-        		}else if(playerPlaying == 0) {
+        		}else if(playersPlaying == 0) {
         			if(gameMode.getText().equals("Roulette!")) {
         				if(addChip > p[0].getBankAccount().getBalance()) {
         					bettingP1.setText("Insufficient Funds");
@@ -1461,7 +1476,7 @@ public class CasinoGUI extends JFrame{
         			
         			totalBet1 += addChip;
         			bettingP1.setText("Betting: " + totalBet1);
-        		}else if(playerPlaying == 1) {
+        		}else if(playersPlaying == 1) {
         			if(gameMode.getText().equals("Roulette!")) {
         				if(addChip > p[1].getBankAccount().getBalance()) {
         					bettingP1.setText("Insufficient Funds");
@@ -1480,7 +1495,7 @@ public class CasinoGUI extends JFrame{
         			
         			totalBet2 += addChip;
         			bettingP2.setText("Betting: " + totalBet2);
-        		}else if(playerPlaying == 2) {
+        		}else if(playersPlaying == 2) {
         			if(gameMode.getText().equals("Roulette!")) {
         				if(addChip > p[2].getBankAccount().getBalance()) {
         					bettingP1.setText("Insufficient Funds");
@@ -1499,7 +1514,7 @@ public class CasinoGUI extends JFrame{
         			
         			totalBet3 += addChip;
         			bettingP3.setText("Betting: " + totalBet3);
-        		}else if(playerPlaying == 3) {
+        		}else if(playersPlaying == 3) {
         			if(gameMode.getText().equals("Roulette!")) {
         				if(addChip > p[3].getBankAccount().getBalance()) {
         					bettingP1.setText("Insufficient Funds");
@@ -1520,12 +1535,12 @@ public class CasinoGUI extends JFrame{
         			bettingP4.setText("Betting: " + totalBet4);
         		}
         	}else if(e.getSource() == number4) {
-        		if(playerPlaying == -1) {
+        		if(playersPlaying == -1) {
         			bettingP1.setText("Select Player Icon to Bet");
         			bettingP2.setText("Select Player Icon to Bet");
         			bettingP3.setText("Select Player Icon to Bet");
         			bettingP4.setText("Select Player Icon to Bet");
-        		}else if(playerPlaying == 0) {
+        		}else if(playersPlaying == 0) {
         			if(gameMode.getText().equals("Roulette!")) {
         				if(addChip > p[0].getBankAccount().getBalance()) {
         					bettingP1.setText("Insufficient Funds");
@@ -1544,7 +1559,7 @@ public class CasinoGUI extends JFrame{
         			
         			totalBet1 += addChip;
         			bettingP1.setText("Betting: " + totalBet1);
-        		}else if(playerPlaying == 1) {
+        		}else if(playersPlaying == 1) {
         			if(gameMode.getText().equals("Roulette!")) {
         				if(addChip > p[1].getBankAccount().getBalance()) {
         					bettingP1.setText("Insufficient Funds");
@@ -1563,7 +1578,7 @@ public class CasinoGUI extends JFrame{
         			
         			totalBet2 += addChip;
         			bettingP2.setText("Betting: " + totalBet2);
-        		}else if(playerPlaying == 2) {
+        		}else if(playersPlaying == 2) {
         			if(gameMode.getText().equals("Roulette!")) {
         				if(addChip > p[2].getBankAccount().getBalance()) {
         					bettingP1.setText("Insufficient Funds");
@@ -1582,7 +1597,7 @@ public class CasinoGUI extends JFrame{
         			
         			totalBet3 += addChip;
         			bettingP3.setText("Betting: " + totalBet3);
-        		}else if(playerPlaying == 3) {
+        		}else if(playersPlaying == 3) {
         			if(gameMode.getText().equals("Roulette!")) {
         				if(addChip > p[3].getBankAccount().getBalance()) {
         					bettingP1.setText("Insufficient Funds");
@@ -1603,12 +1618,12 @@ public class CasinoGUI extends JFrame{
         			bettingP4.setText("Betting: " + totalBet4);
         		}
         	}else if(e.getSource() == number5) {
-        		if(playerPlaying == -1) {
+        		if(playersPlaying == -1) {
         			bettingP1.setText("Select Player Icon to Bet");
         			bettingP2.setText("Select Player Icon to Bet");
         			bettingP3.setText("Select Player Icon to Bet");
         			bettingP4.setText("Select Player Icon to Bet");
-        		}else if(playerPlaying == 0) {
+        		}else if(playersPlaying == 0) {
         			if(gameMode.getText().equals("Roulette!")) {
         				if(addChip > p[0].getBankAccount().getBalance()) {
         					bettingP1.setText("Insufficient Funds");
@@ -1627,7 +1642,7 @@ public class CasinoGUI extends JFrame{
         			
         			totalBet1 += addChip;
         			bettingP1.setText("Betting: " + totalBet1);
-        		}else if(playerPlaying == 1) {
+        		}else if(playersPlaying == 1) {
         			if(gameMode.getText().equals("Roulette!")) {
         				if(addChip > p[1].getBankAccount().getBalance()) {
         					bettingP1.setText("Insufficient Funds");
@@ -1646,7 +1661,7 @@ public class CasinoGUI extends JFrame{
         			
         			totalBet2 += addChip;
         			bettingP2.setText("Betting: " + totalBet2);
-        		}else if(playerPlaying == 2) {
+        		}else if(playersPlaying == 2) {
         			if(gameMode.getText().equals("Roulette!")) {
         				if(addChip > p[2].getBankAccount().getBalance()) {
         					bettingP1.setText("Insufficient Funds");
@@ -1665,7 +1680,7 @@ public class CasinoGUI extends JFrame{
         			
         			totalBet3 += addChip;
         			bettingP3.setText("Betting: " + totalBet3);
-        		}else if(playerPlaying == 3) {
+        		}else if(playersPlaying == 3) {
         			if(gameMode.getText().equals("Roulette!")) {
         				if(addChip > p[3].getBankAccount().getBalance()) {
         					bettingP1.setText("Insufficient Funds");
@@ -1686,12 +1701,12 @@ public class CasinoGUI extends JFrame{
         			bettingP4.setText("Betting: " + totalBet4);
         		}
         	}else if(e.getSource() == number6) {
-        		if(playerPlaying == -1) {
+        		if(playersPlaying == -1) {
         			bettingP1.setText("Select Player Icon to Bet");
         			bettingP2.setText("Select Player Icon to Bet");
         			bettingP3.setText("Select Player Icon to Bet");
         			bettingP4.setText("Select Player Icon to Bet");
-        		}else if(playerPlaying == 0) {
+        		}else if(playersPlaying == 0) {
         			if(gameMode.getText().equals("Roulette!")) {
         				if(addChip > p[0].getBankAccount().getBalance()) {
         					bettingP1.setText("Insufficient Funds");
@@ -1710,7 +1725,7 @@ public class CasinoGUI extends JFrame{
         			
         			totalBet1 += addChip;
         			bettingP1.setText("Betting: " + totalBet1);
-        		}else if(playerPlaying == 1) {
+        		}else if(playersPlaying == 1) {
         			if(gameMode.getText().equals("Roulette!")) {
         				if(addChip > p[1].getBankAccount().getBalance()) {
         					bettingP1.setText("Insufficient Funds");
@@ -1729,7 +1744,7 @@ public class CasinoGUI extends JFrame{
         			
         			totalBet2 += addChip;
         			bettingP2.setText("Betting: " + totalBet2);
-        		}else if(playerPlaying == 2) {
+        		}else if(playersPlaying == 2) {
         			if(gameMode.getText().equals("Roulette!")) {
         				if(addChip > p[2].getBankAccount().getBalance()) {
         					bettingP1.setText("Insufficient Funds");
@@ -1748,7 +1763,7 @@ public class CasinoGUI extends JFrame{
         			
         			totalBet3 += addChip;
         			bettingP3.setText("Betting: " + totalBet3);
-        		}else if(playerPlaying == 3) {
+        		}else if(playersPlaying == 3) {
         			if(gameMode.getText().equals("Roulette!")) {
         				if(addChip > p[3].getBankAccount().getBalance()) {
         					bettingP1.setText("Insufficient Funds");
@@ -1769,12 +1784,12 @@ public class CasinoGUI extends JFrame{
         			bettingP4.setText("Betting: " + totalBet4);
         		}
         	}else if(e.getSource() == number7) {
-        		if(playerPlaying == -1) {
+        		if(playersPlaying == -1) {
         			bettingP1.setText("Select Player Icon to Bet");
         			bettingP2.setText("Select Player Icon to Bet");
         			bettingP3.setText("Select Player Icon to Bet");
         			bettingP4.setText("Select Player Icon to Bet");
-        		}else if(playerPlaying == 0) {
+        		}else if(playersPlaying == 0) {
         			if(gameMode.getText().equals("Roulette!")) {
         				if(addChip > p[0].getBankAccount().getBalance()) {
         					bettingP1.setText("Insufficient Funds");
@@ -1793,7 +1808,7 @@ public class CasinoGUI extends JFrame{
         			
         			totalBet1 += addChip;
         			bettingP1.setText("Betting: " + totalBet1);
-        		}else if(playerPlaying == 1) {
+        		}else if(playersPlaying == 1) {
         			if(gameMode.getText().equals("Roulette!")) {
         				if(addChip > p[1].getBankAccount().getBalance()) {
         					bettingP1.setText("Insufficient Funds");
@@ -1812,7 +1827,7 @@ public class CasinoGUI extends JFrame{
         			
         			totalBet2 += addChip;
         			bettingP2.setText("Betting: " + totalBet2);
-        		}else if(playerPlaying == 2) {
+        		}else if(playersPlaying == 2) {
         			if(gameMode.getText().equals("Roulette!")) {
         				if(addChip > p[2].getBankAccount().getBalance()) {
         					bettingP1.setText("Insufficient Funds");
@@ -1831,7 +1846,7 @@ public class CasinoGUI extends JFrame{
         			
         			totalBet3 += addChip;
         			bettingP3.setText("Betting: " + totalBet3);
-        		}else if(playerPlaying == 3) {
+        		}else if(playersPlaying == 3) {
         			if(gameMode.getText().equals("Roulette!")) {
         				if(addChip > p[3].getBankAccount().getBalance()) {
         					bettingP1.setText("Insufficient Funds");
@@ -1852,12 +1867,12 @@ public class CasinoGUI extends JFrame{
         			bettingP4.setText("Betting: " + totalBet4);
         		}
         	}else if(e.getSource() == number8) {
-        		if(playerPlaying == -1) {
+        		if(playersPlaying == -1) {
         			bettingP1.setText("Select Player Icon to Bet");
         			bettingP2.setText("Select Player Icon to Bet");
         			bettingP3.setText("Select Player Icon to Bet");
         			bettingP4.setText("Select Player Icon to Bet");
-        		}else if(playerPlaying == 0) {
+        		}else if(playersPlaying == 0) {
         			if(gameMode.getText().equals("Roulette!")) {
         				if(addChip > p[0].getBankAccount().getBalance()) {
         					bettingP1.setText("Insufficient Funds");
@@ -1876,7 +1891,7 @@ public class CasinoGUI extends JFrame{
         			
         			totalBet1 += addChip;
         			bettingP1.setText("Betting: " + totalBet1);
-        		}else if(playerPlaying == 1) {
+        		}else if(playersPlaying == 1) {
         			if(gameMode.getText().equals("Roulette!")) {
         				if(addChip > p[1].getBankAccount().getBalance()) {
         					bettingP1.setText("Insufficient Funds");
@@ -1895,7 +1910,7 @@ public class CasinoGUI extends JFrame{
         			
         			totalBet2 += addChip;
         			bettingP2.setText("Betting: " + totalBet2);
-        		}else if(playerPlaying == 2) {
+        		}else if(playersPlaying == 2) {
         			if(gameMode.getText().equals("Roulette!")) {
         				if(addChip > p[2].getBankAccount().getBalance()) {
         					bettingP1.setText("Insufficient Funds");
@@ -1914,7 +1929,7 @@ public class CasinoGUI extends JFrame{
         			
         			totalBet3 += addChip;
         			bettingP3.setText("Betting: " + totalBet3);
-        		}else if(playerPlaying == 3) {
+        		}else if(playersPlaying == 3) {
         			if(gameMode.getText().equals("Roulette!")) {
         				if(addChip > p[3].getBankAccount().getBalance()) {
         					bettingP1.setText("Insufficient Funds");
@@ -1935,12 +1950,12 @@ public class CasinoGUI extends JFrame{
         			bettingP4.setText("Betting: " + totalBet4);
         		}
         	}else if(e.getSource() == number9) {
-        		if(playerPlaying == -1) {
+        		if(playersPlaying == -1) {
         			bettingP1.setText("Select Player Icon to Bet");
         			bettingP2.setText("Select Player Icon to Bet");
         			bettingP3.setText("Select Player Icon to Bet");
         			bettingP4.setText("Select Player Icon to Bet");
-        		}else if(playerPlaying == 0) {
+        		}else if(playersPlaying == 0) {
         			if(gameMode.getText().equals("Roulette!")) {
         				if(addChip > p[0].getBankAccount().getBalance()) {
         					bettingP1.setText("Insufficient Funds");
@@ -1959,7 +1974,7 @@ public class CasinoGUI extends JFrame{
         			
         			totalBet1 += addChip;
         			bettingP1.setText("Betting: " + totalBet1);
-        		}else if(playerPlaying == 1) {
+        		}else if(playersPlaying == 1) {
         			if(gameMode.getText().equals("Roulette!")) {
         				if(addChip > p[1].getBankAccount().getBalance()) {
         					bettingP1.setText("Insufficient Funds");
@@ -1978,7 +1993,7 @@ public class CasinoGUI extends JFrame{
         			
         			totalBet2 += addChip;
         			bettingP2.setText("Betting: " + totalBet2);
-        		}else if(playerPlaying == 2) {
+        		}else if(playersPlaying == 2) {
         			if(gameMode.getText().equals("Roulette!")) {
         				if(addChip > p[2].getBankAccount().getBalance()) {
         					bettingP1.setText("Insufficient Funds");
@@ -1997,7 +2012,7 @@ public class CasinoGUI extends JFrame{
         			
         			totalBet3 += addChip;
         			bettingP3.setText("Betting: " + totalBet3);
-        		}else if(playerPlaying == 3) {
+        		}else if(playersPlaying == 3) {
         			if(gameMode.getText().equals("Roulette!")) {
         				if(addChip > p[3].getBankAccount().getBalance()) {
         					bettingP1.setText("Insufficient Funds");
@@ -2018,12 +2033,12 @@ public class CasinoGUI extends JFrame{
         			bettingP4.setText("Betting: " + totalBet4);
         		}
         	}else if(e.getSource() == number10) {
-        		if(playerPlaying == -1) {
+        		if(playersPlaying == -1) {
         			bettingP1.setText("Select Player Icon to Bet");
         			bettingP2.setText("Select Player Icon to Bet");
         			bettingP3.setText("Select Player Icon to Bet");
         			bettingP4.setText("Select Player Icon to Bet");
-        		}else if(playerPlaying == 0) {
+        		}else if(playersPlaying == 0) {
         			if(gameMode.getText().equals("Roulette!")) {
         				if(addChip > p[0].getBankAccount().getBalance()) {
         					bettingP1.setText("Insufficient Funds");
@@ -2042,7 +2057,7 @@ public class CasinoGUI extends JFrame{
         			
         			totalBet1 += addChip;
         			bettingP1.setText("Betting: " + totalBet1);
-        		}else if(playerPlaying == 1) {
+        		}else if(playersPlaying == 1) {
         			if(gameMode.getText().equals("Roulette!")) {
         				if(addChip > p[1].getBankAccount().getBalance()) {
         					bettingP1.setText("Insufficient Funds");
@@ -2061,7 +2076,7 @@ public class CasinoGUI extends JFrame{
         			
         			totalBet2 += addChip;
         			bettingP2.setText("Betting: " + totalBet2);
-        		}else if(playerPlaying == 2) {
+        		}else if(playersPlaying == 2) {
         			if(gameMode.getText().equals("Roulette!")) {
         				if(addChip > p[2].getBankAccount().getBalance()) {
         					bettingP1.setText("Insufficient Funds");
@@ -2080,7 +2095,7 @@ public class CasinoGUI extends JFrame{
         			
         			totalBet3 += addChip;
         			bettingP3.setText("Betting: " + totalBet3);
-        		}else if(playerPlaying == 3) {
+        		}else if(playersPlaying == 3) {
         			if(gameMode.getText().equals("Roulette!")) {
         				if(addChip > p[3].getBankAccount().getBalance()) {
         					bettingP1.setText("Insufficient Funds");
@@ -2101,12 +2116,12 @@ public class CasinoGUI extends JFrame{
         			bettingP4.setText("Betting: " + totalBet4);
         		}
         	}else if(e.getSource() == number11) {
-        		if(playerPlaying == -1) {
+        		if(playersPlaying == -1) {
         			bettingP1.setText("Select Player Icon to Bet");
         			bettingP2.setText("Select Player Icon to Bet");
         			bettingP3.setText("Select Player Icon to Bet");
         			bettingP4.setText("Select Player Icon to Bet");
-        		}else if(playerPlaying == 0) {
+        		}else if(playersPlaying == 0) {
         			if(gameMode.getText().equals("Roulette!")) {
         				if(addChip > p[0].getBankAccount().getBalance()) {
         					bettingP1.setText("Insufficient Funds");
@@ -2125,7 +2140,7 @@ public class CasinoGUI extends JFrame{
         			
         			totalBet1 += addChip;
         			bettingP1.setText("Betting: " + totalBet1);
-        		}else if(playerPlaying == 1) {
+        		}else if(playersPlaying == 1) {
         			if(gameMode.getText().equals("Roulette!")) {
         				if(addChip > p[1].getBankAccount().getBalance()) {
         					bettingP1.setText("Insufficient Funds");
@@ -2144,7 +2159,7 @@ public class CasinoGUI extends JFrame{
         			
         			totalBet2 += addChip;
         			bettingP2.setText("Betting: " + totalBet2);
-        		}else if(playerPlaying == 2) {
+        		}else if(playersPlaying == 2) {
         			if(gameMode.getText().equals("Roulette!")) {
         				if(addChip > p[2].getBankAccount().getBalance()) {
         					bettingP1.setText("Insufficient Funds");
@@ -2163,7 +2178,7 @@ public class CasinoGUI extends JFrame{
         			
         			totalBet3 += addChip;
         			bettingP3.setText("Betting: " + totalBet3);
-        		}else if(playerPlaying == 3) {
+        		}else if(playersPlaying == 3) {
         			if(gameMode.getText().equals("Roulette!")) {
         				if(addChip > p[3].getBankAccount().getBalance()) {
         					bettingP1.setText("Insufficient Funds");
@@ -2184,12 +2199,12 @@ public class CasinoGUI extends JFrame{
         			bettingP4.setText("Betting: " + totalBet4);
         		}
         	}else if(e.getSource() == number12) {
-        		if(playerPlaying == -1) {
+        		if(playersPlaying == -1) {
         			bettingP1.setText("Select Player Icon to Bet");
         			bettingP2.setText("Select Player Icon to Bet");
         			bettingP3.setText("Select Player Icon to Bet");
         			bettingP4.setText("Select Player Icon to Bet");
-        		}else if(playerPlaying == 0) {
+        		}else if(playersPlaying == 0) {
         			if(gameMode.getText().equals("Roulette!")) {
         				if(addChip > p[0].getBankAccount().getBalance()) {
         					bettingP1.setText("Insufficient Funds");
@@ -2208,7 +2223,7 @@ public class CasinoGUI extends JFrame{
         			
         			totalBet1 += addChip;
         			bettingP1.setText("Betting: " + totalBet1);
-        		}else if(playerPlaying == 1) {
+        		}else if(playersPlaying == 1) {
         			if(gameMode.getText().equals("Roulette!")) {
         				if(addChip > p[1].getBankAccount().getBalance()) {
         					bettingP1.setText("Insufficient Funds");
@@ -2227,7 +2242,7 @@ public class CasinoGUI extends JFrame{
         			
         			totalBet2 += addChip;
         			bettingP2.setText("Betting: " + totalBet2);
-        		}else if(playerPlaying == 2) {
+        		}else if(playersPlaying == 2) {
         			if(gameMode.getText().equals("Roulette!")) {
         				if(addChip > p[2].getBankAccount().getBalance()) {
         					bettingP1.setText("Insufficient Funds");
@@ -2246,7 +2261,7 @@ public class CasinoGUI extends JFrame{
         			
         			totalBet3 += addChip;
         			bettingP3.setText("Betting: " + totalBet3);
-        		}else if(playerPlaying == 3) {
+        		}else if(playersPlaying == 3) {
         			if(gameMode.getText().equals("Roulette!")) {
         				if(addChip > p[3].getBankAccount().getBalance()) {
         					bettingP1.setText("Insufficient Funds");
@@ -2267,12 +2282,12 @@ public class CasinoGUI extends JFrame{
         			bettingP4.setText("Betting: " + totalBet4);
         		}
         	}else if(e.getSource() == number13) {
-        		if(playerPlaying == -1) {
+        		if(playersPlaying == -1) {
         			bettingP1.setText("Select Player Icon to Bet");
         			bettingP2.setText("Select Player Icon to Bet");
         			bettingP3.setText("Select Player Icon to Bet");
         			bettingP4.setText("Select Player Icon to Bet");
-        		}else if(playerPlaying == 0) {
+        		}else if(playersPlaying == 0) {
         			if(gameMode.getText().equals("Roulette!")) {
         				if(addChip > p[0].getBankAccount().getBalance()) {
         					bettingP1.setText("Insufficient Funds");
@@ -2291,7 +2306,7 @@ public class CasinoGUI extends JFrame{
         			
         			totalBet1 += addChip;
         			bettingP1.setText("Betting: " + totalBet1);
-        		}else if(playerPlaying == 1) {
+        		}else if(playersPlaying == 1) {
         			if(gameMode.getText().equals("Roulette!")) {
         				if(addChip > p[1].getBankAccount().getBalance()) {
         					bettingP1.setText("Insufficient Funds");
@@ -2310,7 +2325,7 @@ public class CasinoGUI extends JFrame{
         			
         			totalBet2 += addChip;
         			bettingP2.setText("Betting: " + totalBet2);
-        		}else if(playerPlaying == 2) {
+        		}else if(playersPlaying == 2) {
         			if(gameMode.getText().equals("Roulette!")) {
         				if(addChip > p[2].getBankAccount().getBalance()) {
         					bettingP1.setText("Insufficient Funds");
@@ -2329,7 +2344,7 @@ public class CasinoGUI extends JFrame{
         			
         			totalBet3 += addChip;
         			bettingP3.setText("Betting: " + totalBet3);
-        		}else if(playerPlaying == 3) {
+        		}else if(playersPlaying == 3) {
         			if(gameMode.getText().equals("Roulette!")) {
         				if(addChip > p[3].getBankAccount().getBalance()) {
         					bettingP1.setText("Insufficient Funds");
@@ -2350,12 +2365,12 @@ public class CasinoGUI extends JFrame{
         			bettingP4.setText("Betting: " + totalBet4);
         		}
         	}else if(e.getSource() == number14) {
-        		if(playerPlaying == -1) {
+        		if(playersPlaying == -1) {
         			bettingP1.setText("Select Player Icon to Bet");
         			bettingP2.setText("Select Player Icon to Bet");
         			bettingP3.setText("Select Player Icon to Bet");
         			bettingP4.setText("Select Player Icon to Bet");
-        		}else if(playerPlaying == 0) {
+        		}else if(playersPlaying == 0) {
         			if(gameMode.getText().equals("Roulette!")) {
         				if(addChip > p[0].getBankAccount().getBalance()) {
         					bettingP1.setText("Insufficient Funds");
@@ -2374,7 +2389,7 @@ public class CasinoGUI extends JFrame{
         			
         			totalBet1 += addChip;
         			bettingP1.setText("Betting: " + totalBet1);
-        		}else if(playerPlaying == 1) {
+        		}else if(playersPlaying == 1) {
         			if(gameMode.getText().equals("Roulette!")) {
         				if(addChip > p[1].getBankAccount().getBalance()) {
         					bettingP1.setText("Insufficient Funds");
@@ -2393,7 +2408,7 @@ public class CasinoGUI extends JFrame{
         			
         			totalBet2 += addChip;
         			bettingP2.setText("Betting: " + totalBet2);
-        		}else if(playerPlaying == 2) {
+        		}else if(playersPlaying == 2) {
         			if(gameMode.getText().equals("Roulette!")) {
         				if(addChip > p[2].getBankAccount().getBalance()) {
         					bettingP1.setText("Insufficient Funds");
@@ -2412,7 +2427,7 @@ public class CasinoGUI extends JFrame{
         			
         			totalBet3 += addChip;
         			bettingP3.setText("Betting: " + totalBet3);
-        		}else if(playerPlaying == 3) {
+        		}else if(playersPlaying == 3) {
         			if(gameMode.getText().equals("Roulette!")) {
         				if(addChip > p[3].getBankAccount().getBalance()) {
         					bettingP1.setText("Insufficient Funds");
@@ -2433,12 +2448,12 @@ public class CasinoGUI extends JFrame{
         			bettingP4.setText("Betting: " + totalBet4);
         		}
         	}else if(e.getSource() == number15) {
-        		if(playerPlaying == -1) {
+        		if(playersPlaying == -1) {
         			bettingP1.setText("Select Player Icon to Bet");
         			bettingP2.setText("Select Player Icon to Bet");
         			bettingP3.setText("Select Player Icon to Bet");
         			bettingP4.setText("Select Player Icon to Bet");
-        		}else if(playerPlaying == 0) {
+        		}else if(playersPlaying == 0) {
         			if(gameMode.getText().equals("Roulette!")) {
         				if(addChip > p[0].getBankAccount().getBalance()) {
         					bettingP1.setText("Insufficient Funds");
@@ -2457,7 +2472,7 @@ public class CasinoGUI extends JFrame{
         			
         			totalBet1 += addChip;
         			bettingP1.setText("Betting: " + totalBet1);
-        		}else if(playerPlaying == 1) {
+        		}else if(playersPlaying == 1) {
         			if(gameMode.getText().equals("Roulette!")) {
         				if(addChip > p[1].getBankAccount().getBalance()) {
         					bettingP1.setText("Insufficient Funds");
@@ -2476,7 +2491,7 @@ public class CasinoGUI extends JFrame{
         			
         			totalBet2 += addChip;
         			bettingP2.setText("Betting: " + totalBet2);
-        		}else if(playerPlaying == 2) {
+        		}else if(playersPlaying == 2) {
         			if(gameMode.getText().equals("Roulette!")) {
         				if(addChip > p[2].getBankAccount().getBalance()) {
         					bettingP1.setText("Insufficient Funds");
@@ -2495,7 +2510,7 @@ public class CasinoGUI extends JFrame{
         			
         			totalBet3 += addChip;
         			bettingP3.setText("Betting: " + totalBet3);
-        		}else if(playerPlaying == 3) {
+        		}else if(playersPlaying == 3) {
         			if(gameMode.getText().equals("Roulette!")) {
         				if(addChip > p[3].getBankAccount().getBalance()) {
         					bettingP1.setText("Insufficient Funds");
@@ -2516,12 +2531,12 @@ public class CasinoGUI extends JFrame{
         			bettingP4.setText("Betting: " + totalBet4);
         		}
         	}else if(e.getSource() == number16) {
-        		if(playerPlaying == -1) {
+        		if(playersPlaying == -1) {
         			bettingP1.setText("Select Player Icon to Bet");
         			bettingP2.setText("Select Player Icon to Bet");
         			bettingP3.setText("Select Player Icon to Bet");
         			bettingP4.setText("Select Player Icon to Bet");
-        		}else if(playerPlaying == 0) {
+        		}else if(playersPlaying == 0) {
         			if(gameMode.getText().equals("Roulette!")) {
         				if(addChip > p[0].getBankAccount().getBalance()) {
         					bettingP1.setText("Insufficient Funds");
@@ -2540,7 +2555,7 @@ public class CasinoGUI extends JFrame{
         			
         			totalBet1 += addChip;
         			bettingP1.setText("Betting: " + totalBet1);
-        		}else if(playerPlaying == 1) {
+        		}else if(playersPlaying == 1) {
         			if(gameMode.getText().equals("Roulette!")) {
         				if(addChip > p[1].getBankAccount().getBalance()) {
         					bettingP1.setText("Insufficient Funds");
@@ -2559,7 +2574,7 @@ public class CasinoGUI extends JFrame{
         			
         			totalBet2 += addChip;
         			bettingP2.setText("Betting: " + totalBet2);
-        		}else if(playerPlaying == 2) {
+        		}else if(playersPlaying == 2) {
         			if(gameMode.getText().equals("Roulette!")) {
         				if(addChip > p[2].getBankAccount().getBalance()) {
         					bettingP1.setText("Insufficient Funds");
@@ -2578,7 +2593,7 @@ public class CasinoGUI extends JFrame{
         			
         			totalBet3 += addChip;
         			bettingP3.setText("Betting: " + totalBet3);
-        		}else if(playerPlaying == 3) {
+        		}else if(playersPlaying == 3) {
         			if(gameMode.getText().equals("Roulette!")) {
         				if(addChip > p[3].getBankAccount().getBalance()) {
         					bettingP1.setText("Insufficient Funds");
@@ -2599,12 +2614,12 @@ public class CasinoGUI extends JFrame{
         			bettingP4.setText("Betting: " + totalBet4);
         		}
         	}else if(e.getSource() == number17) {
-        		if(playerPlaying == -1) {
+        		if(playersPlaying == -1) {
         			bettingP1.setText("Select Player Icon to Bet");
         			bettingP2.setText("Select Player Icon to Bet");
         			bettingP3.setText("Select Player Icon to Bet");
         			bettingP4.setText("Select Player Icon to Bet");
-        		}else if(playerPlaying == 0) {
+        		}else if(playersPlaying == 0) {
         			if(gameMode.getText().equals("Roulette!")) {
         				if(addChip > p[0].getBankAccount().getBalance()) {
         					bettingP1.setText("Insufficient Funds");
@@ -2623,7 +2638,7 @@ public class CasinoGUI extends JFrame{
         			
         			totalBet1 += addChip;
         			bettingP1.setText("Betting: " + totalBet1);
-        		}else if(playerPlaying == 1) {
+        		}else if(playersPlaying == 1) {
         			if(gameMode.getText().equals("Roulette!")) {
         				if(addChip > p[1].getBankAccount().getBalance()) {
         					bettingP1.setText("Insufficient Funds");
@@ -2642,7 +2657,7 @@ public class CasinoGUI extends JFrame{
         			
         			totalBet2 += addChip;
         			bettingP2.setText("Betting: " + totalBet2);
-        		}else if(playerPlaying == 2) {
+        		}else if(playersPlaying == 2) {
         			if(gameMode.getText().equals("Roulette!")) {
         				if(addChip > p[2].getBankAccount().getBalance()) {
         					bettingP1.setText("Insufficient Funds");
@@ -2661,7 +2676,7 @@ public class CasinoGUI extends JFrame{
         			
         			totalBet3 += addChip;
         			bettingP3.setText("Betting: " + totalBet3);
-        		}else if(playerPlaying == 3) {
+        		}else if(playersPlaying == 3) {
         			if(gameMode.getText().equals("Roulette!")) {
         				if(addChip > p[3].getBankAccount().getBalance()) {
         					bettingP1.setText("Insufficient Funds");
@@ -2682,12 +2697,12 @@ public class CasinoGUI extends JFrame{
         			bettingP4.setText("Betting: " + totalBet4);
         		}
         	}else if(e.getSource() == number18) {
-        		if(playerPlaying == -1) {
+        		if(playersPlaying == -1) {
         			bettingP1.setText("Select Player Icon to Bet");
         			bettingP2.setText("Select Player Icon to Bet");
         			bettingP3.setText("Select Player Icon to Bet");
         			bettingP4.setText("Select Player Icon to Bet");
-        		}else if(playerPlaying == 0) {
+        		}else if(playersPlaying == 0) {
         			if(gameMode.getText().equals("Roulette!")) {
         				if(addChip > p[0].getBankAccount().getBalance()) {
         					bettingP1.setText("Insufficient Funds");
@@ -2706,7 +2721,7 @@ public class CasinoGUI extends JFrame{
         			
         			totalBet1 += addChip;
         			bettingP1.setText("Betting: " + totalBet1);
-        		}else if(playerPlaying == 1) {
+        		}else if(playersPlaying == 1) {
         			if(gameMode.getText().equals("Roulette!")) {
         				if(addChip > p[1].getBankAccount().getBalance()) {
         					bettingP1.setText("Insufficient Funds");
@@ -2725,7 +2740,7 @@ public class CasinoGUI extends JFrame{
         			
         			totalBet2 += addChip;
         			bettingP2.setText("Betting: " + totalBet2);
-        		}else if(playerPlaying == 2) {
+        		}else if(playersPlaying == 2) {
         			if(gameMode.getText().equals("Roulette!")) {
         				if(addChip > p[2].getBankAccount().getBalance()) {
         					bettingP1.setText("Insufficient Funds");
@@ -2744,7 +2759,7 @@ public class CasinoGUI extends JFrame{
         			
         			totalBet3 += addChip;
         			bettingP3.setText("Betting: " + totalBet3);
-        		}else if(playerPlaying == 3) {
+        		}else if(playersPlaying == 3) {
         			if(gameMode.getText().equals("Roulette!")) {
         				if(addChip > p[3].getBankAccount().getBalance()) {
         					bettingP1.setText("Insufficient Funds");
@@ -2765,12 +2780,12 @@ public class CasinoGUI extends JFrame{
         			bettingP4.setText("Betting: " + totalBet4);
         		}
         	}else if(e.getSource() == number19) {
-        		if(playerPlaying == -1) {
+        		if(playersPlaying == -1) {
         			bettingP1.setText("Select Player Icon to Bet");
         			bettingP2.setText("Select Player Icon to Bet");
         			bettingP3.setText("Select Player Icon to Bet");
         			bettingP4.setText("Select Player Icon to Bet");
-        		}else if(playerPlaying == 0) {
+        		}else if(playersPlaying == 0) {
         			if(gameMode.getText().equals("Roulette!")) {
         				if(addChip > p[0].getBankAccount().getBalance()) {
         					bettingP1.setText("Insufficient Funds");
@@ -2789,7 +2804,7 @@ public class CasinoGUI extends JFrame{
         			
         			totalBet1 += addChip;
         			bettingP1.setText("Betting: " + totalBet1);
-        		}else if(playerPlaying == 1) {
+        		}else if(playersPlaying == 1) {
         			if(gameMode.getText().equals("Roulette!")) {
         				if(addChip > p[1].getBankAccount().getBalance()) {
         					bettingP1.setText("Insufficient Funds");
@@ -2808,7 +2823,7 @@ public class CasinoGUI extends JFrame{
         			
         			totalBet2 += addChip;
         			bettingP2.setText("Betting: " + totalBet2);
-        		}else if(playerPlaying == 2) {
+        		}else if(playersPlaying == 2) {
         			if(gameMode.getText().equals("Roulette!")) {
         				if(addChip > p[2].getBankAccount().getBalance()) {
         					bettingP1.setText("Insufficient Funds");
@@ -2827,7 +2842,7 @@ public class CasinoGUI extends JFrame{
         			
         			totalBet3 += addChip;
         			bettingP3.setText("Betting: " + totalBet3);
-        		}else if(playerPlaying == 3) {
+        		}else if(playersPlaying == 3) {
         			if(gameMode.getText().equals("Roulette!")) {
         				if(addChip > p[3].getBankAccount().getBalance()) {
         					bettingP1.setText("Insufficient Funds");
@@ -2848,12 +2863,12 @@ public class CasinoGUI extends JFrame{
         			bettingP4.setText("Betting: " + totalBet4);
         		}
         	}else if(e.getSource() == number20) {
-        		if(playerPlaying == -1) {
+        		if(playersPlaying == -1) {
         			bettingP1.setText("Select Player Icon to Bet");
         			bettingP2.setText("Select Player Icon to Bet");
         			bettingP3.setText("Select Player Icon to Bet");
         			bettingP4.setText("Select Player Icon to Bet");
-        		}else if(playerPlaying == 0) {
+        		}else if(playersPlaying == 0) {
         			if(gameMode.getText().equals("Roulette!")) {
         				if(addChip > p[0].getBankAccount().getBalance()) {
         					bettingP1.setText("Insufficient Funds");
@@ -2872,7 +2887,7 @@ public class CasinoGUI extends JFrame{
         			
         			totalBet1 += addChip;
         			bettingP1.setText("Betting: " + totalBet1);
-        		}else if(playerPlaying == 1) {
+        		}else if(playersPlaying == 1) {
         			if(gameMode.getText().equals("Roulette!")) {
         				if(addChip > p[1].getBankAccount().getBalance()) {
         					bettingP1.setText("Insufficient Funds");
@@ -2891,7 +2906,7 @@ public class CasinoGUI extends JFrame{
         			
         			totalBet2 += addChip;
         			bettingP2.setText("Betting: " + totalBet2);
-        		}else if(playerPlaying == 2) {
+        		}else if(playersPlaying == 2) {
         			if(gameMode.getText().equals("Roulette!")) {
         				if(addChip > p[2].getBankAccount().getBalance()) {
         					bettingP1.setText("Insufficient Funds");
@@ -2910,7 +2925,7 @@ public class CasinoGUI extends JFrame{
         			
         			totalBet3 += addChip;
         			bettingP3.setText("Betting: " + totalBet3);
-        		}else if(playerPlaying == 3) {
+        		}else if(playersPlaying == 3) {
         			if(gameMode.getText().equals("Roulette!")) {
         				if(addChip > p[3].getBankAccount().getBalance()) {
         					bettingP1.setText("Insufficient Funds");
@@ -2931,12 +2946,12 @@ public class CasinoGUI extends JFrame{
         			bettingP4.setText("Betting: " + totalBet4);
         		}
         	}else if(e.getSource() == number21) {
-        		if(playerPlaying == -1) {
+        		if(playersPlaying == -1) {
         			bettingP1.setText("Select Player Icon to Bet");
         			bettingP2.setText("Select Player Icon to Bet");
         			bettingP3.setText("Select Player Icon to Bet");
         			bettingP4.setText("Select Player Icon to Bet");
-        		}else if(playerPlaying == 0) {
+        		}else if(playersPlaying == 0) {
         			if(gameMode.getText().equals("Roulette!")) {
         				if(addChip > p[0].getBankAccount().getBalance()) {
         					bettingP1.setText("Insufficient Funds");
@@ -2955,7 +2970,7 @@ public class CasinoGUI extends JFrame{
         			
         			totalBet1 += addChip;
         			bettingP1.setText("Betting: " + totalBet1);
-        		}else if(playerPlaying == 1) {
+        		}else if(playersPlaying == 1) {
         			if(gameMode.getText().equals("Roulette!")) {
         				if(addChip > p[1].getBankAccount().getBalance()) {
         					bettingP1.setText("Insufficient Funds");
@@ -2974,7 +2989,7 @@ public class CasinoGUI extends JFrame{
         			
         			totalBet2 += addChip;
         			bettingP2.setText("Betting: " + totalBet2);
-        		}else if(playerPlaying == 2) {
+        		}else if(playersPlaying == 2) {
         			if(gameMode.getText().equals("Roulette!")) {
         				if(addChip > p[2].getBankAccount().getBalance()) {
         					bettingP1.setText("Insufficient Funds");
@@ -2993,7 +3008,7 @@ public class CasinoGUI extends JFrame{
         			
         			totalBet3 += addChip;
         			bettingP3.setText("Betting: " + totalBet3);
-        		}else if(playerPlaying == 3) {
+        		}else if(playersPlaying == 3) {
         			if(gameMode.getText().equals("Roulette!")) {
         				if(addChip > p[3].getBankAccount().getBalance()) {
         					bettingP1.setText("Insufficient Funds");
@@ -3014,12 +3029,12 @@ public class CasinoGUI extends JFrame{
         			bettingP4.setText("Betting: " + totalBet4);
         		}
         	}else if(e.getSource() == number22) {
-        		if(playerPlaying == -1) {
+        		if(playersPlaying == -1) {
         			bettingP1.setText("Select Player Icon to Bet");
         			bettingP2.setText("Select Player Icon to Bet");
         			bettingP3.setText("Select Player Icon to Bet");
         			bettingP4.setText("Select Player Icon to Bet");
-        		}else if(playerPlaying == 0) {
+        		}else if(playersPlaying == 0) {
         			if(gameMode.getText().equals("Roulette!")) {
         				if(addChip > p[0].getBankAccount().getBalance()) {
         					bettingP1.setText("Insufficient Funds");
@@ -3038,7 +3053,7 @@ public class CasinoGUI extends JFrame{
         			
         			totalBet1 += addChip;
         			bettingP1.setText("Betting: " + totalBet1);
-        		}else if(playerPlaying == 1) {
+        		}else if(playersPlaying == 1) {
         			if(gameMode.getText().equals("Roulette!")) {
         				if(addChip > p[1].getBankAccount().getBalance()) {
         					bettingP1.setText("Insufficient Funds");
@@ -3057,7 +3072,7 @@ public class CasinoGUI extends JFrame{
         			
         			totalBet2 += addChip;
         			bettingP2.setText("Betting: " + totalBet2);
-        		}else if(playerPlaying == 2) {
+        		}else if(playersPlaying == 2) {
         			if(gameMode.getText().equals("Roulette!")) {
         				if(addChip > p[2].getBankAccount().getBalance()) {
         					bettingP1.setText("Insufficient Funds");
@@ -3076,7 +3091,7 @@ public class CasinoGUI extends JFrame{
         			
         			totalBet3 += addChip;
         			bettingP3.setText("Betting: " + totalBet3);
-        		}else if(playerPlaying == 3) {
+        		}else if(playersPlaying == 3) {
         			if(gameMode.getText().equals("Roulette!")) {
         				if(addChip > p[3].getBankAccount().getBalance()) {
         					bettingP1.setText("Insufficient Funds");
@@ -3097,12 +3112,12 @@ public class CasinoGUI extends JFrame{
         			bettingP4.setText("Betting: " + totalBet4);
         		}
         	}else if(e.getSource() == number23) {
-        		if(playerPlaying == -1) {
+        		if(playersPlaying == -1) {
         			bettingP1.setText("Select Player Icon to Bet");
         			bettingP2.setText("Select Player Icon to Bet");
         			bettingP3.setText("Select Player Icon to Bet");
         			bettingP4.setText("Select Player Icon to Bet");
-        		}else if(playerPlaying == 0) {
+        		}else if(playersPlaying == 0) {
         			if(gameMode.getText().equals("Roulette!")) {
         				if(addChip > p[0].getBankAccount().getBalance()) {
         					bettingP1.setText("Insufficient Funds");
@@ -3121,7 +3136,7 @@ public class CasinoGUI extends JFrame{
         			
         			totalBet1 += addChip;
         			bettingP1.setText("Betting: " + totalBet1);
-        		}else if(playerPlaying == 1) {
+        		}else if(playersPlaying == 1) {
         			if(gameMode.getText().equals("Roulette!")) {
         				if(addChip > p[1].getBankAccount().getBalance()) {
         					bettingP1.setText("Insufficient Funds");
@@ -3140,7 +3155,7 @@ public class CasinoGUI extends JFrame{
         			
         			totalBet2 += addChip;
         			bettingP2.setText("Betting: " + totalBet2);
-        		}else if(playerPlaying == 2) {
+        		}else if(playersPlaying == 2) {
         			if(gameMode.getText().equals("Roulette!")) {
         				if(addChip > p[2].getBankAccount().getBalance()) {
         					bettingP1.setText("Insufficient Funds");
@@ -3159,7 +3174,7 @@ public class CasinoGUI extends JFrame{
         			
         			totalBet3 += addChip;
         			bettingP3.setText("Betting: " + totalBet3);
-        		}else if(playerPlaying == 3) {
+        		}else if(playersPlaying == 3) {
         			if(gameMode.getText().equals("Roulette!")) {
         				if(addChip > p[3].getBankAccount().getBalance()) {
         					bettingP1.setText("Insufficient Funds");
@@ -3180,12 +3195,12 @@ public class CasinoGUI extends JFrame{
         			bettingP4.setText("Betting: " + totalBet4);
         		}
         	}else if(e.getSource() == number24) {
-        		if(playerPlaying == -1) {
+        		if(playersPlaying == -1) {
         			bettingP1.setText("Select Player Icon to Bet");
         			bettingP2.setText("Select Player Icon to Bet");
         			bettingP3.setText("Select Player Icon to Bet");
         			bettingP4.setText("Select Player Icon to Bet");
-        		}else if(playerPlaying == 0) {
+        		}else if(playersPlaying == 0) {
         			if(gameMode.getText().equals("Roulette!")) {
         				if(addChip > p[0].getBankAccount().getBalance()) {
         					bettingP1.setText("Insufficient Funds");
@@ -3204,7 +3219,7 @@ public class CasinoGUI extends JFrame{
         			
         			totalBet1 += addChip;
         			bettingP1.setText("Betting: " + totalBet1);
-        		}else if(playerPlaying == 1) {
+        		}else if(playersPlaying == 1) {
         			if(gameMode.getText().equals("Roulette!")) {
         				if(addChip > p[1].getBankAccount().getBalance()) {
         					bettingP1.setText("Insufficient Funds");
@@ -3223,7 +3238,7 @@ public class CasinoGUI extends JFrame{
         			
         			totalBet2 += addChip;
         			bettingP2.setText("Betting: " + totalBet2);
-        		}else if(playerPlaying == 2) {
+        		}else if(playersPlaying == 2) {
         			if(gameMode.getText().equals("Roulette!")) {
         				if(addChip > p[2].getBankAccount().getBalance()) {
         					bettingP1.setText("Insufficient Funds");
@@ -3242,7 +3257,7 @@ public class CasinoGUI extends JFrame{
         			
         			totalBet3 += addChip;
         			bettingP3.setText("Betting: " + totalBet3);
-        		}else if(playerPlaying == 3) {
+        		}else if(playersPlaying == 3) {
         			if(gameMode.getText().equals("Roulette!")) {
         				if(addChip > p[3].getBankAccount().getBalance()) {
         					bettingP1.setText("Insufficient Funds");
@@ -3263,12 +3278,12 @@ public class CasinoGUI extends JFrame{
         			bettingP4.setText("Betting: " + totalBet4);
         		}
         	}else if(e.getSource() == number25) {
-        		if(playerPlaying == -1) {
+        		if(playersPlaying == -1) {
         			bettingP1.setText("Select Player Icon to Bet");
         			bettingP2.setText("Select Player Icon to Bet");
         			bettingP3.setText("Select Player Icon to Bet");
         			bettingP4.setText("Select Player Icon to Bet");
-        		}else if(playerPlaying == 0) {
+        		}else if(playersPlaying == 0) {
         			if(gameMode.getText().equals("Roulette!")) {
         				if(addChip > p[0].getBankAccount().getBalance()) {
         					bettingP1.setText("Insufficient Funds");
@@ -3287,7 +3302,7 @@ public class CasinoGUI extends JFrame{
         			
         			totalBet1 += addChip;
         			bettingP1.setText("Betting: " + totalBet1);
-        		}else if(playerPlaying == 1) {
+        		}else if(playersPlaying == 1) {
         			if(gameMode.getText().equals("Roulette!")) {
         				if(addChip > p[1].getBankAccount().getBalance()) {
         					bettingP1.setText("Insufficient Funds");
@@ -3306,7 +3321,7 @@ public class CasinoGUI extends JFrame{
         			
         			totalBet2 += addChip;
         			bettingP2.setText("Betting: " + totalBet2);
-        		}else if(playerPlaying == 2) {
+        		}else if(playersPlaying == 2) {
         			if(gameMode.getText().equals("Roulette!")) {
         				if(addChip > p[2].getBankAccount().getBalance()) {
         					bettingP1.setText("Insufficient Funds");
@@ -3325,7 +3340,7 @@ public class CasinoGUI extends JFrame{
         			
         			totalBet3 += addChip;
         			bettingP3.setText("Betting: " + totalBet3);
-        		}else if(playerPlaying == 3) {
+        		}else if(playersPlaying == 3) {
         			if(gameMode.getText().equals("Roulette!")) {
         				if(addChip > p[3].getBankAccount().getBalance()) {
         					bettingP1.setText("Insufficient Funds");
@@ -3346,12 +3361,12 @@ public class CasinoGUI extends JFrame{
         			bettingP4.setText("Betting: " + totalBet4);
         		}
         	}else if(e.getSource() == number26) {
-        		if(playerPlaying == -1) {
+        		if(playersPlaying == -1) {
         			bettingP1.setText("Select Player Icon to Bet");
         			bettingP2.setText("Select Player Icon to Bet");
         			bettingP3.setText("Select Player Icon to Bet");
         			bettingP4.setText("Select Player Icon to Bet");
-        		}else if(playerPlaying == 0) {
+        		}else if(playersPlaying == 0) {
         			if(gameMode.getText().equals("Roulette!")) {
         				if(addChip > p[0].getBankAccount().getBalance()) {
         					bettingP1.setText("Insufficient Funds");
@@ -3370,7 +3385,7 @@ public class CasinoGUI extends JFrame{
         			
         			totalBet1 += addChip;
         			bettingP1.setText("Betting: " + totalBet1);
-        		}else if(playerPlaying == 1) {
+        		}else if(playersPlaying == 1) {
         			if(gameMode.getText().equals("Roulette!")) {
         				if(addChip > p[1].getBankAccount().getBalance()) {
         					bettingP1.setText("Insufficient Funds");
@@ -3389,7 +3404,7 @@ public class CasinoGUI extends JFrame{
         			
         			totalBet2 += addChip;
         			bettingP2.setText("Betting: " + totalBet2);
-        		}else if(playerPlaying == 2) {
+        		}else if(playersPlaying == 2) {
         			if(gameMode.getText().equals("Roulette!")) {
         				if(addChip > p[2].getBankAccount().getBalance()) {
         					bettingP1.setText("Insufficient Funds");
@@ -3408,7 +3423,7 @@ public class CasinoGUI extends JFrame{
         			
         			totalBet3 += addChip;
         			bettingP3.setText("Betting: " + totalBet3);
-        		}else if(playerPlaying == 3) {
+        		}else if(playersPlaying == 3) {
         			if(gameMode.getText().equals("Roulette!")) {
         				if(addChip > p[3].getBankAccount().getBalance()) {
         					bettingP1.setText("Insufficient Funds");
@@ -3429,12 +3444,12 @@ public class CasinoGUI extends JFrame{
         			bettingP4.setText("Betting: " + totalBet4);
         		}
         	}else if(e.getSource() == number27) {
-        		if(playerPlaying == -1) {
+        		if(playersPlaying == -1) {
         			bettingP1.setText("Select Player Icon to Bet");
         			bettingP2.setText("Select Player Icon to Bet");
         			bettingP3.setText("Select Player Icon to Bet");
         			bettingP4.setText("Select Player Icon to Bet");
-        		}else if(playerPlaying == 0) {
+        		}else if(playersPlaying == 0) {
         			if(gameMode.getText().equals("Roulette!")) {
         				if(addChip > p[0].getBankAccount().getBalance()) {
         					bettingP1.setText("Insufficient Funds");
@@ -3453,7 +3468,7 @@ public class CasinoGUI extends JFrame{
         			
         			totalBet1 += addChip;
         			bettingP1.setText("Betting: " + totalBet1);
-        		}else if(playerPlaying == 1) {
+        		}else if(playersPlaying == 1) {
         			if(gameMode.getText().equals("Roulette!")) {
         				if(addChip > p[1].getBankAccount().getBalance()) {
         					bettingP1.setText("Insufficient Funds");
@@ -3472,7 +3487,7 @@ public class CasinoGUI extends JFrame{
         			
         			totalBet2 += addChip;
         			bettingP2.setText("Betting: " + totalBet2);
-        		}else if(playerPlaying == 2) {
+        		}else if(playersPlaying == 2) {
         			if(gameMode.getText().equals("Roulette!")) {
         				if(addChip > p[2].getBankAccount().getBalance()) {
         					bettingP1.setText("Insufficient Funds");
@@ -3491,7 +3506,7 @@ public class CasinoGUI extends JFrame{
         			
         			totalBet3 += addChip;
         			bettingP3.setText("Betting: " + totalBet3);
-        		}else if(playerPlaying == 3) {
+        		}else if(playersPlaying == 3) {
         			if(gameMode.getText().equals("Roulette!")) {
         				if(addChip > p[3].getBankAccount().getBalance()) {
         					bettingP1.setText("Insufficient Funds");
@@ -3512,12 +3527,12 @@ public class CasinoGUI extends JFrame{
         			bettingP4.setText("Betting: " + totalBet4);
         		}
         	}else if(e.getSource() == number28) {
-        		if(playerPlaying == -1) {
+        		if(playersPlaying == -1) {
         			bettingP1.setText("Select Player Icon to Bet");
         			bettingP2.setText("Select Player Icon to Bet");
         			bettingP3.setText("Select Player Icon to Bet");
         			bettingP4.setText("Select Player Icon to Bet");
-        		}else if(playerPlaying == 0) {
+        		}else if(playersPlaying == 0) {
         			if(gameMode.getText().equals("Roulette!")) {
         				if(addChip > p[0].getBankAccount().getBalance()) {
         					bettingP1.setText("Insufficient Funds");
@@ -3536,7 +3551,7 @@ public class CasinoGUI extends JFrame{
         			
         			totalBet1 += addChip;
         			bettingP1.setText("Betting: " + totalBet1);
-        		}else if(playerPlaying == 1) {
+        		}else if(playersPlaying == 1) {
         			if(gameMode.getText().equals("Roulette!")) {
         				if(addChip > p[1].getBankAccount().getBalance()) {
         					bettingP1.setText("Insufficient Funds");
@@ -3555,7 +3570,7 @@ public class CasinoGUI extends JFrame{
         			
         			totalBet2 += addChip;
         			bettingP2.setText("Betting: " + totalBet2);
-        		}else if(playerPlaying == 2) {
+        		}else if(playersPlaying == 2) {
         			if(gameMode.getText().equals("Roulette!")) {
         				if(addChip > p[2].getBankAccount().getBalance()) {
         					bettingP1.setText("Insufficient Funds");
@@ -3574,7 +3589,7 @@ public class CasinoGUI extends JFrame{
         			
         			totalBet3 += addChip;
         			bettingP3.setText("Betting: " + totalBet3);
-        		}else if(playerPlaying == 3) {
+        		}else if(playersPlaying == 3) {
         			if(gameMode.getText().equals("Roulette!")) {
         				if(addChip > p[3].getBankAccount().getBalance()) {
         					bettingP1.setText("Insufficient Funds");
@@ -3595,12 +3610,12 @@ public class CasinoGUI extends JFrame{
         			bettingP4.setText("Betting: " + totalBet4);
         		}
         	}else if(e.getSource() == number29) {
-        		if(playerPlaying == -1) {
+        		if(playersPlaying == -1) {
         			bettingP1.setText("Select Player Icon to Bet");
         			bettingP2.setText("Select Player Icon to Bet");
         			bettingP3.setText("Select Player Icon to Bet");
         			bettingP4.setText("Select Player Icon to Bet");
-        		}else if(playerPlaying == 0) {
+        		}else if(playersPlaying == 0) {
         			if(gameMode.getText().equals("Roulette!")) {
         				if(addChip > p[0].getBankAccount().getBalance()) {
         					bettingP1.setText("Insufficient Funds");
@@ -3619,7 +3634,7 @@ public class CasinoGUI extends JFrame{
         			
         			totalBet1 += addChip;
         			bettingP1.setText("Betting: " + totalBet1);
-        		}else if(playerPlaying == 1) {
+        		}else if(playersPlaying == 1) {
         			if(gameMode.getText().equals("Roulette!")) {
         				if(addChip > p[1].getBankAccount().getBalance()) {
         					bettingP1.setText("Insufficient Funds");
@@ -3638,7 +3653,7 @@ public class CasinoGUI extends JFrame{
         			
         			totalBet2 += addChip;
         			bettingP2.setText("Betting: " + totalBet2);
-        		}else if(playerPlaying == 2) {
+        		}else if(playersPlaying == 2) {
         			if(gameMode.getText().equals("Roulette!")) {
         				if(addChip > p[2].getBankAccount().getBalance()) {
         					bettingP1.setText("Insufficient Funds");
@@ -3657,7 +3672,7 @@ public class CasinoGUI extends JFrame{
         			
         			totalBet3 += addChip;
         			bettingP3.setText("Betting: " + totalBet3);
-        		}else if(playerPlaying == 3) {
+        		}else if(playersPlaying == 3) {
         			if(gameMode.getText().equals("Roulette!")) {
         				if(addChip > p[3].getBankAccount().getBalance()) {
         					bettingP1.setText("Insufficient Funds");
@@ -3678,12 +3693,12 @@ public class CasinoGUI extends JFrame{
         			bettingP4.setText("Betting: " + totalBet4);
         		}
         	}else if(e.getSource() == number30) {
-        		if(playerPlaying == -1) {
+        		if(playersPlaying == -1) {
         			bettingP1.setText("Select Player Icon to Bet");
         			bettingP2.setText("Select Player Icon to Bet");
         			bettingP3.setText("Select Player Icon to Bet");
         			bettingP4.setText("Select Player Icon to Bet");
-        		}else if(playerPlaying == 0) {
+        		}else if(playersPlaying == 0) {
         			if(gameMode.getText().equals("Roulette!")) {
         				if(addChip > p[0].getBankAccount().getBalance()) {
         					bettingP1.setText("Insufficient Funds");
@@ -3702,7 +3717,7 @@ public class CasinoGUI extends JFrame{
         			
         			totalBet1 += addChip;
         			bettingP1.setText("Betting: " + totalBet1);
-        		}else if(playerPlaying == 1) {
+        		}else if(playersPlaying == 1) {
         			if(gameMode.getText().equals("Roulette!")) {
         				if(addChip > p[1].getBankAccount().getBalance()) {
         					bettingP1.setText("Insufficient Funds");
@@ -3721,7 +3736,7 @@ public class CasinoGUI extends JFrame{
         			
         			totalBet2 += addChip;
         			bettingP2.setText("Betting: " + totalBet2);
-        		}else if(playerPlaying == 2) {
+        		}else if(playersPlaying == 2) {
         			if(gameMode.getText().equals("Roulette!")) {
         				if(addChip > p[2].getBankAccount().getBalance()) {
         					bettingP1.setText("Insufficient Funds");
@@ -3740,7 +3755,7 @@ public class CasinoGUI extends JFrame{
         			
         			totalBet3 += addChip;
         			bettingP3.setText("Betting: " + totalBet3);
-        		}else if(playerPlaying == 3) {
+        		}else if(playersPlaying == 3) {
         			if(gameMode.getText().equals("Roulette!")) {
         				if(addChip > p[3].getBankAccount().getBalance()) {
         					bettingP1.setText("Insufficient Funds");
@@ -3761,12 +3776,12 @@ public class CasinoGUI extends JFrame{
         			bettingP4.setText("Betting: " + totalBet4);
         		}
         	}else if(e.getSource() == number31) {
-        		if(playerPlaying == -1) {
+        		if(playersPlaying == -1) {
         			bettingP1.setText("Select Player Icon to Bet");
         			bettingP2.setText("Select Player Icon to Bet");
         			bettingP3.setText("Select Player Icon to Bet");
         			bettingP4.setText("Select Player Icon to Bet");
-        		}else if(playerPlaying == 0) {
+        		}else if(playersPlaying == 0) {
         			if(gameMode.getText().equals("Roulette!")) {
         				if(addChip > p[0].getBankAccount().getBalance()) {
         					bettingP1.setText("Insufficient Funds");
@@ -3785,7 +3800,7 @@ public class CasinoGUI extends JFrame{
         			
         			totalBet1 += addChip;
         			bettingP1.setText("Betting: " + totalBet1);
-        		}else if(playerPlaying == 1) {
+        		}else if(playersPlaying == 1) {
         			if(gameMode.getText().equals("Roulette!")) {
         				if(addChip > p[1].getBankAccount().getBalance()) {
         					bettingP1.setText("Insufficient Funds");
@@ -3804,7 +3819,7 @@ public class CasinoGUI extends JFrame{
         			
         			totalBet2 += addChip;
         			bettingP2.setText("Betting: " + totalBet2);
-        		}else if(playerPlaying == 2) {
+        		}else if(playersPlaying == 2) {
         			if(gameMode.getText().equals("Roulette!")) {
         				if(addChip > p[2].getBankAccount().getBalance()) {
         					bettingP1.setText("Insufficient Funds");
@@ -3823,7 +3838,7 @@ public class CasinoGUI extends JFrame{
         			
         			totalBet3 += addChip;
         			bettingP3.setText("Betting: " + totalBet3);
-        		}else if(playerPlaying == 3) {
+        		}else if(playersPlaying == 3) {
         			if(gameMode.getText().equals("Roulette!")) {
         				if(addChip > p[3].getBankAccount().getBalance()) {
         					bettingP1.setText("Insufficient Funds");
@@ -3844,12 +3859,12 @@ public class CasinoGUI extends JFrame{
         			bettingP4.setText("Betting: " + totalBet4);
         		}
         	}else if(e.getSource() == number32) {
-        		if(playerPlaying == -1) {
+        		if(playersPlaying == -1) {
         			bettingP1.setText("Select Player Icon to Bet");
         			bettingP2.setText("Select Player Icon to Bet");
         			bettingP3.setText("Select Player Icon to Bet");
         			bettingP4.setText("Select Player Icon to Bet");
-        		}else if(playerPlaying == 0) {
+        		}else if(playersPlaying == 0) {
         			if(gameMode.getText().equals("Roulette!")) {
         				if(addChip > p[0].getBankAccount().getBalance()) {
         					bettingP1.setText("Insufficient Funds");
@@ -3868,7 +3883,7 @@ public class CasinoGUI extends JFrame{
         			
         			totalBet1 += addChip;
         			bettingP1.setText("Betting: " + totalBet1);
-        		}else if(playerPlaying == 1) {
+        		}else if(playersPlaying == 1) {
         			if(gameMode.getText().equals("Roulette!")) {
         				if(addChip > p[1].getBankAccount().getBalance()) {
         					bettingP1.setText("Insufficient Funds");
@@ -3887,7 +3902,7 @@ public class CasinoGUI extends JFrame{
         			
         			totalBet2 += addChip;
         			bettingP2.setText("Betting: " + totalBet2);
-        		}else if(playerPlaying == 2) {
+        		}else if(playersPlaying == 2) {
         			if(gameMode.getText().equals("Roulette!")) {
         				if(addChip > p[2].getBankAccount().getBalance()) {
         					bettingP1.setText("Insufficient Funds");
@@ -3906,7 +3921,7 @@ public class CasinoGUI extends JFrame{
         			
         			totalBet3 += addChip;
         			bettingP3.setText("Betting: " + totalBet3);
-        		}else if(playerPlaying == 3) {
+        		}else if(playersPlaying == 3) {
         			if(gameMode.getText().equals("Roulette!")) {
         				if(addChip > p[3].getBankAccount().getBalance()) {
         					bettingP1.setText("Insufficient Funds");
@@ -3927,12 +3942,12 @@ public class CasinoGUI extends JFrame{
         			bettingP4.setText("Betting: " + totalBet4);
         		}
         	}else if(e.getSource() == number33) {
-        		if(playerPlaying == -1) {
+        		if(playersPlaying == -1) {
         			bettingP1.setText("Select Player Icon to Bet");
         			bettingP2.setText("Select Player Icon to Bet");
         			bettingP3.setText("Select Player Icon to Bet");
         			bettingP4.setText("Select Player Icon to Bet");
-        		}else if(playerPlaying == 0) {
+        		}else if(playersPlaying == 0) {
         			if(gameMode.getText().equals("Roulette!")) {
         				if(addChip > p[0].getBankAccount().getBalance()) {
         					bettingP1.setText("Insufficient Funds");
@@ -3951,7 +3966,7 @@ public class CasinoGUI extends JFrame{
         			
         			totalBet1 += addChip;
         			bettingP1.setText("Betting: " + totalBet1);
-        		}else if(playerPlaying == 1) {
+        		}else if(playersPlaying == 1) {
         			if(gameMode.getText().equals("Roulette!")) {
         				if(addChip > p[1].getBankAccount().getBalance()) {
         					bettingP1.setText("Insufficient Funds");
@@ -3970,7 +3985,7 @@ public class CasinoGUI extends JFrame{
         			
         			totalBet2 += addChip;
         			bettingP2.setText("Betting: " + totalBet2);
-        		}else if(playerPlaying == 2) {
+        		}else if(playersPlaying == 2) {
         			if(gameMode.getText().equals("Roulette!")) {
         				if(addChip > p[2].getBankAccount().getBalance()) {
         					bettingP1.setText("Insufficient Funds");
@@ -3989,7 +4004,7 @@ public class CasinoGUI extends JFrame{
         			
         			totalBet3 += addChip;
         			bettingP3.setText("Betting: " + totalBet3);
-        		}else if(playerPlaying == 3) {
+        		}else if(playersPlaying == 3) {
         			if(gameMode.getText().equals("Roulette!")) {
         				if(addChip > p[3].getBankAccount().getBalance()) {
         					bettingP1.setText("Insufficient Funds");
@@ -4010,12 +4025,12 @@ public class CasinoGUI extends JFrame{
         			bettingP4.setText("Betting: " + totalBet4);
         		}
         	}else if(e.getSource() == number34) {
-        		if(playerPlaying == -1) {
+        		if(playersPlaying == -1) {
         			bettingP1.setText("Select Player Icon to Bet");
         			bettingP2.setText("Select Player Icon to Bet");
         			bettingP3.setText("Select Player Icon to Bet");
         			bettingP4.setText("Select Player Icon to Bet");
-        		}else if(playerPlaying == 0) {
+        		}else if(playersPlaying == 0) {
         			if(gameMode.getText().equals("Roulette!")) {
         				if(addChip > p[0].getBankAccount().getBalance()) {
         					bettingP1.setText("Insufficient Funds");
@@ -4034,7 +4049,7 @@ public class CasinoGUI extends JFrame{
         			
         			totalBet1 += addChip;
         			bettingP1.setText("Betting: " + totalBet1);
-        		}else if(playerPlaying == 1) {
+        		}else if(playersPlaying == 1) {
         			if(gameMode.getText().equals("Roulette!")) {
         				if(addChip > p[1].getBankAccount().getBalance()) {
         					bettingP1.setText("Insufficient Funds");
@@ -4053,7 +4068,7 @@ public class CasinoGUI extends JFrame{
         			
         			totalBet2 += addChip;
         			bettingP2.setText("Betting: " + totalBet2);
-        		}else if(playerPlaying == 2) {
+        		}else if(playersPlaying == 2) {
         			if(gameMode.getText().equals("Roulette!")) {
         				if(addChip > p[2].getBankAccount().getBalance()) {
         					bettingP1.setText("Insufficient Funds");
@@ -4072,7 +4087,7 @@ public class CasinoGUI extends JFrame{
         			
         			totalBet3 += addChip;
         			bettingP3.setText("Betting: " + totalBet3);
-        		}else if(playerPlaying == 3) {
+        		}else if(playersPlaying == 3) {
         			if(gameMode.getText().equals("Roulette!")) {
         				if(addChip > p[3].getBankAccount().getBalance()) {
         					bettingP1.setText("Insufficient Funds");
@@ -4093,12 +4108,12 @@ public class CasinoGUI extends JFrame{
         			bettingP4.setText("Betting: " + totalBet4);
         		}
         	}else if(e.getSource() == number35) {
-        		if(playerPlaying == -1) {
+        		if(playersPlaying == -1) {
         			bettingP1.setText("Select Player Icon to Bet");
         			bettingP2.setText("Select Player Icon to Bet");
         			bettingP3.setText("Select Player Icon to Bet");
         			bettingP4.setText("Select Player Icon to Bet");
-        		}else if(playerPlaying == 0) {
+        		}else if(playersPlaying == 0) {
         			if(gameMode.getText().equals("Roulette!")) {
         				if(addChip > p[0].getBankAccount().getBalance()) {
         					bettingP1.setText("Insufficient Funds");
@@ -4117,7 +4132,7 @@ public class CasinoGUI extends JFrame{
         			
         			totalBet1 += addChip;
         			bettingP1.setText("Betting: " + totalBet1);
-        		}else if(playerPlaying == 1) {
+        		}else if(playersPlaying == 1) {
         			if(gameMode.getText().equals("Roulette!")) {
         				if(addChip > p[1].getBankAccount().getBalance()) {
         					bettingP1.setText("Insufficient Funds");
@@ -4136,7 +4151,7 @@ public class CasinoGUI extends JFrame{
         			
         			totalBet2 += addChip;
         			bettingP2.setText("Betting: " + totalBet2);
-        		}else if(playerPlaying == 2) {
+        		}else if(playersPlaying == 2) {
         			if(gameMode.getText().equals("Roulette!")) {
         				if(addChip > p[2].getBankAccount().getBalance()) {
         					bettingP1.setText("Insufficient Funds");
@@ -4155,7 +4170,7 @@ public class CasinoGUI extends JFrame{
         			
         			totalBet3 += addChip;
         			bettingP3.setText("Betting: " + totalBet3);
-        		}else if(playerPlaying == 3) {
+        		}else if(playersPlaying == 3) {
         			if(gameMode.getText().equals("Roulette!")) {
         				if(addChip > p[3].getBankAccount().getBalance()) {
         					bettingP1.setText("Insufficient Funds");
@@ -4176,12 +4191,12 @@ public class CasinoGUI extends JFrame{
         			bettingP4.setText("Betting: " + totalBet4);
         		}
         	}else if(e.getSource() == number36) {
-        		if(playerPlaying == -1) {
+        		if(playersPlaying == -1) {
         			bettingP1.setText("Select Player Icon to Bet");
         			bettingP2.setText("Select Player Icon to Bet");
         			bettingP3.setText("Select Player Icon to Bet");
         			bettingP4.setText("Select Player Icon to Bet");
-        		}else if(playerPlaying == 0) {
+        		}else if(playersPlaying == 0) {
         			if(gameMode.getText().equals("Roulette!")) {
         				if(addChip > p[0].getBankAccount().getBalance()) {
         					bettingP1.setText("Insufficient Funds");
@@ -4200,7 +4215,7 @@ public class CasinoGUI extends JFrame{
         			
         			totalBet1 += addChip;
         			bettingP1.setText("Betting: " + totalBet1);
-        		}else if(playerPlaying == 1) {
+        		}else if(playersPlaying == 1) {
         			if(gameMode.getText().equals("Roulette!")) {
         				if(addChip > p[1].getBankAccount().getBalance()) {
         					bettingP1.setText("Insufficient Funds");
@@ -4219,7 +4234,7 @@ public class CasinoGUI extends JFrame{
         			
         			totalBet2 += addChip;
         			bettingP2.setText("Betting: " + totalBet2);
-        		}else if(playerPlaying == 2) {
+        		}else if(playersPlaying == 2) {
         			if(gameMode.getText().equals("Roulette!")) {
         				if(addChip > p[2].getBankAccount().getBalance()) {
         					bettingP1.setText("Insufficient Funds");
@@ -4238,7 +4253,7 @@ public class CasinoGUI extends JFrame{
         			
         			totalBet3 += addChip;
         			bettingP3.setText("Betting: " + totalBet3);
-        		}else if(playerPlaying == 3) {
+        		}else if(playersPlaying == 3) {
         			if(gameMode.getText().equals("Roulette!")) {
         				if(addChip > p[3].getBankAccount().getBalance()) {
         					bettingP1.setText("Insufficient Funds");
@@ -4259,12 +4274,12 @@ public class CasinoGUI extends JFrame{
         			bettingP4.setText("Betting: " + totalBet4);
         		}
         	}else if(e.getSource() == row1) {
-        		if(playerPlaying == -1) {
+        		if(playersPlaying == -1) {
         			bettingP1.setText("Select Player Icon to Bet");
         			bettingP2.setText("Select Player Icon to Bet");
         			bettingP3.setText("Select Player Icon to Bet");
         			bettingP4.setText("Select Player Icon to Bet");
-        		}else if(playerPlaying == 0) {
+        		}else if(playersPlaying == 0) {
         			if(gameMode.getText().equals("Roulette!")) {
         				if(addChip > p[0].getBankAccount().getBalance()) {
         					bettingP1.setText("Insufficient Funds");
@@ -4283,7 +4298,7 @@ public class CasinoGUI extends JFrame{
         			
         			totalBet1 += addChip;
         			bettingP1.setText("Betting: " + totalBet1);
-        		}else if(playerPlaying == 1) {
+        		}else if(playersPlaying == 1) {
         			if(gameMode.getText().equals("Roulette!")) {
         				if(addChip > p[1].getBankAccount().getBalance()) {
         					bettingP1.setText("Insufficient Funds");
@@ -4302,7 +4317,7 @@ public class CasinoGUI extends JFrame{
         			
         			totalBet2 += addChip;
         			bettingP2.setText("Betting: " + totalBet2);
-        		}else if(playerPlaying == 2) {
+        		}else if(playersPlaying == 2) {
         			if(gameMode.getText().equals("Roulette!")) {
         				if(addChip > p[2].getBankAccount().getBalance()) {
         					bettingP1.setText("Insufficient Funds");
@@ -4321,7 +4336,7 @@ public class CasinoGUI extends JFrame{
         			
         			totalBet3 += addChip;
         			bettingP3.setText("Betting: " + totalBet3);
-        		}else if(playerPlaying == 3) {
+        		}else if(playersPlaying == 3) {
         			if(gameMode.getText().equals("Roulette!")) {
         				if(addChip > p[3].getBankAccount().getBalance()) {
         					bettingP1.setText("Insufficient Funds");
@@ -4342,12 +4357,12 @@ public class CasinoGUI extends JFrame{
         			bettingP4.setText("Betting: " + totalBet4);
         		}
         	}else if(e.getSource() == row2) {
-        		if(playerPlaying == -1) {
+        		if(playersPlaying == -1) {
         			bettingP1.setText("Select Player Icon to Bet");
         			bettingP2.setText("Select Player Icon to Bet");
         			bettingP3.setText("Select Player Icon to Bet");
         			bettingP4.setText("Select Player Icon to Bet");
-        		}else if(playerPlaying == 0) {
+        		}else if(playersPlaying == 0) {
         			if(gameMode.getText().equals("Roulette!")) {
         				if(addChip > p[0].getBankAccount().getBalance()) {
         					bettingP1.setText("Insufficient Funds");
@@ -4366,7 +4381,7 @@ public class CasinoGUI extends JFrame{
         			
         			totalBet1 += addChip;
         			bettingP1.setText("Betting: " + totalBet1);
-        		}else if(playerPlaying == 1) {
+        		}else if(playersPlaying == 1) {
         			if(gameMode.getText().equals("Roulette!")) {
         				if(addChip > p[1].getBankAccount().getBalance()) {
         					bettingP1.setText("Insufficient Funds");
@@ -4385,7 +4400,7 @@ public class CasinoGUI extends JFrame{
         			
         			totalBet2 += addChip;
         			bettingP2.setText("Betting: " + totalBet2);
-        		}else if(playerPlaying == 2) {
+        		}else if(playersPlaying == 2) {
         			if(gameMode.getText().equals("Roulette!")) {
         				if(addChip > p[2].getBankAccount().getBalance()) {
         					bettingP1.setText("Insufficient Funds");
@@ -4404,7 +4419,7 @@ public class CasinoGUI extends JFrame{
         			
         			totalBet3 += addChip;
         			bettingP3.setText("Betting: " + totalBet3);
-        		}else if(playerPlaying == 3) {
+        		}else if(playersPlaying == 3) {
         			if(gameMode.getText().equals("Roulette!")) {
         				if(addChip > p[3].getBankAccount().getBalance()) {
         					bettingP1.setText("Insufficient Funds");
@@ -4425,12 +4440,12 @@ public class CasinoGUI extends JFrame{
         			bettingP4.setText("Betting: " + totalBet4);
         		}
         	}else if(e.getSource() == row3) {
-        		if(playerPlaying == -1) {
+        		if(playersPlaying == -1) {
         			bettingP1.setText("Select Player Icon to Bet");
         			bettingP2.setText("Select Player Icon to Bet");
         			bettingP3.setText("Select Player Icon to Bet");
         			bettingP4.setText("Select Player Icon to Bet");
-        		}else if(playerPlaying == 0) {
+        		}else if(playersPlaying == 0) {
         			if(gameMode.getText().equals("Roulette!")) {
         				if(addChip > p[0].getBankAccount().getBalance()) {
         					bettingP1.setText("Insufficient Funds");
@@ -4449,7 +4464,7 @@ public class CasinoGUI extends JFrame{
         			
         			totalBet1 += addChip;
         			bettingP1.setText("Betting: " + totalBet1);
-        		}else if(playerPlaying == 1) {
+        		}else if(playersPlaying == 1) {
         			if(gameMode.getText().equals("Roulette!")) {
         				if(addChip > p[1].getBankAccount().getBalance()) {
         					bettingP1.setText("Insufficient Funds");
@@ -4468,7 +4483,7 @@ public class CasinoGUI extends JFrame{
         			
         			totalBet2 += addChip;
         			bettingP2.setText("Betting: " + totalBet2);
-        		}else if(playerPlaying == 2) {
+        		}else if(playersPlaying == 2) {
         			if(gameMode.getText().equals("Roulette!")) {
         				if(addChip > p[2].getBankAccount().getBalance()) {
         					bettingP1.setText("Insufficient Funds");
@@ -4487,7 +4502,7 @@ public class CasinoGUI extends JFrame{
         			
         			totalBet3 += addChip;
         			bettingP3.setText("Betting: " + totalBet3);
-        		}else if(playerPlaying == 3) {
+        		}else if(playersPlaying == 3) {
         			if(gameMode.getText().equals("Roulette!")) {
         				if(addChip > p[3].getBankAccount().getBalance()) {
         					bettingP1.setText("Insufficient Funds");
@@ -4508,12 +4523,12 @@ public class CasinoGUI extends JFrame{
         			bettingP4.setText("Betting: " + totalBet4);
         		}
         	}else if(e.getSource() == group1_12) {
-        		if(playerPlaying == -1) {
+        		if(playersPlaying == -1) {
         			bettingP1.setText("Select Player Icon to Bet");
         			bettingP2.setText("Select Player Icon to Bet");
         			bettingP3.setText("Select Player Icon to Bet");
         			bettingP4.setText("Select Player Icon to Bet");
-        		}else if(playerPlaying == 0) {
+        		}else if(playersPlaying == 0) {
         			if(gameMode.getText().equals("Roulette!")) {
         				if(addChip > p[0].getBankAccount().getBalance()) {
         					bettingP1.setText("Insufficient Funds");
@@ -4532,7 +4547,7 @@ public class CasinoGUI extends JFrame{
         			
         			totalBet1 += addChip;
         			bettingP1.setText("Betting: " + totalBet1);
-        		}else if(playerPlaying == 1) {
+        		}else if(playersPlaying == 1) {
         			if(gameMode.getText().equals("Roulette!")) {
         				if(addChip > p[1].getBankAccount().getBalance()) {
         					bettingP1.setText("Insufficient Funds");
@@ -4551,7 +4566,7 @@ public class CasinoGUI extends JFrame{
         			
         			totalBet2 += addChip;
         			bettingP2.setText("Betting: " + totalBet2);
-        		}else if(playerPlaying == 2) {
+        		}else if(playersPlaying == 2) {
         			if(gameMode.getText().equals("Roulette!")) {
         				if(addChip > p[2].getBankAccount().getBalance()) {
         					bettingP1.setText("Insufficient Funds");
@@ -4570,7 +4585,7 @@ public class CasinoGUI extends JFrame{
         			
         			totalBet3 += addChip;
         			bettingP3.setText("Betting: " + totalBet3);
-        		}else if(playerPlaying == 3) {
+        		}else if(playersPlaying == 3) {
         			if(gameMode.getText().equals("Roulette!")) {
         				if(addChip > p[3].getBankAccount().getBalance()) {
         					bettingP1.setText("Insufficient Funds");
@@ -4591,12 +4606,12 @@ public class CasinoGUI extends JFrame{
         			bettingP4.setText("Betting: " + totalBet4);
         		}
         	}else if(e.getSource() == group13_24) {
-        		if(playerPlaying == -1) {
+        		if(playersPlaying == -1) {
         			bettingP1.setText("Select Player Icon to Bet");
         			bettingP2.setText("Select Player Icon to Bet");
         			bettingP3.setText("Select Player Icon to Bet");
         			bettingP4.setText("Select Player Icon to Bet");
-        		}else if(playerPlaying == 0) {
+        		}else if(playersPlaying == 0) {
         			if(gameMode.getText().equals("Roulette!")) {
         				if(addChip > p[0].getBankAccount().getBalance()) {
         					bettingP1.setText("Insufficient Funds");
@@ -4615,7 +4630,7 @@ public class CasinoGUI extends JFrame{
         			
         			totalBet1 += addChip;
         			bettingP1.setText("Betting: " + totalBet1);
-        		}else if(playerPlaying == 1) {
+        		}else if(playersPlaying == 1) {
         			if(gameMode.getText().equals("Roulette!")) {
         				if(addChip > p[1].getBankAccount().getBalance()) {
         					bettingP1.setText("Insufficient Funds");
@@ -4634,7 +4649,7 @@ public class CasinoGUI extends JFrame{
         			
         			totalBet2 += addChip;
         			bettingP2.setText("Betting: " + totalBet2);
-        		}else if(playerPlaying == 2) {
+        		}else if(playersPlaying == 2) {
         			if(gameMode.getText().equals("Roulette!")) {
         				if(addChip > p[2].getBankAccount().getBalance()) {
         					bettingP1.setText("Insufficient Funds");
@@ -4653,7 +4668,7 @@ public class CasinoGUI extends JFrame{
         			
         			totalBet3 += addChip;
         			bettingP3.setText("Betting: " + totalBet3);
-        		}else if(playerPlaying == 3) {
+        		}else if(playersPlaying == 3) {
         			if(gameMode.getText().equals("Roulette!")) {
         				if(addChip > p[3].getBankAccount().getBalance()) {
         					bettingP1.setText("Insufficient Funds");
@@ -4674,12 +4689,12 @@ public class CasinoGUI extends JFrame{
         			bettingP4.setText("Betting: " + totalBet4);
         		}
         	}else if(e.getSource() == group25_36) {
-        		if(playerPlaying == -1) {
+        		if(playersPlaying == -1) {
         			bettingP1.setText("Select Player Icon to Bet");
         			bettingP2.setText("Select Player Icon to Bet");
         			bettingP3.setText("Select Player Icon to Bet");
         			bettingP4.setText("Select Player Icon to Bet");
-        		}else if(playerPlaying == 0) {
+        		}else if(playersPlaying == 0) {
         			if(gameMode.getText().equals("Roulette!")) {
         				if(addChip > p[0].getBankAccount().getBalance()) {
         					bettingP1.setText("Insufficient Funds");
@@ -4698,7 +4713,7 @@ public class CasinoGUI extends JFrame{
         			
         			totalBet1 += addChip;
         			bettingP1.setText("Betting: " + totalBet1);
-        		}else if(playerPlaying == 1) {
+        		}else if(playersPlaying == 1) {
         			if(gameMode.getText().equals("Roulette!")) {
         				if(addChip > p[1].getBankAccount().getBalance()) {
         					bettingP1.setText("Insufficient Funds");
@@ -4717,7 +4732,7 @@ public class CasinoGUI extends JFrame{
         			
         			totalBet2 += addChip;
         			bettingP2.setText("Betting: " + totalBet2);
-        		}else if(playerPlaying == 2) {
+        		}else if(playersPlaying == 2) {
         			if(gameMode.getText().equals("Roulette!")) {
         				if(addChip > p[2].getBankAccount().getBalance()) {
         					bettingP1.setText("Insufficient Funds");
@@ -4736,7 +4751,7 @@ public class CasinoGUI extends JFrame{
         			
         			totalBet3 += addChip;
         			bettingP3.setText("Betting: " + totalBet3);
-        		}else if(playerPlaying == 3) {
+        		}else if(playersPlaying == 3) {
         			if(gameMode.getText().equals("Roulette!")) {
         				if(addChip > p[3].getBankAccount().getBalance()) {
         					bettingP1.setText("Insufficient Funds");
@@ -4757,12 +4772,12 @@ public class CasinoGUI extends JFrame{
         			bettingP4.setText("Betting: " + totalBet4);
         		}
         	}else if(e.getSource() == group1_18) {
-        		if(playerPlaying == -1) {
+        		if(playersPlaying == -1) {
         			bettingP1.setText("Select Player Icon to Bet");
         			bettingP2.setText("Select Player Icon to Bet");
         			bettingP3.setText("Select Player Icon to Bet");
         			bettingP4.setText("Select Player Icon to Bet");
-        		}else if(playerPlaying == 0) {
+        		}else if(playersPlaying == 0) {
         			if(gameMode.getText().equals("Roulette!")) {
         				if(addChip > p[0].getBankAccount().getBalance()) {
         					bettingP1.setText("Insufficient Funds");
@@ -4781,7 +4796,7 @@ public class CasinoGUI extends JFrame{
         			
         			totalBet1 += addChip;
         			bettingP1.setText("Betting: " + totalBet1);
-        		}else if(playerPlaying == 1) {
+        		}else if(playersPlaying == 1) {
         			if(gameMode.getText().equals("Roulette!")) {
         				if(addChip > p[1].getBankAccount().getBalance()) {
         					bettingP1.setText("Insufficient Funds");
@@ -4800,7 +4815,7 @@ public class CasinoGUI extends JFrame{
         			
         			totalBet2 += addChip;
         			bettingP2.setText("Betting: " + totalBet2);
-        		}else if(playerPlaying == 2) {
+        		}else if(playersPlaying == 2) {
         			if(gameMode.getText().equals("Roulette!")) {
         				if(addChip > p[2].getBankAccount().getBalance()) {
         					bettingP1.setText("Insufficient Funds");
@@ -4819,7 +4834,7 @@ public class CasinoGUI extends JFrame{
         			
         			totalBet3 += addChip;
         			bettingP3.setText("Betting: " + totalBet3);
-        		}else if(playerPlaying == 3) {
+        		}else if(playersPlaying == 3) {
         			if(gameMode.getText().equals("Roulette!")) {
         				if(addChip > p[3].getBankAccount().getBalance()) {
         					bettingP1.setText("Insufficient Funds");
@@ -4840,12 +4855,12 @@ public class CasinoGUI extends JFrame{
         			bettingP4.setText("Betting: " + totalBet4);
         		}
         	}else if(e.getSource() == group19_36) {
-        		if(playerPlaying == -1) {
+        		if(playersPlaying == -1) {
         			bettingP1.setText("Select Player Icon to Bet");
         			bettingP2.setText("Select Player Icon to Bet");
         			bettingP3.setText("Select Player Icon to Bet");
         			bettingP4.setText("Select Player Icon to Bet");
-        		}else if(playerPlaying == 0) {
+        		}else if(playersPlaying == 0) {
         			if(gameMode.getText().equals("Roulette!")) {
         				if(addChip > p[0].getBankAccount().getBalance()) {
         					bettingP1.setText("Insufficient Funds");
@@ -4864,7 +4879,7 @@ public class CasinoGUI extends JFrame{
         			
         			totalBet1 += addChip;
         			bettingP1.setText("Betting: " + totalBet1);
-        		}else if(playerPlaying == 1) {
+        		}else if(playersPlaying == 1) {
         			if(gameMode.getText().equals("Roulette!")) {
         				if(addChip > p[1].getBankAccount().getBalance()) {
         					bettingP1.setText("Insufficient Funds");
@@ -4883,7 +4898,7 @@ public class CasinoGUI extends JFrame{
         			
         			totalBet2 += addChip;
         			bettingP2.setText("Betting: " + totalBet2);
-        		}else if(playerPlaying == 2) {
+        		}else if(playersPlaying == 2) {
         			if(gameMode.getText().equals("Roulette!")) {
         				if(addChip > p[2].getBankAccount().getBalance()) {
         					bettingP1.setText("Insufficient Funds");
@@ -4902,7 +4917,7 @@ public class CasinoGUI extends JFrame{
         			
         			totalBet3 += addChip;
         			bettingP3.setText("Betting: " + totalBet3);
-        		}else if(playerPlaying == 3) {
+        		}else if(playersPlaying == 3) {
         			if(gameMode.getText().equals("Roulette!")) {
         				if(addChip > p[3].getBankAccount().getBalance()) {
         					bettingP1.setText("Insufficient Funds");
@@ -4923,12 +4938,12 @@ public class CasinoGUI extends JFrame{
         			bettingP4.setText("Betting: " + totalBet4);
         		}
         	}else if(e.getSource() == even) {
-        		if(playerPlaying == -1) {
+        		if(playersPlaying == -1) {
         			bettingP1.setText("Select Player Icon to Bet");
         			bettingP2.setText("Select Player Icon to Bet");
         			bettingP3.setText("Select Player Icon to Bet");
         			bettingP4.setText("Select Player Icon to Bet");
-        		}else if(playerPlaying == 0) {
+        		}else if(playersPlaying == 0) {
         			if(gameMode.getText().equals("Roulette!")) {
         				if(addChip > p[0].getBankAccount().getBalance()) {
         					bettingP1.setText("Insufficient Funds");
@@ -4947,7 +4962,7 @@ public class CasinoGUI extends JFrame{
         			
         			totalBet1 += addChip;
         			bettingP1.setText("Betting: " + totalBet1);
-        		}else if(playerPlaying == 1) {
+        		}else if(playersPlaying == 1) {
         			if(gameMode.getText().equals("Roulette!")) {
         				if(addChip > p[1].getBankAccount().getBalance()) {
         					bettingP1.setText("Insufficient Funds");
@@ -4966,7 +4981,7 @@ public class CasinoGUI extends JFrame{
         			
         			totalBet2 += addChip;
         			bettingP2.setText("Betting: " + totalBet2);
-        		}else if(playerPlaying == 2) {
+        		}else if(playersPlaying == 2) {
         			if(gameMode.getText().equals("Roulette!")) {
         				if(addChip > p[2].getBankAccount().getBalance()) {
         					bettingP1.setText("Insufficient Funds");
@@ -4985,7 +5000,7 @@ public class CasinoGUI extends JFrame{
         			
         			totalBet3 += addChip;
         			bettingP3.setText("Betting: " + totalBet3);
-        		}else if(playerPlaying == 3) {
+        		}else if(playersPlaying == 3) {
         			if(gameMode.getText().equals("Roulette!")) {
         				if(addChip > p[3].getBankAccount().getBalance()) {
         					bettingP1.setText("Insufficient Funds");
@@ -5006,12 +5021,12 @@ public class CasinoGUI extends JFrame{
         			bettingP4.setText("Betting: " + totalBet4);
         		}
         	}else if(e.getSource() == odd) {
-        		if(playerPlaying == -1) {
+        		if(playersPlaying == -1) {
         			bettingP1.setText("Select Player Icon to Bet");
         			bettingP2.setText("Select Player Icon to Bet");
         			bettingP3.setText("Select Player Icon to Bet");
         			bettingP4.setText("Select Player Icon to Bet");
-        		}else if(playerPlaying == 0) {
+        		}else if(playersPlaying == 0) {
         			if(gameMode.getText().equals("Roulette!")) {
         				if(addChip > p[0].getBankAccount().getBalance()) {
         					bettingP1.setText("Insufficient Funds");
@@ -5030,7 +5045,7 @@ public class CasinoGUI extends JFrame{
         			
         			totalBet1 += addChip;
         			bettingP1.setText("Betting: " + totalBet1);
-        		}else if(playerPlaying == 1) {
+        		}else if(playersPlaying == 1) {
         			if(gameMode.getText().equals("Roulette!")) {
         				if(addChip > p[1].getBankAccount().getBalance()) {
         					bettingP1.setText("Insufficient Funds");
@@ -5049,7 +5064,7 @@ public class CasinoGUI extends JFrame{
         			
         			totalBet2 += addChip;
         			bettingP2.setText("Betting: " + totalBet2);
-        		}else if(playerPlaying == 2) {
+        		}else if(playersPlaying == 2) {
         			if(gameMode.getText().equals("Roulette!")) {
         				if(addChip > p[2].getBankAccount().getBalance()) {
         					bettingP1.setText("Insufficient Funds");
@@ -5068,7 +5083,7 @@ public class CasinoGUI extends JFrame{
         			
         			totalBet3 += addChip;
         			bettingP3.setText("Betting: " + totalBet3);
-        		}else if(playerPlaying == 3) {
+        		}else if(playersPlaying == 3) {
         			if(gameMode.getText().equals("Roulette!")) {
         				if(addChip > p[3].getBankAccount().getBalance()) {
         					bettingP1.setText("Insufficient Funds");
@@ -5089,12 +5104,12 @@ public class CasinoGUI extends JFrame{
         			bettingP4.setText("Betting: " + totalBet4);
         		}
         	}else if(e.getSource() == red) {
-        		if(playerPlaying == -1) {
+        		if(playersPlaying == -1) {
         			bettingP1.setText("Select Player Icon to Bet");
         			bettingP2.setText("Select Player Icon to Bet");
         			bettingP3.setText("Select Player Icon to Bet");
         			bettingP4.setText("Select Player Icon to Bet");
-        		}else if(playerPlaying == 0) {
+        		}else if(playersPlaying == 0) {
         			if(gameMode.getText().equals("Roulette!")) {
         				if(addChip > p[0].getBankAccount().getBalance()) {
         					bettingP1.setText("Insufficient Funds");
@@ -5113,7 +5128,7 @@ public class CasinoGUI extends JFrame{
         			
         			totalBet1 += addChip;
         			bettingP1.setText("Betting: " + totalBet1);
-        		}else if(playerPlaying == 1) {
+        		}else if(playersPlaying == 1) {
         			if(gameMode.getText().equals("Roulette!")) {
         				if(addChip > p[1].getBankAccount().getBalance()) {
         					bettingP1.setText("Insufficient Funds");
@@ -5132,7 +5147,7 @@ public class CasinoGUI extends JFrame{
         			
         			totalBet2 += addChip;
         			bettingP2.setText("Betting: " + totalBet2);
-        		}else if(playerPlaying == 2) {
+        		}else if(playersPlaying == 2) {
         			if(gameMode.getText().equals("Roulette!")) {
         				if(addChip > p[2].getBankAccount().getBalance()) {
         					bettingP1.setText("Insufficient Funds");
@@ -5151,7 +5166,7 @@ public class CasinoGUI extends JFrame{
         			
         			totalBet3 += addChip;
         			bettingP3.setText("Betting: " + totalBet3);
-        		}else if(playerPlaying == 3) {
+        		}else if(playersPlaying == 3) {
         			if(gameMode.getText().equals("Roulette!")) {
         				if(addChip > p[3].getBankAccount().getBalance()) {
         					bettingP1.setText("Insufficient Funds");
@@ -5172,12 +5187,12 @@ public class CasinoGUI extends JFrame{
         			bettingP4.setText("Betting: " + totalBet4);
         		}
         	}else if(e.getSource() == black) {
-        		if(playerPlaying == -1) {
+        		if(playersPlaying == -1) {
         			bettingP1.setText("Select Player Icon to Bet");
         			bettingP2.setText("Select Player Icon to Bet");
         			bettingP3.setText("Select Player Icon to Bet");
         			bettingP4.setText("Select Player Icon to Bet");
-        		}else if(playerPlaying == 0) {
+        		}else if(playersPlaying == 0) {
         			if(gameMode.getText().equals("Roulette!")) {
         				if(addChip > p[0].getBankAccount().getBalance()) {
         					bettingP1.setText("Insufficient Funds");
@@ -5196,7 +5211,7 @@ public class CasinoGUI extends JFrame{
         			
         			totalBet1 += addChip;
         			bettingP1.setText("Betting: " + totalBet1);
-        		}else if(playerPlaying == 1) {
+        		}else if(playersPlaying == 1) {
         			if(gameMode.getText().equals("Roulette!")) {
         				if(addChip > p[1].getBankAccount().getBalance()) {
         					bettingP1.setText("Insufficient Funds");
@@ -5215,7 +5230,7 @@ public class CasinoGUI extends JFrame{
         			
         			totalBet2 += addChip;
         			bettingP2.setText("Betting: " + totalBet2);
-        		}else if(playerPlaying == 2) {
+        		}else if(playersPlaying == 2) {
         			if(gameMode.getText().equals("Roulette!")) {
         				if(addChip > p[2].getBankAccount().getBalance()) {
         					bettingP1.setText("Insufficient Funds");
@@ -5234,7 +5249,7 @@ public class CasinoGUI extends JFrame{
         			
         			totalBet3 += addChip;
         			bettingP3.setText("Betting: " + totalBet3);
-        		}else if(playerPlaying == 3) {
+        		}else if(playersPlaying == 3) {
         			if(gameMode.getText().equals("Roulette!")) {
         				if(addChip > p[3].getBankAccount().getBalance()) {
         					bettingP1.setText("Insufficient Funds");
@@ -5258,6 +5273,10 @@ public class CasinoGUI extends JFrame{
         }
     }
     
+    
+    /**
+	 * Purpose: Custom ActionListener used for when user interacts with textfields.
+	 */
     private class TextFieldListener implements ActionListener {
         private String textInput1;
         private String textInput2;
@@ -5366,6 +5385,12 @@ public class CasinoGUI extends JFrame{
         }
     }
     
+    
+    /**
+	 * Purpose: Method for when player bet on a row on the betting table.
+	 * @param int row, winNumber
+	 * @return true if winNumber is in row
+	 */
     public static boolean inRow(int row, int winNumber) {
     	int[] r1 = {1,4,7,10,13,16,19,22,25,28,31,34};
 	    int[] r2 = {2,5,8,11,14,17,20,23,26,29,32,35};
@@ -5395,6 +5420,12 @@ public class CasinoGUI extends JFrame{
     	return false;
     }
     
+    
+    /**
+	 * Purpose: Method for verifying if user input an integer in textfield.
+	 * @param String input
+	 * @return false if input is empty or if input contains a char that is not a digit, else true.
+	 */
     public static boolean isInteger(String input) {
     	if(input.isEmpty()) {
     		return false;
@@ -5408,6 +5439,11 @@ public class CasinoGUI extends JFrame{
     	return true;
     }
     
+    
+    /**
+	 * Purpose: Method for distributing wins and loses based on what each player bet on (using arrays).
+	 * @param Roulette rouletteWin, mysteryRouletteWin
+	 */
     public static void distributeWins(Roulette rouletteWin, Roulette mysteryRouletteWin) {
     	if(rouletteWin.getNumber() == 0) {
     		p[0].getBetOnRoulette()[0] *= 36;
@@ -5890,10 +5926,10 @@ public class CasinoGUI extends JFrame{
     	}
     	
     	if(1 <= rouletteWin.getNumber() && rouletteWin.getNumber() <= 12) {
-    		p[0].getBetOnRoulette()[40] *= 2;
-    		p[1].getBetOnRoulette()[40] *= 2;
-    		p[2].getBetOnRoulette()[40] *= 2;
-    		p[3].getBetOnRoulette()[40] *= 2;
+    		p[0].getBetOnRoulette()[40] *= 3;
+    		p[1].getBetOnRoulette()[40] *= 3;
+    		p[2].getBetOnRoulette()[40] *= 3;
+    		p[3].getBetOnRoulette()[40] *= 3;
     	}else if((13 <= rouletteWin.getNumber() && rouletteWin.getNumber() <= 36) || rouletteWin.getNumber() == 0) {
     		p[0].getBetOnRoulette()[40] = 0;
     		p[1].getBetOnRoulette()[40] = 0;
@@ -5902,10 +5938,10 @@ public class CasinoGUI extends JFrame{
     	}
     	
     	if(13 <= rouletteWin.getNumber() && rouletteWin.getNumber() <= 24) {
-    		p[0].getBetOnRoulette()[41] *= 2;
-    		p[1].getBetOnRoulette()[41] *= 2;
-    		p[2].getBetOnRoulette()[41] *= 2;
-    		p[3].getBetOnRoulette()[41] *= 2;
+    		p[0].getBetOnRoulette()[41] *= 3;
+    		p[1].getBetOnRoulette()[41] *= 3;
+    		p[2].getBetOnRoulette()[41] *= 3;
+    		p[3].getBetOnRoulette()[41] *= 3;
     	}else if((0 <= rouletteWin.getNumber() && rouletteWin.getNumber() <= 12) || (25 <= rouletteWin.getNumber() && rouletteWin.getNumber() <= 36)) {
     		p[0].getBetOnRoulette()[41] = 0;
     		p[1].getBetOnRoulette()[41] = 0;
@@ -5914,10 +5950,10 @@ public class CasinoGUI extends JFrame{
     	}
     	
     	if(25 <= rouletteWin.getNumber() && rouletteWin.getNumber() <= 36) {
-    		p[0].getBetOnRoulette()[42] *= 2;
-    		p[1].getBetOnRoulette()[42] *= 2;
-    		p[2].getBetOnRoulette()[42] *= 2;
-    		p[3].getBetOnRoulette()[42] *= 2;
+    		p[0].getBetOnRoulette()[42] *= 3;
+    		p[1].getBetOnRoulette()[42] *= 3;
+    		p[2].getBetOnRoulette()[42] *= 3;
+    		p[3].getBetOnRoulette()[42] *= 3;
     	}else if(0 <= rouletteWin.getNumber() && rouletteWin.getNumber() <= 24) {
     		p[0].getBetOnRoulette()[42] = 0;
     		p[1].getBetOnRoulette()[42] = 0;
@@ -6485,10 +6521,10 @@ public class CasinoGUI extends JFrame{
     	} 
     	
     	if(1 <= mysteryRouletteWin.getNumber() && mysteryRouletteWin.getNumber() <= 12) {
-    		p[0].getBetOnMysteryRoulette()[40] *= 2;
-    		p[1].getBetOnMysteryRoulette()[40] *= 2;
-    		p[2].getBetOnMysteryRoulette()[40] *= 2;
-    		p[3].getBetOnMysteryRoulette()[40] *= 2;
+    		p[0].getBetOnMysteryRoulette()[40] *= 3;
+    		p[1].getBetOnMysteryRoulette()[40] *= 3;
+    		p[2].getBetOnMysteryRoulette()[40] *= 3;
+    		p[3].getBetOnMysteryRoulette()[40] *= 3;
     	}else if((13 <= mysteryRouletteWin.getNumber() && mysteryRouletteWin.getNumber() <= 36) || mysteryRouletteWin.getNumber() == 0) {
     		p[0].getBetOnMysteryRoulette()[40] = 0;
     		p[1].getBetOnMysteryRoulette()[40] = 0;
@@ -6497,10 +6533,10 @@ public class CasinoGUI extends JFrame{
     	}
     	
     	if(13 <= mysteryRouletteWin.getNumber() && mysteryRouletteWin.getNumber() <= 24) {
-    		p[0].getBetOnMysteryRoulette()[41] *= 2;
-    		p[1].getBetOnMysteryRoulette()[41] *= 2;
-    		p[2].getBetOnMysteryRoulette()[41] *= 2;
-    		p[3].getBetOnMysteryRoulette()[41] *= 2;
+    		p[0].getBetOnMysteryRoulette()[41] *= 3;
+    		p[1].getBetOnMysteryRoulette()[41] *= 3;
+    		p[2].getBetOnMysteryRoulette()[41] *= 3;
+    		p[3].getBetOnMysteryRoulette()[41] *= 3;
     	}else if((0 <= mysteryRouletteWin.getNumber() && mysteryRouletteWin.getNumber() <= 12) || (25 <= mysteryRouletteWin.getNumber() && mysteryRouletteWin.getNumber() <= 36)) {
     		p[0].getBetOnMysteryRoulette()[41] = 0;
     		p[1].getBetOnMysteryRoulette()[41] = 0;
@@ -6509,10 +6545,10 @@ public class CasinoGUI extends JFrame{
     	} 
     	
     	if(25 <= mysteryRouletteWin.getNumber() && mysteryRouletteWin.getNumber() <= 36) {
-    		p[0].getBetOnMysteryRoulette()[42] *= 2;
-    		p[1].getBetOnMysteryRoulette()[42] *= 2;
-    		p[2].getBetOnMysteryRoulette()[42] *= 2;
-    		p[3].getBetOnMysteryRoulette()[42] *= 2;
+    		p[0].getBetOnMysteryRoulette()[42] *= 3;
+    		p[1].getBetOnMysteryRoulette()[42] *= 3;
+    		p[2].getBetOnMysteryRoulette()[42] *= 3;
+    		p[3].getBetOnMysteryRoulette()[42] *= 3;
     	}else if(0 <= mysteryRouletteWin.getNumber() && mysteryRouletteWin.getNumber() <= 24) {
     		p[0].getBetOnMysteryRoulette()[42] = 0;
     		p[1].getBetOnMysteryRoulette()[42] = 0;
@@ -6605,6 +6641,11 @@ public class CasinoGUI extends JFrame{
     	balanceP4.setText("Current Balance: $" + p[3].getBankAccount().getBalance());
     }
 
+    
+    /**
+	 * Purpose: Main method used to start new CasinoGUI.
+	 * @param String[] args
+	 */
     public static void main(String[] args) {
         EventQueue.invokeLater(new Runnable() {
             public void run() {

@@ -74,7 +74,7 @@ public class MysteryRoulette extends Roulette{
 	}
 	
 	/**
-	 * Purpose: A method when Mystery Roulette game is chosen. (Variant Game)
+	 * Purpose: A method when Mystery Roulette game is chosen with toString console animation. (Variant Game)
 	 * @return Roulette card1, card2, or card3 (depends on spin result)
 	 */
 	public Roulette[] playMysteryRouletteWithtoString(Roulette spin) {
@@ -138,8 +138,8 @@ public class MysteryRoulette extends Roulette{
 			
 			
 			//Reminds player(s) that this is not the win, the Roulette card we flip is the win
-			System.out.println("Remember this is not the win..."); 
-			System.out.println("");
+//			System.out.println("Remember this is not the win..."); 
+//			System.out.println("");
 			
 			//Drawn card display with discarded cards
 			if(0 <= wheelLandsOn.getNumber() && wheelLandsOn.getNumber() <= 12){
